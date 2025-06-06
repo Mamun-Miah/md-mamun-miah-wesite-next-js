@@ -44,12 +44,12 @@ const Header: React.FC = () => {
               <li><Link href="#">Blog</Link></li>
             </ul>
           </div>
-          <Link href="/" className="ms-5">
+          <Link href="/" className="ms-5 ">
             <Image
               src="/images/logo.svg"
               alt="Logo"
-              width={160}
-              height={50}
+              width={100}
+              height={100}
               className="lg:w-[10rem] w-[8rem] lg:mt-[-10px] lg:ms-[-25px] max-sm:ms-[5px]"
             />
           </Link>

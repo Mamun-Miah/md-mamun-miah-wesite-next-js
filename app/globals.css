@@ -104,3 +104,7 @@ footer a {
     grid-column-start: 1;
     grid-row-start: 1;
 }
+img {
+    max-width: 200%;
+    
+}
