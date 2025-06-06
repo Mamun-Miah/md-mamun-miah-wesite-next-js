@@ -1,26 +1,106 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* #button */
+.primary-btn {
+    @apply bg-[#3b6790] text-[#000248] lg:text-xl border-0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.secondery-btn {
+    @apply bg-[#FFD700] text-[#1b1b1b] lg:text-xl border-0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* main color */
+.maincolor {
+    @apply text-[#FFD700];
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* primary color */
+.bg-primary {
+    @apply bg-[#3b6790];
+}
+
+.bg-secondary {
+    @apply bg-[#efb036];
+}
+
+/* heading */
+.mainheading {
+    @apply text-2xl font-bold mb-3 text-[#FFD700];
+}
+
+.subheading {
+    @apply text-5xl text-[#000248] font-bold;
+}
+
+/* #heading */
+
+.heading1 {
+    @apply text-7xl text-[#000248];
+}
+
+.heading2 {
+    @apply text-5xl text-[#000248];
+}
+
+.heading3 {
+    @apply text-4xl text-[#000248];
+}
+
+.heading4 {
+    @apply text-3xl text-[#efb036];
+}
+
+.heading5 {
+    @apply text-2xl text-[#efb036];
+}
+
+.heading5footer {
+    @apply text-2xl
+}
+
+.heading6 {
+    @apply text-xl text-[#ffffff];
+}
+
+.para {
+    @apply text-lg text-[#000248];
+}
+
+/* #footer */
+footer a {
+    @apply text-[1rem] text-[#c8c8c8] hover:text-blue-800;
+}
+
+/* about-bg */
+.about-bg {
+    background: url('https://mdmamunmiah.com/assets/images/about.webp');
+    margin-top: -130px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+
+}
+
+.website-bg {
+    background: url('https://mdmamunmiah.com/assets/images/website-development-bg1.png');
+    margin-top: -90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+
+}
+
+.hero1 {
+    display: grid;
+    width: 100%;
+    place-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero1>* {
+    grid-column-start: 1;
+    grid-row-start: 1;
 }
