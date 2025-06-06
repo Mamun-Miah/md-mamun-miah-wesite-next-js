@@ -1,7 +1,11 @@
-'use client';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+
+export const metadata = {
+  title: 'Website Development - Mamun Miah',
+};
 
 const Hero = () => {
   return (

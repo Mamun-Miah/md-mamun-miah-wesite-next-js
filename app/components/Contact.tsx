@@ -33,9 +33,9 @@ const Contact = () => {
       <div className="lg:mx-24 mx-5 mt-24" id="contact-us">
         <div className="w-full lg:max-w-lg space-y-3 mb-4">
           <h1 className="mainheading">CONTACT</h1>
-          <p className="subheading">Let's Work Together!</p>
+          <p className="subheading">Let&apos;s Work Together!</p>
           <p className="text-justify">
-            Have a project in mind? Need expert SEO or website development services? I’m here to help! Whether it's optimizing your online presence, creating a professional website, or boosting your brand, I’m just a message away.
+            Have a project in mind? Need expert SEO or website development services? I&#39;m here to help! Whether it&apos;s optimizing your online presence, creating a professional website, or boosting your brand, I&#39;m just a message away.
           </p>
         </div>
       </div>
