@@ -9,9 +9,9 @@ const About = () => {
   return (
     
     <Hero
-        title="About "
-        description="With 7+ years of experience in SEO & web development, I help businesses grow online with strategy and style."
-        backgroundImage="/assets/images/about-hero.jpg"
+        title="About Me"
+        description="My journey in SEO and web development began over 7 years ago when I discovered the power of search engines in driving business success. From working with small startups to large enterprises, I've learned how to craft SEO strategies that deliver real results. My goal is to help businesses achieve online growth through technical expertise and data-driven decisions."
+        backgroundImage="images/about-us-bg.png"
       />
   )
 }

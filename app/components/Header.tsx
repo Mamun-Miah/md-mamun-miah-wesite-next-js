@@ -41,7 +41,7 @@ const Header: React.FC = () => {
                 </ul>
               </li>
               <li><Navlink href="/about">About Me</Navlink></li>
-              <li><Link href="/blog">Blog</Link></li>
+              <li><Link href="#">Blog</Link></li>
             </ul>
           </div>
           <Link href="/" className="ms-5">

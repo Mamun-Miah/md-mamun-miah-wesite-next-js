@@ -12,7 +12,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction }) => {
   return (
-    <div className="hero lg:h-[105vh] h-[100vh] pb-24 lg:mt-[-100px]" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="hero lg:h-[105vh] h-[100vh] pb-24 mt-[-80px] lg:mt-[-100px]" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="hero-content flex-col lg:flex-row lg:mt-[130px] z-10 text-white"
       
       >

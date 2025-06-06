@@ -4,8 +4,9 @@ import Image from 'next/image';
 
 const technologies = [
 //   { src: 'technology/html.svg', alt: 'HTML' },
+{ src: 'technology/nextjs.svg', alt: 'Next js' },
   { src: 'technology/tailwind-css.svg', alt: 'Tailwind' },
-  { src: 'technology/bootstrap.svg', alt: 'Bootstrap' },
+  
   { src: 'technology/java-script.svg', alt: 'JavaScript' },
   { src: 'technology/node-js.svg', alt: 'Node.js' },
   { src: 'technology/php.svg', alt: 'PHP' },
