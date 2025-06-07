@@ -2,9 +2,6 @@
 
 import React from 'react';
 import Card from './SingleServiceCard'; // Assuming Card component is in the same directory
-import AOSWrapper from "../components/AosAnimation"; // Importing the AOS wrapper for animations
-
-
 
 
 // Main ServicesSection component
@@ -12,8 +9,8 @@ const ServicesSection: React.FC = () => {
   
 
   return (
-    <AOSWrapper>
-    <div  data-aos="fade-up">
+    
+    <div>
       {/* Heading and Description Section */}
       <div 
               
@@ -65,7 +62,6 @@ const ServicesSection: React.FC = () => {
         />
       </section>
     </div>
-    </AOSWrapper>
   );
 };
 

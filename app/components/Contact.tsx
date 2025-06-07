@@ -4,7 +4,6 @@ import React from 'react';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import AOSWrapper from "../components/AosAnimation";
 
 const Contact = () => {
   const [status, setStatus] = useState<'success' | 'error' | null>(null);
@@ -31,7 +30,6 @@ const Contact = () => {
 
   return (
     <>
-    <AOSWrapper>
       <div className="lg:mx-24 mx-5 mt-24 bg-[#fbfbfd]" id="contact-us" data-aos="fade-up">
         <div className="w-full lg:max-w-lg space-y-3 mb-4 ">
           <h1 className="mainheading">CONTACT</h1>
@@ -99,7 +97,6 @@ const Contact = () => {
           ></iframe>
         </div>
       </div>
-      </AOSWrapper>
     </>
   );
 };

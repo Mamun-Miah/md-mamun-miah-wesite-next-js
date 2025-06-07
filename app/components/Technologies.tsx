@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import AOSWrapper from "../components/AosAnimation";
+
 const technologies = [
 //   { src: 'technology/html.svg', alt: 'HTML' },
 { src: 'technology/nextjs.svg', alt: 'Next js' },
@@ -20,7 +20,6 @@ const technologies = [
 
 const Technologies = () => {
   return (
-    <AOSWrapper>
     <section className="mt-24 lg:pt-10 pt-6 lg:pb-3 bg-slate-100" data-aos="fade-up">
       <h1 className="text-center mainheading">What I Work With</h1>
       <h2 className="subheading text-center lg:mx-[6rem] mx-2">
@@ -42,7 +41,6 @@ const Technologies = () => {
         </div>
       </div>
     </section>
-    </AOSWrapper>
   );
 };
 
