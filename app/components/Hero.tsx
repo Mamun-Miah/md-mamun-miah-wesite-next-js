@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from "framer-motion";
 
 interface HeroProps {
   title: string;
@@ -25,13 +26,30 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
         <div className="grid lg:grid-cols-12 w-full">
           <div className="col-span-2"></div>
           <div className="col-span-8 flex flex-col justify-center items-center text-center">
-            <h1 className="lg:text-5xl text-4xl tracking-wide font-bold">
+            <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="lg:text-5xl text-4xl tracking-wide font-bold">
               {title}
-            </h1>
-            <p className="py-6 lg:mx-32 text-xl">
-              {description}
-            </p>
-            {calltoAction}
+             </motion.h1>
+             
+            <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.1, ease: "easeOut" }}
+                  className="py-6 lg:mx-32 text-xl">
+            {description}
+            </motion.p>
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.4, ease: "easeOut" }}
+            >
+              {calltoAction}
+            
+            </motion.button>
+            
           </div>
           <div className="col-span-2"></div>
         </div>
