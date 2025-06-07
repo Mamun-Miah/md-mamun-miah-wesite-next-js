@@ -17,6 +17,7 @@ const SingleServiceCard : React.FC<CardProps>= ({
   details = 'Default Details',
   image = '',
   bg = '',
+  
 }) => {
   const getIcon = () => {
     switch (image) {

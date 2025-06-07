@@ -38,18 +38,21 @@ const ServicesSection: React.FC = () => {
           details="I create fast, responsive, and visually engaging websites tailored to your business goals. From design to deployment, I ensure a seamless user experience."
           image="fa-solid fa-laptop-code text-[100px] text-[#48CDA0]"
           bg="bg-[#4C1F7A]"
+          
         />
         <Card
           title="SEO Service"
           details="I optimize websites to improve search rankings, drive organic traffic, and increase conversions with proven SEO strategies."
           image="fa-brands fa-searchengin text-[100px] text-[#FF8000]"
           bg="bg-[#143D60]"
+          
         />
         <Card
           title="24/7 Support"
           details="I provide round-the-clock support to keep your website running smoothly, ensuring quick issue resolution and continuous optimization."
           image="fa-solid fa-headset text-[100px] text-[#E6BC13]"
           bg="bg-[#780C28]"
+          
         />
       </section>
     </div>
