@@ -2,14 +2,27 @@
 
 import React from 'react';
 import Card from './SingleServiceCard'; // Assuming Card component is in the same directory
+import AOS from 'aos';
+import { useEffect } from 'react';
+
 
 
 // Main ServicesSection component
 const ServicesSection: React.FC = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 700, // animation duration
+      once: false,    // whether animation should happen only once
+    });
+  }, []);
+
   return (
-    <div>
+    <div  data-aos="fade-up">
       {/* Heading and Description Section */}
-      <div className="lg:mt-12 lg:mx-24 pt-8 md:mx-24 mx-5">
+      <div 
+              
+      
+      className="lg:mt-12 lg:mx-24 pt-8 md:mx-24 mx-5">
         <h1 className="mainheading">
           CREATIVE SERVICE
         </h1>
@@ -32,7 +45,7 @@ const ServicesSection: React.FC = () => {
       </div>
 
       {/* Cards Section */}
-      <section className="lg:mx-24 md:mx-24 mx-5 grid lg:grid-cols-3 justify-center items-center gap-5">
+      <section className="lg:mx-24 md:mx-24 mx-5 grid lg:grid-cols-3 justify-center items-center gap-5" data-aos="fade-in">
         <Card
           title="Website Development"
           details="I create fast, responsive, and visually engaging websites tailored to your business goals. From design to deployment, I ensure a seamless user experience."

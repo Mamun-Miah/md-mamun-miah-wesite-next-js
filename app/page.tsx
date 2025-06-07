@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import ServicesSection from './components/Services';
 import Technologies from './components/Technologies';
 import Contact from './components/Contact';
+import AOS from 'aos';
 const page = () => {
   return (
     <div>
