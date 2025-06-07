@@ -5,8 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navlink from './ActiveNavlink'; 
 import { motion } from "framer-motion";
-
-
 const Header: React.FC = () => {
 
   return (
