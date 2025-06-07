@@ -9,7 +9,7 @@ const ServicesSection: React.FC = () => {
   return (
     <div>
       {/* Heading and Description Section */}
-      <div className="lg:mt-12 lg:mx-24 pt-8 md:mx-24 mx-5 bg-base-100">
+      <div className="lg:mt-12 lg:mx-24 pt-8 md:mx-24 mx-5 bg-neutral-50">
         <h1 className="mainheading">
           CREATIVE SERVICE
         </h1>
