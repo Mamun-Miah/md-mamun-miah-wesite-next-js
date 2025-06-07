@@ -38,7 +38,7 @@ const ServicesSection: React.FC = () => {
       </div>
 
       {/* Cards Section */}
-      <section className="lg:mx-24 md:mx-24 mx-5 grid lg:grid-cols-3 justify-center items-center gap-5" data-aos="fade-in">
+      <section className="lg:mx-24 md:mx-24 mx-5 grid lg:grid-cols-3 justify-center items-center gap-5" >
         <Card
           title="Website Development"
           details="I create fast, responsive, and visually engaging websites tailored to your business goals. From design to deployment, I ensure a seamless user experience."
