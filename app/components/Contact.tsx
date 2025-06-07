@@ -30,8 +30,8 @@ const Contact = () => {
 
   return (
     <>
-      <div className="lg:mx-24 mx-5 mt-24 bg-neutral-50" id="contact-us">
-        <div className="w-full lg:max-w-lg space-y-3 mb-4">
+      <div className="lg:mx-24 mx-5 mt-24" id="contact-us">
+        <div className="w-full lg:max-w-lg space-y-3 mb-4 bg-[#f4f4f7]">
           <h1 className="mainheading">CONTACT</h1>
           <p className="subheading">Let&apos;s Work Together!</p>
           <p className="text-justify">

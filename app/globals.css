@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-
+body{
+    background-color: #f4f4f7;
+}
 /* #button */
 .primary-btn {
     @apply bg-[#3b6790] text-[#000248] lg:text-xl border-0;

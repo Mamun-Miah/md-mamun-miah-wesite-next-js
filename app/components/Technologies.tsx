@@ -20,7 +20,7 @@ const technologies = [
 
 const Technologies = () => {
   return (
-    <section className="mt-24 bg-neutral-50 lg:pt-10 pt-6 lg:pb-3">
+    <section className="mt-24 lg:pt-10 pt-6 lg:pb-3 bg-slate-50">
       <h1 className="text-center mainheading">What I Work With</h1>
       <h2 className="subheading text-center lg:mx-[6rem] mx-2">
         The technologies I use to build fast, secure, and scalable solutions.
