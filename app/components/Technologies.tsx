@@ -20,13 +20,13 @@ const technologies = [
 
 const Technologies = () => {
   return (
-    <section className="my-24">
+    <section className="mt-24 bg-neutral-50 lg:pt-10 pt-6 lg:pb-3">
       <h1 className="text-center mainheading">What I Work With</h1>
       <h2 className="subheading text-center lg:mx-[6rem] mx-2">
         The technologies I use to build fast, secure, and scalable solutions.
       </h2>
       <div className="flex justify-center items-center my-16 mx-5">
-        <div className="grid lg:grid-cols-5 grid-cols-2 lg:gap-24 gap-8">
+        <div className="grid lg:grid-cols-5 grid-cols-2 lg:gap-24 lg:space-y-1 space-y-8 gap-8">
           {technologies.map((tech, index) => (
             <div key={index} className="w-36 h-36 relative hover:translate-y-5 transition">
               <Image
