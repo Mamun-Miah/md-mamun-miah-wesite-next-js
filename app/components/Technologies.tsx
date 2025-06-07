@@ -26,7 +26,7 @@ const Technologies = () => {
         The technologies I use to build fast, secure, and scalable solutions.
       </h2>
       <div className="flex justify-center items-center my-16 mx-5">
-        <div className="grid lg:grid-cols-5 grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-5 grid-cols-2 lg:gap-24 gap-8">
           {technologies.map((tech, index) => (
             <div key={index} className="w-36 h-36 relative hover:translate-y-5 transition">
               <Image

@@ -11,7 +11,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className={` ${isActive ? 'bg-yellow-400 text-black' : 'text-[#eefb39]'}`}
+      className={` ${isActive ? 'bg-stone-700 text-white' : 'text-[#ffffff]'}`}
     >
       {children}
     </Link>

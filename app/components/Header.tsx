@@ -29,19 +29,19 @@ const Header: React.FC = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-gray-700 rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
               <li><Navlink href="/">Home</Navlink></li>
 
               <li>
-                <a>Services</a>
+                <a className='text-white'>Services</a>
                 <ul className="p-2 text-black">
                   <li><Navlink href="/website-development">Website Development</Navlink></li>
-                  <li><a>SEO Service</a></li>
+                  <li><a className="text-white">SEO Service</a></li>
                 </ul>
               </li>
               <li><Navlink href="/about">About Me</Navlink></li>
-              <li><Link href="#">Blog</Link></li>
+              <li><Link className='text-white' href="#">Blog</Link></li>
             </ul>
           </div>
           <Link href="/" className="ms-5 ">
@@ -56,19 +56,19 @@ const Header: React.FC = () => {
         </div>
 
         <div className="navbar-center hidden z-10 lg:flex">
-          <ul className="menu menu-horizontal px-1 text-[#eefb39] text-[1.1rem]">
+          <ul className="menu menu-horizontal space-x-6 px-1 text-[#eefb39] text-[1.1rem]">
             <li><Navlink href="/" >Home</Navlink></li>
             <li>
               <details>
-                <summary>Services</summary>
+                <summary className='text-white'>Services</summary>
                 <ul className="p-2 z-10 text-black">
                   <li><Link href="/website-development">Website Development</Link></li>
-                  <li><a>SEO Service</a></li>
+                  <li><a className=''>SEO Service</a></li>
                 </ul>
               </details>
             </li>
             <li><Navlink href="/about" >About Me</Navlink></li>
-            <li><Link href="#">Blog</Link></li>
+            <li><Link className='text-white' href="#">Blog</Link></li>
           </ul>
         </div>
 
