@@ -2,22 +2,17 @@
 
 import React from 'react';
 import Card from './SingleServiceCard'; // Assuming Card component is in the same directory
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+import AOSWrapper from "../components/AosAnimation"; // Importing the AOS wrapper for animations
+
 
 
 
 // Main ServicesSection component
 const ServicesSection: React.FC = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 700, // animation duration
-      once: false,    // whether animation should happen only once
-    });
-  }, []);
+  
 
   return (
+    <AOSWrapper>
     <div  data-aos="fade-up">
       {/* Heading and Description Section */}
       <div 
@@ -70,6 +65,7 @@ const ServicesSection: React.FC = () => {
         />
       </section>
     </div>
+    </AOSWrapper>
   );
 };
 

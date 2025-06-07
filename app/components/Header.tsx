@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 'use client'
 
 import React from 'react';
@@ -7,17 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navlink from './ActiveNavlink'; 
 import { motion } from "framer-motion";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+
 
 const Header: React.FC = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 700, // animation duration
-      once: false,    // whether animation should happen only once
-    });
-  }, []);
 
   return (
     <header className="relative z-20 mx-8">
