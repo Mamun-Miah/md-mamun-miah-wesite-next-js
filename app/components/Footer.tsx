@@ -4,6 +4,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -16,15 +17,15 @@ const Footer = () => {
 
         <nav>
           <h6 className="heading5footer font-bold">My Services</h6>
-          <a className="link link-hover">Web Development</a>
+          <Link href='/website-development' className="link link-hover">Web Development</Link>
           <a className="link link-hover">SEO Service</a>
         </nav>
 
         <nav>
           <h6 className="heading5footer font-bold">Quick Links</h6>
-          <a className="link link-hover">Home</a>
-          <a className="link link-hover">About Me</a>
-          <a className="link link-hover">Contact</a>
+          <Link href='/' className="link link-hover">Home</Link>
+          <Link href='/about' className="link link-hover">About Me</Link>
+          <Link href='https://mdmamunmiah.com/#contact-us' className="link link-hover">Contact</Link>
         </nav>
 
         <nav>
