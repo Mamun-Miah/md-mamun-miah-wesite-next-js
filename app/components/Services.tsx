@@ -2,15 +2,17 @@
 
 import React from 'react';
 import Card from './SingleServiceCard'; // Assuming Card component is in the same directory
-
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+import { useEffect } from 'react';
 // Main ServicesSection component
 const ServicesSection: React.FC = () => {
-  
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
 
   return (
-    
-    <div>
+    <div data-aos="fade-up">
       {/* Heading and Description Section */}
       <div 
               

@@ -30,7 +30,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="lg:mx-24 mx-5 mt-24 bg-[#fbfbfd]" id="contact-us" >
+      <div className="lg:mx-24 mx-5 mt-24 bg-[#fbfbfd]" id="contact-us" data-aos="fade-up">
         <div className="w-full lg:max-w-lg space-y-3 mb-4 ">
           <h1 className="mainheading">CONTACT</h1>
           <p className="subheading">Let&apos;s Work Together!</p>
@@ -40,7 +40,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <section className="my-8 lg:mx-24 mx-5 grid lg:grid-cols-2 gap-5" >
+      <section className="my-8 lg:mx-24 mx-5 grid lg:grid-cols-2 gap-5" data-aos="fade-up">
         <div>
           <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
             <input type="text" name="name" placeholder="Full Name" className="input input-bordered w-full" required />
