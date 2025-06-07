@@ -57,7 +57,7 @@ const Contact = () => {
         <div className="space-y-6 lg:ms-12 max-md:mt-5">
           <h1 className="subheading">Contact information</h1>
 
-          <div className="flex flex-col text-lg space-y-4">
+          <div className="flex flex-col text-lg space-y-3">
             <p className="text-black">
               <span className="font-medium text-gray text-3xl">
                 <FontAwesomeIcon icon={faLocationDot} className="text-3xl me-2 maincolor" />
