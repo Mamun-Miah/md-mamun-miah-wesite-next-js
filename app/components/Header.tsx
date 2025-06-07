@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navlink from './ActiveNavlink'; 
 import { motion } from "framer-motion";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
