@@ -30,10 +30,10 @@ const Footer = () => {
         <nav>
           <h6 className="heading5footer font-bold">Follow Me</h6>
           <div className="grid grid-flow-col gap-4 text-white">
-            <a target="_blank" href="https://www.linkedin.com/in/mamun-miah-seo-expert/">
+            <a target="_blank" href="https://www.linkedin.com/in/mamun-miah-dev/">
               <FontAwesomeIcon icon={faLinkedin} size="2x" />
             </a>
-            <a target="_blank" href="https://www.instagram.com/mamun.miah.seoexpert/">
+            <a target="_blank" href="https://www.instagram.com/mamun.miah.dev/">
               <FontAwesomeIcon icon={faInstagram} size="2x" />
             </a>
           </div>

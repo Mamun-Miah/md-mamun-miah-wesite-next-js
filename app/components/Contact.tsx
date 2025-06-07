@@ -30,7 +30,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="lg:mx-24 mx-5 mt-24" id="contact-us">
+      <div className="lg:mx-24 mx-5 mt-24 bg-base-100" id="contact-us">
         <div className="w-full lg:max-w-lg space-y-3 mb-4">
           <h1 className="mainheading">CONTACT</h1>
           <p className="subheading">Let&apos;s Work Together!</p>
