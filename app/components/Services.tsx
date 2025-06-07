@@ -3,6 +3,7 @@
 import React from 'react';
 import Card from './SingleServiceCard'; // Assuming Card component is in the same directory
 import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 
 
