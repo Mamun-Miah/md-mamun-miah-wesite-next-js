@@ -1,18 +1,16 @@
+export async function GET(request: Request, context: { params: { slug: string } }) {
+  const { slug } = context.params;
 
-export async function GET(
-  request: Request,
-  { params }: { params: { slug: string } }
-) {
-  const { slug } = params;
-
-  const res = await fetch(
+  const wpRes = await fetch(
     `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
   );
 
-  if (!res.ok) {
-    return new Response('Failed to fetch post', { status: res.status });
+  if (!wpRes.ok) {
+    return new Response(`Failed to fetch WordPress post: ${wpRes.status}`, {
+      status: wpRes.status,
+    });
   }
 
-  const data = await res.json();
+  const data = await wpRes.json();
   return Response.json(data);
 }
