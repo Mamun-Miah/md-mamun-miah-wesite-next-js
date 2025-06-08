@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     // Compose email
     const emailPayload = {
-      from: 'Your Name <onboarding@resend.dev>', 
+      from: 'From My Website <onboarding@resend.dev>', 
       to:  'mamun.miah.dev@gmail.com',
       subject: `Message received from ${fullName}`,
       text: `
