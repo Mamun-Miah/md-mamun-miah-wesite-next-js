@@ -8,7 +8,7 @@ export async function GET(
 
   try {
     const wpRes = await fetch(
-      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
+      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed=1`,
       {
         headers: {
           'User-Agent':
