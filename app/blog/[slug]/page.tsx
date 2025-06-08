@@ -7,7 +7,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   try {
     // Resolve the params Promise
     const res = await fetch(
-      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/post/${slug}`,
       { next: { revalidate: 3600 } }
     );  
     
@@ -74,7 +74,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     message: errorMessage,
     stack: errorStack,
     slug,
-    fetchUrl: `/api/post/${slug}`,
+    fetchUrl: `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
   });
 
   return (
