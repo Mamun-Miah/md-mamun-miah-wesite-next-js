@@ -26,7 +26,7 @@ export default function MotionCounter({ from = 0, to, duration = 2 }: MotionCoun
   }, [count, to, duration]);
 
   return (
-    <motion.span className="text-5xl font-bold">
+    <motion.span className="text-5xl text-gray-900 font-bold">
       {displayCount}%
     </motion.span>
   );
