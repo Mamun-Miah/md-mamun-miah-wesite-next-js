@@ -1,4 +1,5 @@
 import Image from 'next/image';
+export const dynamic = 'force-dynamic';
 
 export const runtime = 'edge';
 
@@ -11,8 +12,7 @@ export default async function BlogPost({
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/post/${slug}`,
-      { next: { revalidate: 3600 } }
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/post/${slug}`
     );
 
     if (!res.ok) {
