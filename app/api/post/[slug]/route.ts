@@ -1,6 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
-export async function GET(request: NextRequest, { params }: { params: { slug: string } }) {
+export const runtime = 'edge';
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { slug: string } }
+) {
   const { slug } = params;
 
   const wpRes = await fetch(
@@ -8,11 +13,17 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
   );
 
   if (!wpRes.ok) {
-    return new NextResponse(`Failed to fetch WordPress post: ${wpRes.status}`, {
+    return new Response(`Failed to fetch WordPress post: ${wpRes.status}`, {
       status: wpRes.status,
     });
   }
 
   const data = await wpRes.json();
-  return NextResponse.json(data);
+
+  return new Response(JSON.stringify(data), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 }
