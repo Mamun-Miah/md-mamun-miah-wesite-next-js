@@ -63,7 +63,7 @@ export default async function BlogPost({
             Date: {publishedDate}
           </p>
           <div
-            className='prose'
+            className='prose text-gray-900'
             dangerouslySetInnerHTML={{ __html: post[0].content.rendered }}
           />
         </div>
