@@ -84,7 +84,7 @@ const Contact = () => {
       </section>
 
       <div className="pt-[70px] lg:pt-[100px]">
-        <div className="border-2 border-accent1 w-full">
+        <div className="border-1 border-accent1 w-full">
           <iframe
             width="100%"
             height="400"
