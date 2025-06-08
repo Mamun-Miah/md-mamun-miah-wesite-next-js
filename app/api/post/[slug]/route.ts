@@ -10,7 +10,7 @@ export async function GET(
     `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
     {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; EdgeRuntime/1.0)',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/113.0.0.0 Safari/537.36',
         Accept: 'application/json',
       },
     }
