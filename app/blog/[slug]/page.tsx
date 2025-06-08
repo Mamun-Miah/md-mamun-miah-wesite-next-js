@@ -1,5 +1,5 @@
 import Image from 'next/image';
-
+export const runtime = 'edge';
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }>;
 }) {
