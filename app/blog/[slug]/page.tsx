@@ -1,9 +1,5 @@
 import Image from 'next/image';
-type Params = {
-  params: { slug: string };
-};
-
-export default async function BlogPost({ params }: Params) {
+export default async function BlogPost({ params }: { params: { slug: string } }) {
     const { slug } = params;
   const res = await fetch(`https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`);
   const post = await res.json();
