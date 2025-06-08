@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
         <div className="w-full lg:max-w-lg space-y-3 mb-4">
           <h1 className="mainheading">CONTACT</h1>
           <p className="subheading">Let&apos;s Work Together!</p>
-          <p className="text-justify text-[#000248]">
+          <p className="text-justify para">
             Have a project in mind? Need expert SEO or website development services? I&apos;m here to help!
             Whether it&apos;s optimizing your online presence, creating a professional website, or boosting your brand,
             I&apos;m just a message away.

@@ -43,7 +43,7 @@ const Header: React.FC = () => {
                 <a className='text-white'>Services</a>
                 <ul className="p-2 text-black">
                   <li><Navlink href="/website-development">Website Development</Navlink></li>
-                  <li><Link href="/seo-service" className="text-white">SEO Service</Link></li>
+                  <li><Navlink href="/seo-service" >SEO Service</Navlink></li>
                 </ul>
               </li>
               <li><Navlink href="/about">About Me</Navlink></li>

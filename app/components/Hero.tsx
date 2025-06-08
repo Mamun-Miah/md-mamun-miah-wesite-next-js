@@ -14,7 +14,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction }) => {
   return (
     <div className="hero pt-24 lg:h-[105vh] h-[110vh] pb-24 mt-[-90px] lg:mt-[-100px]" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className="hero-content flex-col lg:flex-row lg:mt-[130px] z-10 text-white"
+      <div className="hero-content flex-col lg:flex-row lg:mt-[130px] z-10 text-gray-200"
       
       >
         {/* If you want to include the image later, uncomment this section:

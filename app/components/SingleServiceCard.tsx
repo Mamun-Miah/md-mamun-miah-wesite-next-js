@@ -38,11 +38,11 @@ const SingleServiceCard : React.FC<CardProps>= ({
     >
       {getIcon()}
       <a href="#">
-        <h5 className="mb-2 text-2xl font-semibold tracking-tight text-white dark:text-white">
+        <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-200 dark:text-white">
           {title}
         </h5>
       </a>
-      <p className="mb-3 font-normal text-white dark:text-gray-400">{details}</p>
+      <p className="mb-3 font-normal text-gray-300 dark:text-gray-400">{details}</p>
     </div>
   );
 }

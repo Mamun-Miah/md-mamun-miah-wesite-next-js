@@ -67,7 +67,7 @@ body{
 }
 
 .para {
-    @apply text-lg text-[#000248];
+    @apply text-lg text-[#000248d4];
 }
 
 /* #footer */
