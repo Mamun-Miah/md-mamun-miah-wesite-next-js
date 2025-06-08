@@ -1,10 +1,11 @@
 import Image from 'next/image';
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }>;
 }) {
+    const { slug } = await params; 
   try {
-    const { slug } = await params; // Resolve the params Promise
+    // Resolve the params Promise
     const res = await fetch(
       `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
       { next: { revalidate: 3600 } }
@@ -64,12 +65,23 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
       </>
     );
-  } catch (error) {
-    console.error('Error loading blog post:', error);
-    return (
-      <div className='text-red-600 p-6'>
-        An error occurred while loading the blog post.
-      </div>
-    );
-  }
+  } catch (error: unknown) {
+  // Type-safe error handling
+  const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+  const errorStack = error instanceof Error ? error.stack : undefined;
+
+  console.error('Error loading blog post:', {
+    message: errorMessage,
+    stack: errorStack,
+    slug,
+    fetchUrl: `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
+  });
+
+  return (
+    <div className="text-red-600 p-6">
+      An error occurred while loading the blog post: {errorMessage}
+      <p>Please contact support with this error code: {slug}</p>
+    </div>
+  );
+}
 }
