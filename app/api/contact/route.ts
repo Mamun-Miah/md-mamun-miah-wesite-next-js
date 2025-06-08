@@ -1,9 +1,5 @@
 import type { NextRequest } from 'next/server';
-
-export const config = {
-  runtime: 'edge',
-};
-
+export const runtime = 'edge';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 export async function POST(request: NextRequest) {
