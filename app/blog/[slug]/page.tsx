@@ -1,5 +1,5 @@
 import Image from 'next/image';
-
+ export const runtime = 'edge';
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
