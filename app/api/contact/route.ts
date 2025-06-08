@@ -1,39 +1,88 @@
-import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import type { NextRequest } from 'next/server';
 
-export async function POST(req: Request) {
-  const body = await req.json();
-  const { fullName, phone, email, message } = body;
+export const config = {
+  runtime: 'edge',
+};
 
-  if (!fullName || !phone || !email || !message) {
-    return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
-  }
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  const mailOptions = {
-    from: email,
-    to: process.env.EMAIL_TO,
-    subject: `New Contact from ${fullName}`,
-    html: `
-      <p><strong>Full Name:</strong> ${fullName}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Message:</strong><br/>${message}</p>
-    `,
-  };
-
+export async function POST(request: NextRequest) {
   try {
-    await transporter.sendMail(mailOptions);
-    return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
+    if (!RESEND_API_KEY) {
+      console.error("Missing RESEND_API_KEY");
+      return new Response(JSON.stringify({ error: 'Missing API key' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const data = await request.json();
+    const { email, fullName, phone, message } = data;
+
+    // Basic validation
+    if (!email || typeof email !== 'string' || !email.includes('@')) {
+      return new Response(JSON.stringify({ error: 'Invalid email' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (!fullName || typeof fullName !== 'string') {
+      return new Response(JSON.stringify({ error: 'Full name is required' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (!message || typeof message !== 'string') {
+      return new Response(JSON.stringify({ error: 'Message is required' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Compose email
+    const emailPayload = {
+      from: 'Your Name <onboarding@resend.dev>', 
+      to:  'mamun.miah.dev@gmail.com',
+      subject: `Message received from ${fullName}`,
+      text: `
+        Full Name: ${fullName}
+        Email: ${email}
+        Phone: ${phone || 'N/A'}
+        Message:
+        ${message}
+      `,
+    };
+
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(emailPayload),
+    });
+
+    if (!resendResponse.ok) {
+      const errorData = await resendResponse.json();
+      console.error('Resend API Error:', errorData);
+      return new Response(JSON.stringify({ error: 'Failed to send email', details: errorData }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    return new Response(
+      JSON.stringify({ message: `Resend email sent to ${email}` }),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
+    );
+
   } catch (error) {
-    console.error('Error sending email:', error);
-    return NextResponse.json({ message: 'Something went wrong' }, { status: 500 });
+    console.error('Unexpected Error:', error);
+    return new Response(
+      JSON.stringify({ error: 'Unexpected error occurred' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }
