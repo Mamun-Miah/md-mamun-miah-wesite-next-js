@@ -3,7 +3,7 @@ import Hero from '../components/Hero';
 import Card from '../components/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileAlt, faCogs, faSearch } from '@fortawesome/free-solid-svg-icons';
-
+import { Ourachivment } from '../components/Ourachivment';
 const page = () => {
   return (
     <div >
@@ -41,6 +41,8 @@ const page = () => {
             
             />
         </section>
+        <Ourachivment />
+        
       </div>
   )
 }
