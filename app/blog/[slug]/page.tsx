@@ -1,8 +1,6 @@
 import Image from 'next/image';
 export const dynamic = 'force-dynamic';
 
-export const runtime = 'edge';
-
 export default async function BlogPost({
   params,
 }: {
