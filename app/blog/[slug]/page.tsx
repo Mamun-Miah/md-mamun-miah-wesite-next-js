@@ -1,5 +1,5 @@
-// import Image from 'next/image';
-export const runtime = 'edge';
+import Image from 'next/image';
+export const runtime = 'nodejs';
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }>;
 }) {
@@ -20,14 +20,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       return <div>Post not found</div>;
     }
 
-    // const imageUrl =
-    //   post[0]._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
+    const imageUrl =
+      post[0]._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
 
-    // const publishedDate = new Date(post[0].date).toLocaleDateString('en-US', {
-    //   year: 'numeric',
-    //   month: 'long',
-    //   day: 'numeric',
-    // });
+    const publishedDate = new Date(post[0].date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
 
     return (
       <>
@@ -38,7 +38,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
 
         <div className='py-16 mx-8'>
-          {/* {imageUrl ? (
+          {imageUrl ? (
             <Image
               src={imageUrl}
               alt={post[0].title.rendered}
@@ -49,14 +49,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             />
           ) : (
             <p>No featured image available.</p>
-          )} */}
+          )}
 
           <h2 className='text-3xl text-black font-bold py-10'>
             {post[0].title.rendered}
           </h2>
-          {/* <p className='mt-4 text-gray-900 font-bold text-lg mb-4'>
+          <p className='mt-4 text-gray-900 font-bold text-lg mb-4'>
             Date: {publishedDate}
-          </p> */}
+          </p>
           <div
             className='prose'
             dangerouslySetInnerHTML={{ __html: post[0].content.rendered }}
