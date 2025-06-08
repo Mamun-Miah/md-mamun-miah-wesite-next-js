@@ -47,7 +47,7 @@ const Header: React.FC = () => {
                 </ul>
               </li>
               <li><Navlink href="/about">About Me</Navlink></li>
-              <li><Link className='text-white' href="#">Blog</Link></li>
+              <li><Link className='text-white' href="/blog">Blog</Link></li>
             </ul>
           </div>
           <Link href="/" className="ms-5 ">
@@ -74,7 +74,7 @@ const Header: React.FC = () => {
               </details>
             </li>
             <li><Navlink href="/about" >About Me</Navlink></li>
-            <li><Link className='text-white' href="#">Blog</Link></li>
+            <li><Link className='text-white' href="/blog">Blog</Link></li>
           </ul>
         </div>
 
