@@ -55,7 +55,7 @@ const ServicesSection: React.FC = () => {
           details="I provide round-the-clock support to keep your website running smoothly, ensuring quick issue resolution and continuous optimization."
           image="fa-solid fa-headset text-[100px] text-[#E6BC13]"
           bg="bg-[#780C28]"
-          link='/contact-us'
+          link='/#contact-us'
           
         />
       </section>
