@@ -1,10 +1,8 @@
 import Image from 'next/image';
- export const runtime = 'edge';
-interface PageProps {
-  params: Promise<{ slug: string }>;
-}
 
-export default async function BlogPost({ params }: PageProps) {
+
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }>;
+}) {
   try {
     const { slug } = await params; // Resolve the params Promise
     const res = await fetch(
