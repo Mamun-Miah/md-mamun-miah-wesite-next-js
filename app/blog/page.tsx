@@ -1,23 +1,42 @@
-import React from 'react'
+import Blogpostcard from '../components/Blogpostcard';
 
-const page = async () => {
-    const res = await fetch('https://lightblue-goat-212889.hostingersite.com//wp-json/wp/v2/posts');
-    const posts = await res.json();
+type WPPost = {
+  id: number;
+  slug: string;
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  _embedded?: {
+    'wp:featuredmedia'?: [
+      {
+        source_url: string;
+      }
+    ];
+  };
+};
+
+export default async function BlogPage() {
+  const res = await fetch(
+    'https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?_embed=1'
+  );
+  const posts: WPPost[] = await res.json();
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Blog Posts</h1>
-      <ul>
-        {posts.map((post: any) => (
-          <li key={post.id}>
-            <a href={`/blog/${post.slug}`} className="text-blue-600 underline">
-              {post.title.rendered}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <>
+
+    <div className='pt-24 flex justify-center items-center lg:h-[60vh] h-[60vh] pb-24 mt-[-90px] lg:mt-[-100px] bg-[#4B4B4B]'>
+        <h1 className='text-center text-7xl text-gray-200 font-bold pt-12'>Blog Post</h1>
     </div>
+    <div className="flex flex-wrap gap-6 justify-center p-6">
+      {posts.map((post) => (
+        <Blogpostcard
+          key={post.id}
+          slug={post.slug}
+          title={post.title.rendered}
+          excerpt={post.excerpt.rendered}
+          image={post._embedded?.['wp:featuredmedia']?.[0]?.source_url}
+        />
+      ))}
+    </div>
+    </>
   );
 }
-
-export default page

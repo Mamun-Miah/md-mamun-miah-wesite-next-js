@@ -1,30 +1,54 @@
-import React from 'react'
-import Image from 'next/image'
+import Image from 'next/image';
+import Link from 'next/link';
+import sanitizeHtml from 'sanitize-html';
 
+type BlogpostCardProps = {
+  title: string;
+  excerpt: string;
+  image?: string;
+  slug: string;
+};
 
-const Blogpostcard = () => {
+// Helper function to strip HTML tags and return plain text
+const stripHtml = (html: string) => {
+  const clean = sanitizeHtml(html, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+  return clean;
+};
 
-
+const BlogpostCard = ({ title, excerpt, image, slug }: BlogpostCardProps) => {
   return (
-<div className="card bg-base-100 w-96 shadow-sm">
-        <figure>
-            <Image
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes" />
-        </figure>
-        <div className="card-body">
-            <h2 className="card-title">
-            Card Title
-            <div className="badge badge-secondary">NEW</div>
-            </h2>
-            <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-            <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
-            </div>
-        </div>
-</div>
-  )
-}
+    <div className="card bg-base-100 w-96 shadow-sm">
+      <figure>
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            width={384}
+            height={200}
+            className="w-full h-48 object-cover"
+          />
+        ) : (
+          <div className="w-full h-48 bg-gray-300" />
+        )}
+      </figure>
 
-export default Blogpostcard
+      <div className="card-body">
+        <h2 className="card-title">
+          <Link href={`/blog/${slug}`}>{title}</Link>
+          <div className="badge badge-secondary">NEW</div>
+        </h2>
+        <Link href={`/blog/${slug}`}>
+          <p>{stripHtml(excerpt || 'No summary available.')}</p>
+        </Link>
+        <div className="card-actions justify-end">
+          <div className="badge badge-outline">Blog</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BlogpostCard;
