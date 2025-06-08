@@ -2,13 +2,14 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptopCode, faHeadset } from '@fortawesome/free-solid-svg-icons';
 import { faSearchengin } from '@fortawesome/free-brands-svg-icons';
-
+import Link from 'next/link';
 // Define the props interface for the Card component
 interface CardProps {
   title?: string;
   details?: string;
   image?: string;
   bg?: string;
+  link?: string; 
 }
 
 
@@ -17,6 +18,8 @@ const SingleServiceCard : React.FC<CardProps>= ({
   details = 'Default Details',
   image = '',
   bg = '',
+  link = '#',
+
   
 }) => {
   const getIcon = () => {
@@ -37,11 +40,11 @@ const SingleServiceCard : React.FC<CardProps>= ({
       className={`h-[330px] p-6 ${bg} border border-gray-200 rounded-2xl shadow-xl dark:bg-gray-800 dark:border-gray-700 space-y-5 transition-transform duration-300 hover:scale-105`}
     >
       {getIcon()}
-      <a href="#">
+      <Link href={link}>
         <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-200 dark:text-white">
           {title}
         </h5>
-      </a>
+      </Link>
       <p className="mb-3 font-normal text-gray-300 dark:text-gray-400">{details}</p>
     </div>
   );

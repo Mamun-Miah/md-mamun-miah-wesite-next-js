@@ -2,15 +2,8 @@
 
 import React from 'react';
 import Card from './SingleServiceCard'; // Assuming Card component is in the same directory
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
-import { useEffect } from 'react';
 // Main ServicesSection component
 const ServicesSection: React.FC = () => {
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
-
   return (
     <div data-aos="fade-up">
       {/* Heading and Description Section */}
@@ -46,6 +39,7 @@ const ServicesSection: React.FC = () => {
           details="I create fast, responsive, and visually engaging websites tailored to your business goals. From design to deployment, I ensure a seamless user experience."
           image="fa-solid fa-laptop-code text-[100px] text-[#48CDA0]"
           bg="bg-[#4C1F7A]"
+          link='/website-development'
           
         />
         <Card
@@ -53,6 +47,7 @@ const ServicesSection: React.FC = () => {
           details="I optimize websites to improve search rankings, drive organic traffic, and increase conversions with proven SEO strategies."
           image="fa-brands fa-searchengin text-[100px] text-[#FF8000]"
           bg="bg-[#143D60]"
+          link='/seo-service'
           
         />
         <Card
@@ -60,6 +55,7 @@ const ServicesSection: React.FC = () => {
           details="I provide round-the-clock support to keep your website running smoothly, ensuring quick issue resolution and continuous optimization."
           image="fa-solid fa-headset text-[100px] text-[#E6BC13]"
           bg="bg-[#780C28]"
+          link='/contact-us'
           
         />
       </section>
