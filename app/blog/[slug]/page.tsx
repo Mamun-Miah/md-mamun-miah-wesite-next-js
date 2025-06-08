@@ -1,16 +1,20 @@
 import Image from 'next/image';
+
 export const runtime = 'edge';
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }>;
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
 }) {
-    const { slug } = await params; 
+  const { slug } = await params;
+
   try {
-    // Resolve the params Promise
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SITE_URL}/api/post/${slug}`,
       { next: { revalidate: 3600 } }
-    );  
-    
+    );
+
     if (!res.ok) {
       throw new Error(`Failed to fetch post: ${res.status}`);
     }
@@ -66,22 +70,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </>
     );
   } catch (error: unknown) {
-  // Type-safe error handling
-  const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-  const errorStack = error instanceof Error ? error.stack : undefined;
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
+    const errorStack = error instanceof Error ? error.stack : undefined;
 
-  console.error('Error loading blog post:', {
-    message: errorMessage,
-    stack: errorStack,
-    slug,
-    fetchUrl: `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
-  });
+    console.error('Error loading blog post:', {
+      message: errorMessage,
+      stack: errorStack,
+      slug,
+    });
 
-  return (
-    <div className="text-red-600 p-6">
-      An error occurred while loading the blog post: {errorMessage}
-      <p>Please contact support with this error code: {slug}</p>
-    </div>
-  );
-}
+    return (
+      <div className='text-red-600 p-6'>
+        An error occurred while loading the blog post: {errorMessage}
+        <p>Please contact support with this error code: {slug}</p>
+      </div>
+    );
+  }
 }
