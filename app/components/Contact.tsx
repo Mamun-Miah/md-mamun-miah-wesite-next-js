@@ -1,29 +1,45 @@
 'use client';
 
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const Contact = () => {
-  const [status, setStatus] = useState<'success' | 'error' | null>(null);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<'idle' | 'success' | 'error' | 'sending'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+    setStatus('sending');
 
     try {
-      // replace with your actual API logic
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
-      setStatus('success');
-      form.reset();
-    } catch (error) {
-      console.error(error);
+      const result = await res.json();
+
+      if (res.ok) {
+        setStatus('success');
+        setFormData({ fullName: '', email: '', phone: '', message: '' });
+      } else {
+        setStatus('error');
+        console.error(result.message);
+      }
+    } catch (err) {
+      console.error(err);
       setStatus('error');
     }
   };
@@ -31,11 +47,13 @@ const Contact = () => {
   return (
     <>
       <div className="lg:mx-24 mx-5 mt-24 bg-[#fbfbfd]" id="contact-us" data-aos="fade-up">
-        <div className="w-full lg:max-w-lg space-y-3 mb-4 ">
+        <div className="w-full lg:max-w-lg space-y-3 mb-4">
           <h1 className="mainheading">CONTACT</h1>
-          <p className="subheading">Let&apos;s Work Together!</p>
+          <p className="subheading">Let's Work Together!</p>
           <p className="text-justify text-[#000248]">
-            Have a project in mind? Need expert SEO or website development services? I&#39;m here to help! Whether it&apos;s optimizing your online presence, creating a professional website, or boosting your brand, I&#39;m just a message away.
+            Have a project in mind? Need expert SEO or website development services? I&apos;m here to help!
+            Whether it&apos;s optimizing your online presence, creating a professional website, or boosting your brand,
+            I&apos;m just a message away.
           </p>
         </div>
       </div>
@@ -43,15 +61,52 @@ const Contact = () => {
       <section className="my-8 lg:mx-24 mx-5 grid lg:grid-cols-2 gap-5" data-aos="fade-up">
         <div>
           <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
-            <input type="text" name="name" placeholder="Full Name" className="input input-bordered w-full" required />
-            <input type="email" name="email" placeholder="Email" className="input input-bordered w-full" required />
-            <input type="number" name="phone" placeholder="Phone" className="input input-bordered w-full" required />
-            <textarea name="message" placeholder="Message" className="textarea textarea-bordered w-full" required></textarea>
-            <button type="submit" className="btn w-full secondery-btn">Send Message</button>
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name"
+              className="input input-bordered w-full"
+              required
+              value={formData.fullName}
+              onChange={handleChange}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="input input-bordered w-full"
+              required
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone"
+              className="input input-bordered w-full"
+              required
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            <textarea
+              name="message"
+              placeholder="Message"
+              className="textarea textarea-bordered w-full"
+              required
+              value={formData.message}
+              onChange={handleChange}
+            ></textarea>
+            <button type="submit" className="btn w-full secondery-btn">
+              {status === 'sending' ? 'Sending...' : 'Send Message'}
+            </button>
           </form>
 
-          {status === 'success' && <div className="alert alert-success my-4">Message sent successfully!</div>}
-          {status === 'error' && <div className="alert alert-error my-4">Failed to send message.</div>}
+          {status === 'success' && (
+            <div className="alert alert-success my-4">Message sent successfully!</div>
+          )}
+          {status === 'error' && (
+            <div className="alert alert-error my-4">Failed to send message.</div>
+          )}
         </div>
 
         <div className="space-y-6 lg:ms-12 max-md:mt-5">
@@ -62,21 +117,24 @@ const Contact = () => {
               <span className="font-medium text-gray text-3xl">
                 <FontAwesomeIcon icon={faLocationDot} className="text-3xl me-2 maincolor" />
                 Address:
-              </span><br />
+              </span>
+              <br />
               <span className="ms-10">Gazipur, Dhaka, Bangladesh</span>
             </p>
             <p className="text-black">
               <span className="font-medium text-gray text-3xl">
                 <FontAwesomeIcon icon={faPhone} className="text-3xl me-2 maincolor" />
                 Phone:
-              </span><br />
+              </span>
+              <br />
               <span className="ms-11">+8801620173656</span>
             </p>
             <p className="text-black">
               <span className="font-medium text-gray text-3xl">
                 <FontAwesomeIcon icon={faEnvelope} className="text-3xl me-2 maincolor" />
                 Email:
-              </span><br />
+              </span>
+              <br />
               <span className="ms-11">mamun.miah.dev@gmail.com</span>
             </p>
           </div>
