@@ -1,19 +1,16 @@
 import Image from 'next/image';
 
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function BlogPost({ params }: PageProps) {
   try {
-    const slug = params.slug;
-
+    const { slug } = await params; // Resolve the params Promise
     const res = await fetch(
       `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
     );
-
+    
     if (!res.ok) {
       throw new Error(`Failed to fetch post: ${res.status}`);
     }
