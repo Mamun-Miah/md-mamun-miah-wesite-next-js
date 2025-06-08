@@ -74,7 +74,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     message: errorMessage,
     stack: errorStack,
     slug,
-    fetchUrl: `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
+    fetchUrl: `/api/post/${slug}`,
   });
 
   return (
