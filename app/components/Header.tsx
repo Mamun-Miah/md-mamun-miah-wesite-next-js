@@ -43,7 +43,7 @@ const Header: React.FC = () => {
                 <a className='text-white'>Services</a>
                 <ul className="p-2 text-black">
                   <li><Navlink href="/website-development">Website Development</Navlink></li>
-                  <li><a className="text-white">SEO Service</a></li>
+                  <li><Link href="/seo-service" className="text-white">SEO Service</Link></li>
                 </ul>
               </li>
               <li><Navlink href="/about">About Me</Navlink></li>
@@ -69,7 +69,7 @@ const Header: React.FC = () => {
                 <summary className='text-white'>Services</summary>
                 <ul className="p-2 z-10 text-black">
                   <li><Link href="/website-development">Website Development</Link></li>
-                  <li><a className=''>SEO Service</a></li>
+                  <li><Link href="/seo-service" className=''>SEO Service</Link></li>
                 </ul>
               </details>
             </li>

@@ -182,3 +182,4 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+// This code defines a Contact component that allows users to send messages via a form.
