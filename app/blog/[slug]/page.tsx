@@ -1,4 +1,4 @@
-
+export const runtime = 'edge';
 type Props = {
   params: Promise<{ slug: string }>
 }
