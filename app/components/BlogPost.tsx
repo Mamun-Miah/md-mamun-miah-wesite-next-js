@@ -4,9 +4,15 @@ type Props = {
   title: string;
   content: string;
   image?: string;
+  date: string;
 };
 
-export default function BlogPost({ title, content, image }: Props) {
+export default function BlogPost({ title, content, image, date }: Props) {
+  const formattedDate = new Date(date).toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
   return (
     <>
     <section className=' flex flex-col justify-center items-center pt-28 lg:h-[60vh] h-[60vh] pb-24 mt-[-90px] lg:mt-[-100px] bg-amber-950'>
@@ -28,7 +34,9 @@ export default function BlogPost({ title, content, image }: Props) {
             />
             </div>
         )}
-
+        <div className="card-actions my-4 justify-start">
+          <div className="badge badge-outline">{formattedDate}</div>
+        </div>
         <div dangerouslySetInnerHTML={{ __html: content }} />
         </article>
     </>

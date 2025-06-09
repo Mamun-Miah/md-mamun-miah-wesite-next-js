@@ -6,6 +6,7 @@ import BlogPost from './BlogPost';
 type PostData = {
   title: { rendered: string };
   content: { rendered: string };
+  date: string;
   _embedded?: {
     'wp:featuredmedia'?: {
       source_url: string;
@@ -41,9 +42,14 @@ export default function BlogClient({ slug }: Props) {
     fetchPost();
   }, [slug]);
 
-  if (loading) return <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-70 z-50">
-      <span className="loading loading-ring w-24 text-warning"></span>
-    </div>;
+  if (loading) {
+    return (
+      <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-70 z-50">
+        <span className="loading loading-ring w-24 text-warning"></span>
+      </div>
+    );
+  }
+
   if (!post) return <p>Post not found.</p>;
 
   const imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? '';
@@ -53,6 +59,7 @@ export default function BlogClient({ slug }: Props) {
       title={post.title.rendered}
       content={post.content.rendered}
       image={imageUrl}
+      date={post.date}
     />
   );
 }
