@@ -31,11 +31,9 @@ export default async function BlogPost({ params }: {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'User-Agent': 'Mozilla/5.0 (compatible; NextJS-Blog/1.0)',
-          // Add CORS headers that might help
-          'Access-Control-Allow-Origin': '*',
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+          'Referer': 'https://lightblue-goat-212889.hostingersite.com',
+          'Origin': 'https://lightblue-goat-212889.hostingersite.com',
         },
         // Edge runtime compatible cache settings
         cache: 'no-store',
