@@ -1,5 +1,5 @@
 import BlogClient from '../../components/BlogClient';
-
+export const runtime = 'edge';
 type Props = {
   params: Promise<{
     slug: string;
