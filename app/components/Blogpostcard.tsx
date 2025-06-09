@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 import sanitizeHtml from 'sanitize-html';
 
 type BlogpostCardProps = {
@@ -37,12 +37,12 @@ const BlogpostCard = ({ title, excerpt, image, slug }: BlogpostCardProps) => {
 
       <div className="card-body">
         <h2 className="card-title">
-          <Link href={`/blog/${slug}`}>{title}</Link>
+          <a href={`/blog/${slug}`}>{title}</a>
           <div className="badge badge-secondary">NEW</div>
         </h2>
-        <Link href={`/blog/${slug}`}>
+        <a href={`/blog/${slug}`}>
           <p>{stripHtml(excerpt || 'No summary available.')}</p>
-        </Link>
+        </a>
         <div className="card-actions justify-end">
           <div className="badge badge-outline">Blog</div>
         </div>
