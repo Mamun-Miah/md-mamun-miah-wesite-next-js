@@ -1,90 +1,98 @@
-import Image from 'next/image';
-export const dynamic = 'force-dynamic';
+import Image from "next/image";
 
-    export const runtime = 'edge';
+interface Post {
+  id: number;
+  title: { rendered: string };
+  content: { rendered: string };
+  date: string;
+  featured_media: number;
+}
 
-export default async function BlogPost({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+interface Media {
+  source_url: string;
+}
 
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/post/${slug}`
-    );
+async function fetchPostBySlug(slug: string): Promise<Post | null> {
+  const res = await fetch(
+    `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}`,
+    { next: { revalidate: 60 } } // ISR: revalidate every 60 seconds
+  );
+  const posts = await res.json();
+  if (!posts || posts.length === 0) return null;
+  return posts[0];
+}
 
-    if (!res.ok) {
-      throw new Error(`Failed to fetch post: ${res.status}`);
-    }
+async function fetchMedia(mediaId: number): Promise<Media | null> {
+  if (!mediaId) return null;
+  const res = await fetch(
+    `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/media/${mediaId}`,
+    { next: { revalidate: 60 } }
+  );
+  if (!res.ok) return null;
+  const media = await res.json();
+  return media;
+}
 
-    const post = await res.json();
+// Fix for Next.js 15: params is now a Promise
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; // Await the params Promise
+  const post = await fetchPostBySlug(slug);
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+  return {
+    title: post.title.rendered,
+    description: post.content.rendered.replace(/<[^>]+>/g, "").slice(0, 160), // strip HTML tags for description
+  };
+}
 
-    if (!post || post.length === 0) {
-      return <div>Post not found</div>;
-    }
-
-    const imageUrl =
-      post[0]._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
-
-    const publishedDate = new Date(post[0].date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-
+// Fix for Next.js 15: params is now a Promise
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; // Await the params Promise
+  const post = await fetchPostBySlug(slug);
+  if (!post) {
+    // Next.js 13+ way to throw 404 inside server components
+    // You can also create a custom not-found.tsx page inside /blog/[slug]/ folder
     return (
-      <>
-        <div className='pt-24 flex justify-center items-center lg:h-[60vh] h-[60vh] pb-24 mt-[-90px] lg:mt-[-100px] bg-[#4B4B4B]'>
-          <h1 className='text-center text-5xl text-gray-200 font-bold pt-12 mx-3'>
-            {post[0].title.rendered}
-          </h1>
-        </div>
-
-        <div className='py-16 mx-8'>
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={post[0].title.rendered}
-              width={800}
-              height={450}
-              className='w-full h-auto object-cover'
-              priority
-            />
-          ) : (
-            <p>No featured image available.</p>
-          )}
-
-          <h2 className='text-3xl text-black font-bold py-10'>
-            {post[0].title.rendered}
-          </h2>
-          <p className='mt-4 text-gray-900 font-bold text-lg mb-4'>
-            Date: {publishedDate}
-          </p>
-          <div
-            className='prose text-gray-900'
-            dangerouslySetInnerHTML={{ __html: post[0].content.rendered }}
-          />
-        </div>
-      </>
-    );
-  } catch (error: unknown) {
-    const errorMessage =
-      error instanceof Error ? error.message : 'Unknown error';
-    const errorStack = error instanceof Error ? error.stack : undefined;
-
-    console.error('Error loading blog post:', {
-      message: errorMessage,
-      stack: errorStack,
-      slug,
-    });
-
-    return (
-      <div className='text-red-600 p-6'>
-        An error occurred while loading the blog post: {errorMessage}
-        <p>Please contact support with this error code: {slug}</p>
+      <div className="p-12 text-center text-2xl font-bold">
+        Post not found
       </div>
     );
   }
+
+  const media = await fetchMedia(post.featured_media);
+  const imageUrl = media?.source_url || null;
+  const publishedDate = new Date(post.date).toLocaleDateString();
+
+  return (
+    <>
+      <div className="pt-24 flex justify-center items-center lg:h-[60vh] h-[60vh] pb-24 mt-[-90px] lg:mt-[-100px] bg-[#4B4B4B]">
+        <h1 className="text-center text-5xl text-gray-200 font-bold pt-12 mx-3" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+      </div>
+
+      <div className="py-16 mx-8">
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={post.title.rendered.replace(/<[^>]+>/g, "")}
+            width={800}
+            height={450}
+            className="w-full h-auto object-cover rounded-xl shadow-lg"
+            priority
+          />
+        ) : (
+          <p className="text-gray-600 italic">No featured image available.</p>
+        )}
+
+        <h2 className="text-3xl text-black font-bold py-10" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+        <p className="mt-4 text-gray-900 font-bold text-lg mb-4">Date: {publishedDate}</p>
+        <div
+          className="prose text-gray-900 max-w-none"
+          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+        />
+      </div>
+    </>
+  );
 }
