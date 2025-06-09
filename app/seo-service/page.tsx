@@ -6,7 +6,7 @@ import { faFileAlt, faCogs, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Ourachivment } from '../components/Ourachivment';
 
 export const metadata = {
-  title: 'SEO - Mamun Miah',
+  title: 'SEO SERVICE - Mamun Miah',
 };
 const page = () => {
   return (
