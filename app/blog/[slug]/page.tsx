@@ -8,17 +8,17 @@ interface PostData {
   content: string;
 }
 
-type Props = {
-  params: Promise<{ slug: string }>
-}
+// type Props = {
+//   params: Promise<{ slug: string }>
+// }
 
-const Page = async ({ params }: Props) => {
-  const { slug } = await params;
+const Page = async () => {
+  // const { slug } = await params;
   
   try {
     // Fetch post data from your API route
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/posts/${slug}`,
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/posts/architecto-ut-ut-rerum-architecto`,
       {
         // Cache for 60 seconds
         next: { revalidate: 60 }
