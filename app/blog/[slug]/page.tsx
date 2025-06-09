@@ -1,128 +1,92 @@
 // app/blog/[slug]/page.tsx - Edge Runtime Compatible
-import Image from 'next/image';
+// import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
-type WPPost = {
-  id: number;
-  slug: string;
-  title: { rendered: string };
-  content: { rendered: string };
-  date: string;
-  _embedded?: {
-    'wp:featuredmedia'?: Array<{
-      source_url: string;
-    }>;
-  };
-};
+// type WPPost = {
+//   id: number;
+//   slug: string;
+//   title: { rendered: string };
+//   content: { rendered: string };
+//   date: string;
+//   _embedded?: {
+//     'wp:featuredmedia'?: Array<{
+//       source_url: string;
+//     }>;
+//   };
+// };
 
+// If you need authenticated access, create application password in WordPress
+// Go to: WordPress Admin > Users > Your Profile > Application Passwords
+
+// Then use this approach:
 export default async function BlogPost({ params }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 
   try {
-    // Use absolute URL and proper headers for Edge runtime
-    const response = await fetch(
+    // Option 1: Try without auth first
+    let response = await fetch(
       `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed=1`,
       {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-          'Referer': 'https://lightblue-goat-212889.hostingersite.com',
-          'Origin': 'https://lightblue-goat-212889.hostingersite.com',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
         },
-        // Edge runtime compatible cache settings
         cache: 'no-store',
       }
     );
 
-    // More detailed error handling
-    if (!response.ok) {
-      console.error(`Fetch failed: ${response.status} ${response.statusText}`);
-      console.error('Response headers:', Object.fromEntries(response.headers.entries()));
+    // Option 2: If 403, try with basic auth (if you have app password)
+    if (response.status === 403) {
+      // You'll need to set these as environment variables
+      const username = process.env.WP_USERNAME; // Your WordPress username
+      const appPassword = process.env.WP_APP_PASSWORD; // Application password from WordPress
       
-      if (response.status === 403) {
-        throw new Error('Access forbidden - check WordPress API permissions');
-      } else if (response.status === 404) {
-        return notFound();
-      } else {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      if (username && appPassword) {
+        const credentials = btoa(`${username}:${appPassword}`);
+        
+        response = await fetch(
+          `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed=1`,
+          {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Authorization': `Basic ${credentials}`,
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            },
+            cache: 'no-store',
+          }
+        );
       }
     }
 
-    const posts: WPPost[] = await response.json();
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
 
+    const posts = await response.json();
+    
     if (!posts || posts.length === 0) {
       return notFound();
     }
 
+    // Rest of your component code...
     const post = posts[0];
-    const imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? null;
-
-    // Safe date formatting for Edge runtime
-    const publishedDate = new Intl.DateTimeFormat('en-GB', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(new Date(post.date));
-
+    
     return (
-      <>
-        <header className="pt-24 flex justify-center items-center lg:h-[60vh] h-[60vh] pb-24 mt-[-90px] lg:mt-[-100px] bg-[#4B4B4B]">
-          <h1 className="text-center text-5xl text-gray-200 font-bold pt-12 mx-3">
-            {post.title.rendered}
-          </h1>
-        </header>
-
-        <main className="py-16 mx-8">
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={post.title.rendered}
-              width={800}
-              height={450}
-              className="w-full h-auto object-cover rounded-xl shadow-lg"
-              priority
-            />
-          ) : (
-            <p className="text-gray-600 italic">No featured image available.</p>
-          )}
-
-          <h2 className="text-3xl text-black font-bold py-10">
-            {post.title.rendered}
-          </h2>
-
-          <p className="mt-4 text-gray-900 font-bold text-lg mb-4">
-            Date: {publishedDate}
-          </p>
-
-          <article
-            className="prose text-gray-900 max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-          />
-        </main>
-      </>
-    );
-  } catch (error) {
-    console.error('Blog post fetch error:', error);
-
-    return (
-      <div className="text-red-600 p-6">
-        <h2 className="text-xl font-bold mb-2">Unable to Load Blog Post</h2>
-        <p>The blog post could not be loaded at this time.</p>
-        <details className="mt-4 text-sm">
-          <summary className="cursor-pointer font-medium">Error Details</summary>
-          <div className="mt-2 p-3 bg-gray-100 rounded text-gray-800">
-            <p><strong>Error:</strong> {error instanceof Error ? error.message : 'Unknown error'}</p>
-            <p><strong>Slug:</strong> {slug}</p>
-            <p><strong>Timestamp:</strong> {new Date().toISOString()}</p>
-          </div>
-        </details>
+      <div>
+        <h1>{post.title.rendered}</h1>
+        <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
       </div>
     );
+    
+  } catch (error) {
+    console.error('Error:', error);
+    return <div>Error loading post</div>;
   }
 }
