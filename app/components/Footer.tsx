@@ -18,7 +18,7 @@ const Footer = () => {
         <nav>
           <h6 className="heading5footer font-bold">My Services</h6>
           <Link href='/website-development' className="link link-hover">Web Development</Link>
-          <a className="link link-hover">SEO Service</a>
+          <Link href='/seo-service' className="link link-hover">SEO Service</Link>
         </nav>
 
         <nav>
