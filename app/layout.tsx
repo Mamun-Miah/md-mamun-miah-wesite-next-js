@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Home - Mamun Miah",
+  title: "Mamun Miah",
   description: "I'm Mamun Miah, with over 7 years of experience helping businesses grow online through effective SEO and stunning websites.",
   icons: {
     icon: '/favicon.svg',  

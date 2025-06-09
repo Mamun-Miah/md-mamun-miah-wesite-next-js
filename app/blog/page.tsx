@@ -14,7 +14,9 @@ type WPPost = {
     ];
   };
 };
-
+export const metadata = {
+  title: 'Blog - Mamun Miah',
+};
 export default async function BlogPage() {
   const res = await fetch(
     'https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?_embed=1&per_page=10'
