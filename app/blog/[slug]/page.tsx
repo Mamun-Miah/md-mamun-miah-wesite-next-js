@@ -1,7 +1,7 @@
 // app/blog/[slug]/page.tsx - Hybrid Server + Client
 import { Suspense } from 'react';
 import BlogClient from '../../components/BlogClient';
-
+export const runtime = 'edge';
 type Props = {
   params: Promise<{
     slug: string;
