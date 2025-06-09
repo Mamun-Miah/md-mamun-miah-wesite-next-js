@@ -6,7 +6,7 @@ type BlogpostCardProps = {
   title: string;
   excerpt: string;
   image?: string;
-  id: number;
+  slug: string;
 };
 
 // Helper function to strip HTML tags and return plain text
@@ -18,7 +18,7 @@ const stripHtml = (html: string) => {
   return clean;
 };
 
-const BlogpostCard = ({ title, excerpt, image, id }: BlogpostCardProps) => {
+const BlogpostCard = ({ title, excerpt, image, slug }: BlogpostCardProps) => {
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
@@ -37,10 +37,10 @@ const BlogpostCard = ({ title, excerpt, image, id }: BlogpostCardProps) => {
 
       <div className="card-body">
         <h2 className="card-title">
-          <Link href={`/blog/${id}`}>{title}</Link>
+          <Link href={`/blog/${slug}`}>{title}</Link>
           <div className="badge badge-secondary">NEW</div>
         </h2>
-        <Link href={`/blog/${id}`}>
+        <Link href={`/blog/${slug}`}>
           <p>{stripHtml(excerpt || 'No summary available.')}</p>
         </Link>
         <div className="card-actions justify-end">

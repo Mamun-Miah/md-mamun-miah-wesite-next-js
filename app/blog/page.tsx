@@ -16,7 +16,7 @@ type WPPost = {
 
 export default async function BlogPage() {
   const res = await fetch(
-    'https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?_embed=1'
+    'https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?_embed=1&per_page=10'
   );
   const posts: WPPost[] = await res.json();
 
@@ -30,7 +30,7 @@ export default async function BlogPage() {
       {posts.map((post) => (
         <Blogpostcard
           key={post.id}
-          id={post.id}
+          slug={post.slug}
           title={post.title.rendered}
           excerpt={post.excerpt.rendered}
           image={post._embedded?.['wp:featuredmedia']?.[0]?.source_url}
