@@ -2,7 +2,7 @@ import React from 'react'
 import MotionCounter from '../components/Counter';
 export const Ourachivment = () => {
   return (
-    <section className="text-center py-16 bg-gray-100 " data-aos="fade-up">
+    <section className="text-center py-16 bg-gray-100 " suppressHydrationWarning data-aos="fade-up">
             <div>
                 <h2 className="subheading mb-4">Our Achievements</h2>
                 <p className="para mb-16">We have successfully helped numerous clients achieve their SEO goals.</p>
