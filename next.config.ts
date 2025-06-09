@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'ksamotorsbd.com',
+        hostname: 'lightblue-goat-212889.hostingersite.com',
         port: '',
         pathname: '/**',
       },

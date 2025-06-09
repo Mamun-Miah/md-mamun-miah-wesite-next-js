@@ -27,7 +27,7 @@ export default async function BlogPost({ params }:{
 
   try {
     const res = await fetch(
-      `https://ksamotorsbd.com/wp-json/wp/v2/posts?slug=${slug}&_embed=1`,
+      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed=1`,
       {
         // ISR: Revalidate after 60 seconds
         next: { revalidate: 60 },
