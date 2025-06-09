@@ -7,6 +7,7 @@ type Props = {
   date: string;
 };
 
+
 export default function BlogPost({ title, content, image, date }: Props) {
   const formattedDate = new Date(date).toLocaleDateString(undefined, {
     year: 'numeric',
