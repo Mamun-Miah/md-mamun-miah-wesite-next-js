@@ -1,5 +1,5 @@
 import React from 'react'
-
+export const runtime = 'edge';
 type WPPost = {
   id: number
   title: { rendered: string }
