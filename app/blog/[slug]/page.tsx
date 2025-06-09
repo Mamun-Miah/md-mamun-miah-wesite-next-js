@@ -1,7 +1,7 @@
 // app/blog/[slug]/page.tsx
 import BlogPost from '../../components/BlogPost';
 import { notFound } from 'next/navigation';
-
+export const runtime = 'edge';
 type Props = {
   params: Promise< {
     slug: string;
