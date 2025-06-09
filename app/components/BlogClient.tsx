@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import BlogPost from './BlogPost';
 
 type PostData = {
@@ -15,35 +18,39 @@ type Props = {
   slug: string;
 };
 
-async function fetchPost(slug: string): Promise<PostData | null> {
-  try {
-    const res = await fetch(
-      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`,
-      {
-        // Enable caching for SSG
-        next: { revalidate: 3600 }, // Revalidate every hour
-        // Alternative: { cache: 'force-cache' } for pure SSG
+export default function BlogClient({ slug }: Props) {
+  const [post, setPost] = useState<PostData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const res = await fetch(
+          `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
+        );
+        const data = await res.json();
+        if (data.length > 0) {
+          setPost(data[0]);
+        }
+      } catch (error) {
+        console.error('Error fetching post:', error);
+      } finally {
+        setLoading(false);
       }
+    };
+
+    fetchPost();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-70 z-50">
+        <span className="loading loading-ring w-24 text-warning"></span>
+      </div>
     );
-
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-
-    const data = await res.json();
-    return data.length > 0 ? data[0] : null;
-  } catch (error) {
-    console.error('Error fetching post:', error);
-    return null;
   }
-}
 
-export default async function BlogServer({ slug }: Props) {
-  const post = await fetchPost(slug);
-
-  if (!post) {
-    return <p>Post not found.</p>;
-  }
+  if (!post) return <p>Post not found.</p>;
 
   const imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? '';
 
@@ -55,35 +62,4 @@ export default async function BlogServer({ slug }: Props) {
       date={post.date}
     />
   );
-}
-
-// Type for WordPress post from API
-type WordPressPost = {
-  slug: string;
-  title: { rendered: string };
-  content: { rendered: string };
-  date: string;
-  _embedded?: {
-    'wp:featuredmedia'?: {
-      source_url: string;
-    }[];
-  };
-};
-
-// For SSG support, export generateStaticParams if you know your slugs
-export async function generateStaticParams() {
-  try {
-    // Fetch all posts to get slugs for pre-generation
-    const res = await fetch(
-      'https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?per_page=100'
-    );
-    const posts: WordPressPost[] = await res.json();
-    
-    return posts.map((post) => ({
-      slug: post.slug,
-    }));
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
 }
