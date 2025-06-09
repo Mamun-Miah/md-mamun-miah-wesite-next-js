@@ -1,9 +1,9 @@
-// app/blog/[slug]/page.tsx
+// app/blog/[slug]/page.tsx - Edge Runtime Compatible
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-export const dynamic = 'force-dynamic'; // or 'auto' if you prefer
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 type WPPost = {
   id: number;
@@ -18,42 +18,59 @@ type WPPost = {
   };
 };
 
-
-
-export default async function BlogPost({ params }:{
+export default async function BlogPost({ params }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 
   try {
-    const res = await fetch(
-      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed=1`,
+    // Use absolute URL and proper headers for Edge runtime
+    const response = await fetch(
+      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed=1`,
       {
-        // ISR: Revalidate after 60 seconds
-        next: { revalidate: 60 },
-        // Cache-friendly deployment behavior
-        cache: 'force-cache',
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (compatible; NextJS-Blog/1.0)',
+          // Add CORS headers that might help
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+        },
+        // Edge runtime compatible cache settings
+        cache: 'no-store',
       }
     );
 
-    if (!res.ok) throw new Error('Post fetch failed');
+    // More detailed error handling
+    if (!response.ok) {
+      console.error(`Fetch failed: ${response.status} ${response.statusText}`);
+      console.error('Response headers:', Object.fromEntries(response.headers.entries()));
+      
+      if (response.status === 403) {
+        throw new Error('Access forbidden - check WordPress API permissions');
+      } else if (response.status === 404) {
+        return notFound();
+      } else {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+    }
 
-    const posts: WPPost[] = await res.json();
+    const posts: WPPost[] = await response.json();
 
     if (!posts || posts.length === 0) {
       return notFound();
     }
 
     const post = posts[0];
+    const imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? null;
 
-    const imageUrl =
-      post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? null;
-
-    const publishedDate = new Date(post.date).toLocaleDateString('en-GB', {
+    // Safe date formatting for Edge runtime
+    const publishedDate = new Intl.DateTimeFormat('en-GB', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-    });
+    }).format(new Date(post.date));
 
     return (
       <>
@@ -97,7 +114,16 @@ export default async function BlogPost({ params }:{
 
     return (
       <div className="text-red-600 p-6">
-        An error occurred while loading the blog post. Please try again later.
+        <h2 className="text-xl font-bold mb-2">Unable to Load Blog Post</h2>
+        <p>The blog post could not be loaded at this time.</p>
+        <details className="mt-4 text-sm">
+          <summary className="cursor-pointer font-medium">Error Details</summary>
+          <div className="mt-2 p-3 bg-gray-100 rounded text-gray-800">
+            <p><strong>Error:</strong> {error instanceof Error ? error.message : 'Unknown error'}</p>
+            <p><strong>Slug:</strong> {slug}</p>
+            <p><strong>Timestamp:</strong> {new Date().toISOString()}</p>
+          </div>
+        </details>
       </div>
     );
   }
