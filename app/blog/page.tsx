@@ -30,7 +30,7 @@ export default async function BlogPage() {
       {posts.map((post) => (
         <Blogpostcard
           key={post.id}
-          slug={post.slug}
+          id={post.id}
           title={post.title.rendered}
           excerpt={post.excerpt.rendered}
           image={post._embedded?.['wp:featuredmedia']?.[0]?.source_url}
