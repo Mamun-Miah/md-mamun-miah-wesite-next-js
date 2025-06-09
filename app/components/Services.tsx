@@ -5,12 +5,12 @@ import Card from './SingleServiceCard'; // Assuming Card component is in the sam
 // Main ServicesSection component
 const ServicesSection: React.FC = () => {
   return (
-    <div data-aos="fade-up">
+    <div suppressHydrationWarning data-aos="fade-up">
       {/* Heading and Description Section */}
       <div 
               
       
-      className="lg:mt-12 lg:mx-24 pt-8 md:mx-24 mx-5">
+      className="lg:mt-12 lg:mx-24 pt-8 md:mx-24 mx-5" >
         <h1 className="mainheading">
           CREATIVE SERVICE
         </h1>

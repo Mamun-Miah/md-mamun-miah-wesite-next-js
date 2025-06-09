@@ -6,7 +6,7 @@ import { faFileAlt, faCogs, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Ourachivment } from '../components/Ourachivment';
 
 export const metadata = {
-  title: 'SEO SERVICE - Mamun Miah',
+  title: 'SEO - Mamun Miah',
 };
 const page = () => {
   return (
@@ -22,7 +22,7 @@ const page = () => {
               Get SEO Service Now
             </a>    
       />
-        <section className="lg:mx-24 my-16 md:mx-24 mx-5 grid lg:grid-cols-3 justify-center items-center gap-5" data-aos="fade-up">
+        <section data-aos="fade-up" className="lg:mx-24 my-16 md:mx-24 mx-5 grid lg:grid-cols-3 justify-center items-center gap-5" >
             <Card
             title="On-Page SEO"
             details="Optimizing content, HTML structure, and user experience to improve relevance and search visibility."
