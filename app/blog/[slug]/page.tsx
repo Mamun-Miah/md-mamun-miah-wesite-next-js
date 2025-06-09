@@ -1,5 +1,8 @@
 import Image from "next/image";
+
+// Add runtime export for Cloudflare Edge
 export const runtime = 'edge';
+
 interface Post {
   id: number;
   title: { rendered: string };
@@ -13,24 +16,52 @@ interface Media {
 }
 
 async function fetchPostBySlug(slug: string): Promise<Post | null> {
-  const res = await fetch(
-    `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}`,
-    { next: { revalidate: 60 } } // ISR: revalidate every 60 seconds
-  );
-  const posts = await res.json();
-  if (!posts || posts.length === 0) return null;
-  return posts[0];
+  try {
+    const res = await fetch(
+      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}`,
+      { 
+        next: { revalidate: 60 }, // ISR: revalidate every 60 seconds
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; Next.js Edge Runtime)'
+        }
+      }
+    );
+    
+    if (!res.ok) {
+      console.error('Failed to fetch post:', res.status);
+      return null;
+    }
+    
+    const posts = await res.json();
+    if (!posts || posts.length === 0) return null;
+    return posts[0];
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return null;
+  }
 }
 
 async function fetchMedia(mediaId: number): Promise<Media | null> {
   if (!mediaId) return null;
-  const res = await fetch(
-    `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/media/${mediaId}`,
-    { next: { revalidate: 60 } }
-  );
-  if (!res.ok) return null;
-  const media = await res.json();
-  return media;
+  
+  try {
+    const res = await fetch(
+      `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/media/${mediaId}`,
+      { 
+        next: { revalidate: 60 },
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; Next.js Edge Runtime)'
+        }
+      }
+    );
+    
+    if (!res.ok) return null;
+    const media = await res.json();
+    return media;
+  } catch (error) {
+    console.error('Error fetching media:', error);
+    return null;
+  }
 }
 
 // Fix for Next.js 15: params is now a Promise
@@ -52,6 +83,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; // Await the params Promise
   const post = await fetchPostBySlug(slug);
+  
   if (!post) {
     // Next.js 13+ way to throw 404 inside server components
     // You can also create a custom not-found.tsx page inside /blog/[slug]/ folder
@@ -64,7 +96,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const media = await fetchMedia(post.featured_media);
   const imageUrl = media?.source_url || null;
-  const publishedDate = new Date(post.date).toLocaleDateString();
+  
+  // Use Intl.DateTimeFormat for better Edge runtime compatibility
+  const publishedDate = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(new Date(post.date));
 
   return (
     <>
