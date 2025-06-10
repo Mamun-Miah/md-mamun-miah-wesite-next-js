@@ -1,4 +1,5 @@
 import Blogpostcard from '../components/Blogpostcard';
+import { notFound } from 'next/navigation';
 
 type WPPost = {
   id: number;
@@ -13,16 +14,32 @@ export const metadata = {
   title: 'Blog - Mamun Miah',
 };
 
-export default async function BlogPage() {
-  const res = await fetch(
-    'https://linen-squirrel-954851.hostingersite.com/posts.json'
-  );
+const POSTS_PER_PAGE = 12;
+
+type Props = {
+  searchParams?: {
+    page?: string;
+  };
+};
+
+export default async function BlogPage({ searchParams }: Props) {
+  const currentPage = parseInt(searchParams?.page || '1', 10);
+  const res = await fetch('https://linen-squirrel-954851.hostingersite.com/posts.json');
 
   if (!res.ok) {
     throw new Error('Failed to fetch posts');
   }
 
-  const posts: WPPost[] = await res.json();
+  const allPosts: WPPost[] = await res.json();
+  const totalPosts = allPosts.length;
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+  if (currentPage < 1 || currentPage > totalPages) {
+    notFound(); // 404 if page out of range
+  }
+
+  const start = (currentPage - 1) * POSTS_PER_PAGE;
+  const paginatedPosts = allPosts.slice(start, start + POSTS_PER_PAGE);
 
   return (
     <>
@@ -31,7 +48,7 @@ export default async function BlogPage() {
       </div>
 
       <div className="flex flex-wrap gap-6 justify-center p-6">
-        {posts.map((post) => (
+        {paginatedPosts.map((post) => (
           <Blogpostcard
             key={post.id}
             slug={post.slug}
@@ -41,6 +58,24 @@ export default async function BlogPage() {
             date={post.date}
           />
         ))}
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center gap-2 pb-8 mt-8">
+        {Array.from({ length: totalPages }).map((_, index) => {
+          const page = index + 1;
+          return (
+            <a
+              key={page}
+              href={`?page=${page}`}
+              className={`px-4 py-2 border rounded ${
+                page === currentPage ? 'bg-black text-white' : 'bg-white text-black'
+              }`}
+            >
+              {page}
+            </a>
+          );
+        })}
       </div>
     </>
   );
