@@ -17,13 +17,16 @@ export const metadata = {
 const POSTS_PER_PAGE = 12;
 
 type Props = {
-  searchParams?: {
+  searchParams?: Promise<{
     page?: string;
-  };
+  }>;
 };
 
 export default async function BlogPage({ searchParams }: Props) {
-  const currentPage = parseInt(searchParams?.page || '1', 10);
+  // Await the searchParams promise
+  const params = await searchParams;
+  const currentPage = parseInt(params?.page || '1', 10);
+  
   const res = await fetch('https://linen-squirrel-954851.hostingersite.com/posts.json');
 
   if (!res.ok) {
