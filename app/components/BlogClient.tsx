@@ -4,14 +4,11 @@ import { useEffect, useState } from 'react';
 import BlogPost from './BlogPost';
 
 type PostData = {
-  title: { rendered: string };
-  content: { rendered: string };
+  title: string;
+  content: string;
   date: string;
-  _embedded?: {
-    'wp:featuredmedia'?: {
-      source_url: string;
-    }[];
-  };
+  featured_image?: string;
+  slug: string;
 };
 
 type Props = {
@@ -26,14 +23,25 @@ export default function BlogClient({ slug }: Props) {
     const fetchPost = async () => {
       try {
         const res = await fetch(
-          `https://lightblue-goat-212889.hostingersite.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
+          'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
         );
-        const data = await res.json();
-        if (data.length > 0) {
-          setPost(data[0]);
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+
+        const data: PostData[] = await res.json();
+
+        const matchedPost = data.find((p) => p.slug === slug);
+
+        if (matchedPost) {
+          setPost(matchedPost);
+        } else {
+          setPost(null);
         }
       } catch (error) {
         console.error('Error fetching post:', error);
+        setPost(null);
       } finally {
         setLoading(false);
       }
@@ -52,15 +60,12 @@ export default function BlogClient({ slug }: Props) {
 
   if (!post) return <p>Post not found.</p>;
 
-  const imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? '';
-
   return (
     <BlogPost
-      title={post.title.rendered}
-      content={post.content.rendered}
-      image={imageUrl}
+      title={post.title}
+      content={post.content}
+      image={post.featured_image ?? ''}
       date={post.date}
     />
   );
 }
-  
