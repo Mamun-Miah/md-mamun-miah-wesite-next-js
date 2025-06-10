@@ -1,0 +1,7 @@
+name = "my-next-app"
+compatibility_date = "2025-06-11"
+
+[build]
+command = "npx next-on-pages --experimental-minify"
+cwd = "."
+watch_dir = "."
