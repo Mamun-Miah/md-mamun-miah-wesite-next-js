@@ -27,7 +27,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const params = await searchParams;
   const currentPage = parseInt(params?.page || '1', 10);
   
-  const res = await fetch('https://linen-squirrel-954851.hostingersite.com/posts.json');
+  const res = await fetch('https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json');
 
   if (!res.ok) {
     throw new Error('Failed to fetch posts');
