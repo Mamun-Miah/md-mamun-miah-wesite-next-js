@@ -1,6 +1,6 @@
 import Blogpostcard from '../components/Blogpostcard';
 import { notFound } from 'next/navigation';
-
+export const runtime = 'edge';
 type WPPost = {
   id: number;
   slug: string;
