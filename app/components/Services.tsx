@@ -9,7 +9,6 @@ const ServicesSection: React.FC = () => {
       {/* Heading and Description Section */}
       <div 
               
-      
       className="lg:mt-12 lg:mx-24 pt-8 md:mx-24 mx-5" >
         <h1 className="mainheading">
           CREATIVE SERVICE
