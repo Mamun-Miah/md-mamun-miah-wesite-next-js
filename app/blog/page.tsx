@@ -1,6 +1,7 @@
 import Blogpostcard from '../components/Blogpostcard';
 import { notFound } from 'next/navigation';
 export const runtime = 'edge';
+
 type WPPost = {
   id: number;
   slug: string;
@@ -16,6 +17,9 @@ export const metadata = {
 
 const POSTS_PER_PAGE = 12;
 
+// Delay utility
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 type Props = {
   searchParams?: Promise<{
     page?: string;
@@ -23,11 +27,15 @@ type Props = {
 };
 
 export default async function BlogPage({ searchParams }: Props) {
-  // Await the searchParams promise
   const params = await searchParams;
   const currentPage = parseInt(params?.page || '1', 10);
-  
-  const res = await fetch('https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json');
+
+  // Wait for 1 second
+  await delay(1000);
+
+  const res = await fetch(
+    'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
+  );
 
   if (!res.ok) {
     throw new Error('Failed to fetch posts');
@@ -38,7 +46,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
   if (currentPage < 1 || currentPage > totalPages) {
-    notFound(); // 404 if page out of range
+    notFound();
   }
 
   const start = (currentPage - 1) * POSTS_PER_PAGE;
@@ -63,7 +71,6 @@ export default async function BlogPage({ searchParams }: Props) {
         ))}
       </div>
 
-      {/* Pagination Controls */}
       <div className="flex justify-center gap-2 pb-8 mt-8">
         {Array.from({ length: totalPages }).map((_, index) => {
           const page = index + 1;
