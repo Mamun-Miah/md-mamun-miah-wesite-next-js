@@ -25,17 +25,23 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
     day: 'numeric',
   });
 
+  // Replace WordPress image host with your domain to match middleware
+  const proxiedImage = image?.replace(
+    'https://linen-squirrel-954851.hostingersite.com',
+    'https://mdmamunmiah.com'
+  );
+
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
-        {image ? (
+        {proxiedImage ? (
           <Image
-            src={image}
+            src={proxiedImage}
             alt={title}
             width={384}
             height={200}
             className="w-full h-48 object-cover"
-            unoptimized
+            unoptimized // because it’s remote and proxied
           />
         ) : (
           <div className="w-full h-48 bg-gray-300" />
@@ -55,8 +61,6 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
         <Link href={`/blog/${slug}`}>
           <p>{stripHtml(excerpt || 'No summary available.')}</p>
         </Link>
-
-        
       </div>
     </div>
   );
