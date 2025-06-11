@@ -71,7 +71,7 @@ export default async function BlogPage({ searchParams }: Props) {
         ))}
       </div>
 
-      <div className="flex justify-center gap-2 pb-8 mt-8">
+      <div className="flex flex-wrap justify-center gap-2 pb-8 mt-8">
         {Array.from({ length: totalPages }).map((_, index) => {
           const page = index + 1;
           return (
