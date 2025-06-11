@@ -36,6 +36,8 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
             height={200}
             className="w-full h-48 object-cover"
             fetchPriority='high'
+            unoptimized
+            loading="lazy"
           />
         ) : (
           <div className="w-full h-48 bg-gray-300" />
