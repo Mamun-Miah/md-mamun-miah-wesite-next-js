@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'mdmamunmiah.com',
+        hostname: 'linen-squirrel-954851.hostingersite.com',
         port: '',
-        pathname: '/wp-content/**',
+        pathname: '/wp-content/uploads/2025/**',
       },
     ],
   },
