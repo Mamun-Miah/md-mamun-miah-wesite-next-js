@@ -22,7 +22,7 @@ export default function BlogPost({ title, content, image, date }: Props) {
 
     </section>
         <article className="prose px-3 lg:prose-xl bg-gray-50 max-w-4xl mx-auto py-10">
-        <h2 className="text-3xl font-bold mb-4">{title}</h2>
+        <h2 className="text-3xl text-gray-9 00 font-bold mb-4">{title}</h2>
 
         {image && (
             <div className="relative w-full h-96 mb-6">
@@ -38,7 +38,7 @@ export default function BlogPost({ title, content, image, date }: Props) {
         <div className="card-actions my-4 justify-start">
           <div className="badge badge-outline">{formattedDate}</div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <div className='text-gray-800' dangerouslySetInnerHTML={{ __html: content }} />
         </article>
     </>
     
