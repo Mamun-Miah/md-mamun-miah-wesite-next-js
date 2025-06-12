@@ -22,7 +22,7 @@ export default function BlogPost({ title, content, image, date }: Props) {
 
     </section>
         <article className="prose px-3 lg:prose-xl bg-gray-50 max-w-4xl mx-auto py-10">
-        <h2 className="text-3xl text-gray-9 00 font-bold mb-4">{title}</h2>
+        <h2 className="text-3xl text-gray-900 font-bold mb-4">{title}</h2>
 
         {image && (
             <div className="relative w-full h-96 mb-6">
