@@ -36,7 +36,7 @@ export default function BlogPost({ title, content, image, date }: Props) {
             </div>
         )}
         <div className="card-actions my-4 justify-start">
-          <div className="badge badge-outline">{formattedDate}</div>
+          <div className="badge text-gray-800 badge-outline">{formattedDate}</div>
         </div>
         <div className='text-gray-800' dangerouslySetInnerHTML={{ __html: content }} />
         </article>
