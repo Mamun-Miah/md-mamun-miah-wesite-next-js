@@ -34,7 +34,7 @@ export default async function BlogPage({ searchParams }: Props) {
   await delay(10);
 
   const res = await fetch(
-    'https://linen-squirrel-954851.hostingersite.com/posts.json'
+    'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
   );
 
   if (!res.ok) {
