@@ -34,8 +34,7 @@ export default async function BlogPage({ searchParams }: Props) {
   await delay(10);
 
   const res = await fetch(
-    'https://linen-squirrel-954851.hostingersite.com/posts.json',
-    { next: { revalidate: 60 } }
+    'https://linen-squirrel-954851.hostingersite.com/posts.json'
   );
 
   if (!res.ok) {
