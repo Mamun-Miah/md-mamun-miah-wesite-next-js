@@ -21,7 +21,7 @@ export default function BlogPost({ title, content, image, date }: Props) {
     <Link href="/blog"><button className='btn btn-md text-gray-900 btn-warning'>Back to Blog Page</button></Link>
 
     </section>
-        <article className="prose px-3 lg:prose-xl max-w-4xl mx-auto py-10">
+        <article className="prose px-3 lg:prose-xl bg-gray-50 max-w-4xl mx-auto py-10">
         <h2 className="text-3xl font-bold mb-4">{title}</h2>
 
         {image && (
