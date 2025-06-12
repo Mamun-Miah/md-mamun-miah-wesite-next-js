@@ -31,9 +31,7 @@ export default function BlogPost({ title, content, image, date }: Props) {
                 alt={title}
                 fill
                 className="object-cover rounded-lg shadow"
-                fetchPriority='high'
                 unoptimized
-                loading="lazy"
             />
             </div>
         )}

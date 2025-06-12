@@ -35,7 +35,6 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
             width={384}
             height={200}
             className="w-full h-48 object-cover"
-            fetchPriority='high'
             unoptimized
           />
         ) : (
