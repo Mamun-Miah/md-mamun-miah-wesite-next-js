@@ -22,7 +22,7 @@ export default async function BlogPage({ params }: Props) {
   const { slug } = await params;
 
   const res = await fetch(
-    'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
+    'https://linen-squirrel-954851.hostingersite.com/posts.json'
   );
 
   if (!res.ok) {
