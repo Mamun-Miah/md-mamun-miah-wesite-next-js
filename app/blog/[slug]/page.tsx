@@ -22,7 +22,7 @@ export default async function BlogPage({ params }: Props) {
   const { slug } = await params;
 
   const res = await fetch(
-    'https://linen-squirrel-954851.hostingersite.com/posts.json'
+    'https://api.mdmamunmiah.com/posts.json'
   );
 
   if (!res.ok) {
