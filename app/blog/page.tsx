@@ -35,8 +35,7 @@ export default async function BlogPage({ searchParams }: Props) {
 
   const res = await fetch(
     'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
-  );
-
+  );//github api url
   if (!res.ok) {
     throw new Error('Failed to fetch posts');
   }
