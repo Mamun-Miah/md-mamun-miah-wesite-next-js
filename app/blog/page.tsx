@@ -30,7 +30,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const params = await searchParams;
   const currentPage = parseInt(params?.page || '1', 10);
 
-  // Wait for 1 second
+  // Wait for 10 mili-second
   await delay(10);
 
   const res = await fetch(
