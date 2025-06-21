@@ -31,9 +31,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" >
+      <link
+          rel="preload"
+          as="image"
+          href="/images/about.avif"
+          fetchPriority="high"
+        />
       <body
         className={ `${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        
         <Header />
         <Aosanimation/>
         {children}
