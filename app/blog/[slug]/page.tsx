@@ -18,6 +18,24 @@ type Props = {
 
 export const runtime = 'edge';
 
+
+export async function generateStaticParams() {
+  const res = await fetch(
+    'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch posts for static generation');
+  }
+
+  const posts: PostData[] = await res.json();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+
 export default async function BlogPage({ params }: Props) {
   const { slug } = await params;
 

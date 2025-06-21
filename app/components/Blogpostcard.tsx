@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import sanitizeHtml from 'sanitize-html';
+import LoadingIndicator from '../ui/loading-indicator';
 
 type BlogpostCardProps = {
   title: string;
-  excerpt: string;
+  excerpt: string;  
   image?: string;
   slug: string;
   date: string;
@@ -44,7 +45,7 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
 
       <div className="card-body">
         <h2 className="card-title">
-          <Link href={`/blog/${slug}`}>{title}</Link>
+          <Link href={`/blog/${slug}`}>{title} <LoadingIndicator />  </Link>
           <div className="badge badge-secondary">NEW</div>
         </h2>
 
@@ -52,8 +53,8 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
           <div className="badge badge-outline">{formattedDate}</div>
         </div>
 
-        <Link href={`/blog/${slug}`}>
-          <p>{stripHtml(excerpt || 'No summary available.')}</p>
+        <Link href={`/blog/${slug}`}><LoadingIndicator />
+          <p>{stripHtml(excerpt || 'No summary available.')} </p>
         </Link>
 
         

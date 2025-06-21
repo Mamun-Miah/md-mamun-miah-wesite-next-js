@@ -17,9 +17,6 @@ export const metadata = {
 
 const POSTS_PER_PAGE = 12;
 
-// Delay utility
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 type Props = {
   searchParams?: Promise<{
     page?: string;
@@ -30,8 +27,6 @@ export default async function BlogPage({ searchParams }: Props) {
   const params = await searchParams;
   const currentPage = parseInt(params?.page || '1', 10);
 
-  // Wait for 10 mili-second
-  await delay(10);
 
   const res = await fetch(
     'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
