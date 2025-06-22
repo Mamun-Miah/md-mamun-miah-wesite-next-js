@@ -3,6 +3,9 @@ import Link from 'next/link';
 import sanitizeHtml from 'sanitize-html';
 import LoadingIndicator from '../ui/loading-indicator';
 
+
+// Inside layout:
+
 type BlogpostCardProps = {
   title: string;
   excerpt: string;  
