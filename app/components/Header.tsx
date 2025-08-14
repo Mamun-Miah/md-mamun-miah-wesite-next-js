@@ -4,16 +4,16 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navlink from './ActiveNavlink'; 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 const Header: React.FC = () => {
 
   return (
     <header className="relative z-20 mx-8">
-      <motion.div 
+      {/* <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-
+            transition={{ duration: 0.4, ease: "easeOut" }} */}
+<div
       className="navbar bg-white/20 backdrop-blur-md rounded-lg mt-5 px-5">
         <div className="navbar-start">
           <div className="dropdown">
@@ -88,7 +88,8 @@ const Header: React.FC = () => {
             Contact me
           </a>
         </div>
-      </motion.div>
+        </div>
+      {/* </motion.div> */}
     </header>
   );
 };
