@@ -1,18 +1,28 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navlink from './ActiveNavlink'; 
 // import { motion } from "framer-motion";
 const Header: React.FC = () => {
+useEffect(() => {
+  const handler = (e: MouseEvent) => {
+    const details = document.querySelector("details[open]");
+    if (details && !details.contains(e.target as Node)) {
+      (details as HTMLDetailsElement).open = false;
+    }
+  };
+  document.addEventListener("click", handler);
+  return () => document.removeEventListener("click", handler);
+}, []);
 
   return (
     <header className="relative z-20 mx-8">
       {/* <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }} */}
+            transition ={{ duration: 0.4, ease: "easeOut" }} */}
 <div
       className="navbar bg-white/20 backdrop-blur-md rounded-lg mt-5 px-5">
         <div className="navbar-start">
