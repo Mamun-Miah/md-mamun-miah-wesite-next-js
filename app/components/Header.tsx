@@ -8,14 +8,22 @@ import Navlink from './ActiveNavlink';
 const Header: React.FC = () => {
 useEffect(() => {
   const handler = (e: MouseEvent) => {
-    const details = document.querySelector("details[open]");
-    if (details && !details.contains(e.target as Node)) {
-      (details as HTMLDetailsElement).open = false;
+    const details = document.querySelector("details[open]") as HTMLDetailsElement | null;
+
+    if (details) {
+      const target = e.target as HTMLElement;
+
+      // Close if click is outside OR inside a submenu link
+      if (!details.contains(target) || target.tagName === "A") {
+        details.open = false;
+      }
     }
   };
+
   document.addEventListener("click", handler);
   return () => document.removeEventListener("click", handler);
 }, []);
+
 
   return (
     <header className="relative z-20 mx-8">
