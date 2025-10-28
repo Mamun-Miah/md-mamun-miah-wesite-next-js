@@ -3,47 +3,22 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import TextType from './animation/TextType';
-import LiquidEther from './animation/LiquidEther';
+// import LiquidEther from './animation/LiquidEther';
 
 interface HeroProps {
   title: string;
   description: string;
   backgroundImage?: string; 
   calltoAction?: React.ReactNode;
+  showTyping?: boolean; // New prop
 }
 
-const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction }) => {
+const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction, showTyping }) => {
   return (
     <section
       className="relative hero pt-24 lg:h-[105vh] h-[110vh] pb-24 mt-[-90px] lg:mt-[-100px] overflow-hidden"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      {/* Animated background */}
-      <div className="lg:h-[105vh] h-[110vh] mt-[-90px] lg:mt-[-100px] absolute inset-0 z-0">
-        <LiquidEther
-          colors={[
-    '#FFD700', // Gold Yellow
-    '#FFFACD', // Lemon Chiffon
-    '#FFE135', // Banana Yellow
-  ]}
-          mouseForce={20}
-          cursorSize={100}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.35}
-          isBounce={false}
-          autoDemo={true}
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={1000}
-          autoRampDuration={0.6}
-        />
-      </div>
-
-      {/* Content layer */}
       <div className="relative hero-content flex-col lg:flex-row lg:mt-[130px] z-10 text-gray-200">
         <div className="grid lg:grid-cols-12 w-full">
           <div className="col-span-2"></div>
@@ -56,13 +31,15 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
             >
               {title}
               <br />
-              <TextType 
-                text="Expert SEO & Web Development"
-                typingSpeed={75}
-                pauseDuration={1500}
-                showCursor={true}
-                cursorCharacter="."
-              />
+              {showTyping && (
+                <TextType 
+                  text="Expert SEO & Web Development"
+                  typingSpeed={75}
+                  pauseDuration={1500}
+                  showCursor={true}
+                  cursorCharacter="."
+                />
+              )}
             </motion.h1>
 
             <motion.p 
@@ -90,3 +67,4 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
 };
 
 export default Hero;
+
