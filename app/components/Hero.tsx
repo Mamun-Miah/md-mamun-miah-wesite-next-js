@@ -16,7 +16,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction }) => {
   return (
     <div className="hero pt-24 lg:h-[105vh] h-[110vh] pb-24 mt-[-90px] lg:mt-[-100px]" style={{ backgroundImage: `url(${backgroundImage})` }}>
-    <div style={{ width: '100%', height: 600, position: 'relative' }}>
+    <div className='hero  lg:h-[105vh] h-[110vh] mt-[-90px] lg:mt-[-100px]' style={{ position: 'relative' }}>
   <LiquidEther
     colors={[ '#5227FF', '#FF9FFC', '#B19EEF' ]}
     mouseForce={20}
