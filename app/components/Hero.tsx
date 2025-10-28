@@ -21,7 +21,11 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
       {/* Animated background */}
       <div className="lg:h-[105vh] h-[110vh] mt-[-90px] lg:mt-[-100px] absolute inset-0 z-0">
         <LiquidEther
-          colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+          colors={[
+    '#FFD700', // Gold Yellow
+    '#FFFACD', // Lemon Chiffon
+    '#FFE135', // Banana Yellow
+  ]}
           mouseForce={20}
           cursorSize={100}
           isViscous={false}
