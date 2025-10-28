@@ -3,11 +3,12 @@ import Hero from './components/Hero';
 import ServicesSection from './components/Services';
 import Technologies from './components/Technologies';
 import Contact from './components/Contact';
+
 const page = () => {
   return (
     <div>
       <Hero
-        title="Boost Your Business with Expert SEO & Web Development"
+        title="Boost Your Business with"
         description="I'm Mamun Miah, with over 7 years of experience helping businesses grow online through effective SEO and stunning websites. Let’s take your online presence to the next level!"
         backgroundImage="/images/about.avif" 
         calltoAction=  <a

@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
+import TextType from './animation/TextType';
 
 interface HeroProps {
   title: string;
@@ -30,8 +31,15 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="lg:text-5xl text-4xl tracking-wide font-bold">
-              {title}
+                  className="lg:text-5xl text-4xl tracking-wide leading-snug font-bold">
+          {title} <br></br>
+              <TextType 
+          text={ "Expert SEO & Web Development"}
+          typingSpeed={75}
+          pauseDuration={1500}
+          showCursor={true}
+          cursorCharacter="."
+        />
              </motion.h1>
              
             <motion.p 
