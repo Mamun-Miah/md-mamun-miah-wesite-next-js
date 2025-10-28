@@ -23,7 +23,8 @@
     "react-bits": "^1.0.5",
     "react-dom": "^19.0.0",
     "resend": "^4.5.2",
-    "sanitize-html": "^2.17.0"
+    "sanitize-html": "^2.17.0",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.12",
@@ -35,6 +36,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/sanitize-html": "^2.16.0",
+    "@types/three": "^0.180.0",
     "daisyui": "^5.0.43",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",

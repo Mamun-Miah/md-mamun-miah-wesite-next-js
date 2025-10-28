@@ -4,6 +4,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import TextType from './animation/TextType';
+import LiquidEther from './animation/LiquidEther';
 
 interface HeroProps {
   title: string;
@@ -15,6 +16,25 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction }) => {
   return (
     <div className="hero pt-24 lg:h-[105vh] h-[110vh] pb-24 mt-[-90px] lg:mt-[-100px]" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div style={{ width: '100%', height: 600, position: 'relative' }}>
+  <LiquidEther
+    colors={[ '#5227FF', '#FF9FFC', '#B19EEF' ]}
+    mouseForce={20}
+    cursorSize={100}
+    isViscous={false}
+    viscous={30}
+    iterationsViscous={32}
+    iterationsPoisson={32}
+    resolution={0.5}
+    isBounce={false}
+    autoDemo={true}
+    autoSpeed={0.5}
+    autoIntensity={2.2}
+    takeoverDuration={0.25}
+    autoResumeDelay={1000}
+    autoRampDuration={0.6}
+  />
+</div>
       <div className="hero-content flex-col lg:flex-row lg:mt-[130px] z-10 text-gray-200"
       
       >
