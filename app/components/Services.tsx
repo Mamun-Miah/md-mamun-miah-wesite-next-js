@@ -45,7 +45,7 @@ const ServicesSection: React.FC = () => {
           title="Website Development"
           details="I create fast, responsive, and visually engaging websites tailored to your business goals. From design to deployment, I ensure a seamless user experience."
           image="fa-solid fa-laptop-code text-[100px] text-[#48CDA0]"
-          bg="bg-[#4C1F7A]"
+          bg="bg-[#143D60]"
           link="/website-development"
         />
         <Card
@@ -59,7 +59,7 @@ const ServicesSection: React.FC = () => {
           title="24/7 Support"
           details="I provide round-the-clock support to keep your website running smoothly, ensuring quick issue resolution and continuous optimization."
           image="fa-solid fa-headset text-[100px] text-[#E6BC13]"
-          bg="bg-[#780C28]"
+          bg="bg-[#143D60]"
           link="/#contact-us"
         />
       </section>

@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import ServicesSection from './components/Services';
 import Technologies from './components/Technologies';
 import Contact from './components/Contact';
+import Portfolio from './components/Portfolio';
 
 const page = () => {
   return (
@@ -23,6 +24,7 @@ const page = () => {
         }
       />
       <ServicesSection />
+      <Portfolio/>
       <Technologies />
       <Contact />
     </div>
