@@ -41,7 +41,7 @@ const projects = [
 
 export default function PortfolioPage() {
   return (
-    <section className="min-h-screen mt-24 py-24 bg-[#f2f2f4]">
+    <section className="min-h-screen mt-24 py-24 bg-[#143c6020]">
       {/* Title Section aligned with cards */}
       <div className="container mx-auto px-6 lg:px-8 mb-16">
         <div className="max-w-5xl">
@@ -59,7 +59,7 @@ export default function PortfolioPage() {
         {projects.map((p, i) => (
           <div
             key={i}
-            className="border bg-white shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1"
+            className=" bg-white shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1"
           >
             <div>
               <h3 className="heading3 mb-2 text-[#1b1b1b]">{p.title}</h3>
