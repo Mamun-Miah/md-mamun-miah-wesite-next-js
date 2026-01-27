@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Blogpostcard from '../components/Blogpostcard';
 import { notFound } from 'next/navigation';
 import LoadingIndicator from '../ui/loading-indicator';
+import type { Metadata } from "next";
 export const runtime = 'edge';
 
 type WPPost = {
@@ -13,8 +14,12 @@ type WPPost = {
   featured_image?: string;
 };
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Blog - Mamun Miah',
+  robots: {
+index: false,
+follow: true,
+},
 };
 
 const POSTS_PER_PAGE = 12;

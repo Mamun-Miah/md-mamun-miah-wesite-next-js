@@ -1,7 +1,7 @@
 // app/blog/[slug]/page.tsx (or your relevant path)
 
 import BlogPost from '../../components/BlogPost';
-
+import type { Metadata } from "next";
 type PostData = {
   title: string;
   content: string;
@@ -18,7 +18,12 @@ type Props = {
 
 // export const runtime = 'edge';
 
-
+export const metadata: Metadata = {
+robots: {
+index: false,
+follow: true,
+},
+};
 export async function generateStaticParams() {
   const res = await fetch(
     'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
