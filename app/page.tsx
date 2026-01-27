@@ -16,7 +16,7 @@ const page = () => {
         showTyping={true}  //  Enable animation only on Home
         calltoAction={
           <a
-            href="https://mdmamunmiah.com/#contact-us"
+            href="https://mamundev.com/#contact-us"
             className="btn secondery-btn"
           >
             Get Your Service Now

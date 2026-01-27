@@ -23,7 +23,7 @@ const Hero = () => {
             </p>
             <div className="max-sm:flex justify-center items-center">
               <button className="btn bg-[#8728c7] text-white btn-sm btn-wide">
-                <a href="https://mdmamunmiah.com/#contact-us">MAKE AN APPOINTMENT</a>
+                <a href="https://mamundev.com/#contact-us">MAKE AN APPOINTMENT</a>
               </button>
             </div>
 
@@ -31,7 +31,7 @@ const Hero = () => {
               <FontAwesomeIcon icon={faGlobe} size="3x" className="me-3 text-[#a858e9]" />
               <div>
                 <p>Website:</p>
-                <p>mdmamunmiah.com</p>
+                <p>mamundev.com</p>
               </div>
             </div>
           </div>

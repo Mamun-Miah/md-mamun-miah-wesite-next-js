@@ -35,7 +35,7 @@ const projects = [
     title: "E-commerce & Shopify Website",
     tech: "Shopify, Liquid, WordPress WooCommerce, PHP",
     desc: "E-commerce setup, payment gateway, custom theme, product management & order system.",
-    link: "https://mdmamunmiah.com",
+    link: "https://mamundev.com",
   },
 ];
 

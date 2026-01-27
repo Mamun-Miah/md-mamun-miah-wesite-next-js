@@ -25,7 +25,7 @@ const Footer = () => {
           <h6 className="heading5footer font-bold">Quick Links</h6>
           <Link href='/' className="link link-hover">Home</Link>
           <Link href='/about' className="link link-hover">About Me</Link>
-          <Link href='https://mdmamunmiah.com/#contact-us' className="link link-hover">Contact</Link>
+          <Link href='https://mamundev.com/#contact-us' className="link link-hover">Contact</Link>
         </nav>
 
         <nav>

@@ -98,7 +98,7 @@ useEffect(() => {
 
         <div className="navbar-end">
           <a
-            href="https://mdmamunmiah.com/#contact-us"
+            href="https://mamundev.com/#contact-us"
             className="btn secondery-btn max-sm:hidden"
             target="_blank"
             rel="noopener noreferrer"
