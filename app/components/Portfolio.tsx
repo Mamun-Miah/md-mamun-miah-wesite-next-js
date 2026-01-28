@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -39,58 +42,103 @@ const projects = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const card = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 },
+};
+
 export default function PortfolioPage() {
   return (
-    <section className="min-h-screen mt-24 py-24 bg-[#143c6020]">
-      {/* Title Section aligned with cards */}
+    <section className="min-h-screen mt-24 py-24 bg-gradient-to-b from-[#143c6020] to-transparent">
+      {/* Title */}
       <div className="container mx-auto px-6 lg:px-8 mb-16">
-        <div className="max-w-5xl">
-          <h1 className="mainheading mb-2 text-left">My Projects</h1>
-          <h2 className="subheading mb-4 text-left">Crafted With Real-World Needs</h2>
-          <p className="para font-bolder text-left text-[#333] max-w-2xl">
-            I build software that solves problems from full-stack web apps to automation tools.
-            Below are some highlighted projects from my journey.
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl"
+        >
+          <h1 className="mainheading mb-2">My Projects</h1>
+          <h2 className="subheading mb-4">Crafted With Real-World Needs</h2>
+          <p className="para max-w-2xl text-[#333]">
+            I build software that solves problems from full-stack web apps to automation tools. Below are some highlighted projects from my journey.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Projects Grid */}
-      <div className="container mx-auto px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="container mx-auto px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
         {projects.map((p, i) => (
-          <div
+          <motion.div
             key={i}
-            className=" bg-white shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1"
+            variants={card}
+            whileHover={{ y: -8, scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+            className="group relative rounded-2xl bg-white p-[1px]"
           >
-            <div>
-              <h3 className="heading3 mb-2 text-[#1b1b1b]">{p.title}</h3>
-              <p className="text-sm text-[#efb036] font-semibold mb-2 tracking-wide">
-                {p.tech}
-              </p>
-              <p className="para mb-4 text-[#333] leading-relaxed">{p.desc}</p>
-            </div>
-            <div>
+            {/* Gradient border on hover */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#3b6790] to-[#efb036] opacity-0 group-hover:opacity-100 transition-opacity" />
+
+            <div className="relative bg-white rounded-2xl p-6 h-full flex flex-col justify-between shadow-lg group-hover:shadow-2xl transition-all">
+              <div>
+                <h3 className="heading3 mb-2 text-[#1b1b1b]">
+                  {p.title}
+                </h3>
+                <p className="text-sm font-semibold text-[#efb036] mb-3 tracking-wide">
+                  {p.tech}
+                </p>
+                <p className="para text-[#333] leading-relaxed">
+                  {p.desc}
+                </p>
+              </div>
+
               <Link
                 href={p.link}
                 target="_blank"
-                className="btn secondery-btn"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-[#3b6790] group-hover:gap-3 transition-all"
               >
-                View Project →
+                View Project
+                <span className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      {/* GitHub Button */}
-      <div className="text-center mt-20">
+      {/* GitHub CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+        className="text-center mt-20"
+      >
         <Link
           href="https://github.com/Mamun-Miah"
           target="_blank"
-          className="bg-[#3b6790] text-white text-lg md:text-xl border-0 px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition"
+          className="inline-block bg-gradient-to-r from-[#3b6790] to-[#2a5175] text-white text-lg md:text-xl px-10 py-4 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
         >
           Visit Full GitHub
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }
