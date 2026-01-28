@@ -61,7 +61,7 @@ export default function PortfolioPage() {
   return (
     <section className="min-h-screen mt-24 py-24 bg-gradient-to-b from-[#afc2d320] to-transparent">
       {/* Title */}
-      <div className="container mx-auto px-6 lg:px-8 mb-16">
+      <div className="container mx-auto px-6 lg:px-24 mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export default function PortfolioPage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="container mx-auto px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="container mx-auto px-6 lg:px-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         {projects.map((p, i) => (
           <motion.div
