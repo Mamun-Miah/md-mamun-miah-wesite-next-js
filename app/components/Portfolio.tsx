@@ -59,7 +59,7 @@ const card = {
 
 export default function PortfolioPage() {
   return (
-    <section className="min-h-screen mt-24 py-24 bg-gradient-to-b from-[#143c6020] to-transparent">
+    <section className="min-h-screen mt-24 py-24 bg-gradient-to-b from-[#afc2d320] to-transparent">
       {/* Title */}
       <div className="container mx-auto px-6 lg:px-8 mb-16">
         <motion.div
