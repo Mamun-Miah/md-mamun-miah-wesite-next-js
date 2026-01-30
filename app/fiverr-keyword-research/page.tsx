@@ -140,6 +140,9 @@ export default function FiverrKeywordResearch() {
           <p className="text-gray-400 text-xl">
             100% Real & free keyword research tool.
           </p>
+          <p className="text-green-400 text-sm">
+            Read: How it works? (upcoming)
+          </p>
         </div>
 
         {/* Input */}
