@@ -8,7 +8,7 @@ type StreamItem = {
   error?: string;
 };
 
-const COOLDOWN_SECONDS = 60;
+const COOLDOWN_SECONDS = 30;
 
 export default function FiverrKeywordResearch() {
   const [query, setQuery] = useState("");
@@ -137,8 +137,8 @@ export default function FiverrKeywordResearch() {
           <h1 className="text-5xl font-bold pb-3 tracking-tight">
             Fiverr Keyword Research Tool.
           </h1>
-          <p className="text-gray-400">
-            100% free keyword research tool.
+          <p className="text-gray-400 text-xl">
+            100% Real & free keyword research tool.
           </p>
         </div>
 
@@ -149,7 +149,7 @@ export default function FiverrKeywordResearch() {
             onChange={e => setQuery(e.target.value)}
             placeholder="e.g. WordPress"
             disabled={loading}
-            className="flex-1 bg-[#0b1220] border border-white/10 rounded-xl px-4 py-3 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
+            className="flex-1 bg-[#0b1220] border border-white/30 rounded-sm px-4 py-3 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 disabled:opacity-50"
             onKeyDown={e => e.key === "Enter" && startSearch()}
           />
 
@@ -157,9 +157,9 @@ export default function FiverrKeywordResearch() {
             <button
               onClick={startSearch}
               disabled={cooldown > 0}
-              className="bg-yellow-600 hover:bg-yellow-900 transition px-6 py-3 rounded-xl font-medium disabled:opacity-50"
+              className="bg-yellow-600 hover:bg-yellow-900 transition px-6 py-3 rounded-sm font-medium disabled:opacity-50"
             >
-              {cooldown > 0 ? `Wait ${cooldown}s` : "Search"}
+              {cooldown > 0 ? `Cooldown ${cooldown}s` : "Search"}
             </button>
           ) : (
             <button
