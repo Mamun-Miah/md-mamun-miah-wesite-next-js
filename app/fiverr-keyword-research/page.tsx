@@ -162,7 +162,7 @@ export default function FiverrKeywordResearch() {
               disabled={cooldown > 0}
               className="bg-yellow-600 hover:bg-yellow-900 transition px-6 py-3 rounded-sm font-medium disabled:opacity-50"
             >
-              {cooldown > 0 ? `Cooldown ${cooldown}s` : "Search"}
+              {cooldown > 0 ? `Wait ${cooldown}s` : "Search"}
             </button>
           ) : (
             <button
