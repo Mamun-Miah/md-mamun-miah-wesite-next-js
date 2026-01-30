@@ -134,11 +134,11 @@ export default function FiverrKeywordResearch() {
 
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Fiverr Keyword Research
+          <h1 className="text-5xl font-bold pb-3 tracking-tight">
+            Fiverr Keyword Research Tool.
           </h1>
           <p className="text-gray-400">
-            Reasearch Keyword free
+            100% free keyword research tool.
           </p>
         </div>
 
@@ -147,7 +147,7 @@ export default function FiverrKeywordResearch() {
           <input
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="e.g. shopify store design"
+            placeholder="e.g. WordPress"
             disabled={loading}
             className="flex-1 bg-[#0b1220] border border-white/10 rounded-xl px-4 py-3 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
             onKeyDown={e => e.key === "Enter" && startSearch()}
@@ -157,9 +157,9 @@ export default function FiverrKeywordResearch() {
             <button
               onClick={startSearch}
               disabled={cooldown > 0}
-              className="bg-indigo-600 hover:bg-indigo-500 transition px-6 py-3 rounded-xl font-medium disabled:opacity-50"
+              className="bg-yellow-600 hover:bg-yellow-900 transition px-6 py-3 rounded-xl font-medium disabled:opacity-50"
             >
-              {cooldown > 0 ? `Wait ${cooldown}s` : "Start"}
+              {cooldown > 0 ? `Wait ${cooldown}s` : "Search"}
             </button>
           ) : (
             <button
