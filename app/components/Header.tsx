@@ -66,6 +66,7 @@ useEffect(() => {
               </li>
               <li><Navlink href="/about">About Me</Navlink></li>
               <li><Navlink href="/blog">Blog</Navlink></li>
+              <li><Navlink href="/fiverr-keyword-research">Tools</Navlink></li>
             </ul>
           </div>
           <Link href="/" className="ms-5 ">
@@ -93,6 +94,7 @@ useEffect(() => {
             </li>
             <li><Navlink href="/about" >About Me</Navlink></li>
             <li><Navlink  href="/blog">Blog</Navlink></li>
+            <li><Navlink href="/fiverr-keyword-research">Tools</Navlink></li>
           </ul>
         </div>
 
