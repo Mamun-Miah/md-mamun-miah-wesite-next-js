@@ -138,7 +138,7 @@ export default function FiverrKeywordResearch() {
             Fiverr Keyword Research
           </h1>
           <p className="text-gray-400">
-            Secure live autocomplete mining
+            Reasearch Keyword free
           </p>
         </div>
 
