@@ -4,6 +4,12 @@ import domainList from '../domainlist.json';
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const domain = searchParams.get('domain');
+  const key = searchParams.get('key');
+
+  // Check key first
+  if (!key || key !== domainList.key) {
+    return Response.json({ status: 'unauthorized', message: 'Invalid key' }, { status: 401 });
+  }
 
   if (!domain) {
     return Response.json({ status: 'error', message: 'Domain is required' });
