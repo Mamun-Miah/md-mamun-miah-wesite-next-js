@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import domainList from '../domainlist.json';
 
 export async function GET(request) {
