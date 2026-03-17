@@ -2,6 +2,21 @@ export const runtime = 'edge';
 import domainList from '../domainlist.json';
 
 async function saveLog(domain, status, ip) {
+  const key = `plugin-log:${domain}`;
+
+  // Check if this domain key already exists
+  const checkRes = await fetch(`${domainList.upstash_url}/exists/${key}`, {
+    headers: {
+      Authorization: `Bearer ${domainList.upstash_token}`,
+    },
+  });
+
+  const checkData = await checkRes.json();
+
+  // If exists (1), skip entirely — no write needed
+  if (checkData.result === 1) return;
+
+  // First time — save log for this domain
   const newLog = {
     domain,
     status,
@@ -9,38 +24,13 @@ async function saveLog(domain, status, ip) {
     time: new Date().toUTCString(),
   };
 
-  // Get existing logs
-  const getRes = await fetch(`${domainList.upstash_url}/get/plugin-logs`, {
-    headers: {
-      Authorization: `Bearer ${domainList.upstash_token}`,
-    },
-  });
-
-  const getData = await getRes.json();
-  let logs = [];
-
-  try {
-    if (getData.result) {
-      const parsed = typeof getData.result === 'string' 
-        ? JSON.parse(getData.result) 
-        : getData.result;
-      logs = Array.isArray(parsed) ? parsed : [];
-    }
-  } catch {
-    logs = [];
-  }
-
-  // Add new log
-  logs.push(newLog);
-
-  // Save back — single JSON.stringify only!
-  await fetch(`${domainList.upstash_url}/set/plugin-logs`, {
+  await fetch(`${domainList.upstash_url}/set/${key}`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${domainList.upstash_token}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(logs), //  single stringify
+    body: JSON.stringify(newLog),
   });
 }
 
