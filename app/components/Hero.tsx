@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
             >
               {title}
               <br />
-              <div className="min-h-[80px] md:min-h-[1.2em] flex items-center justify-center">
+              <div className="flex items-center justify-center">
                 {showTyping && (
                   <TextType
                     text={typingText || "Expert SEO & Web Development"}
