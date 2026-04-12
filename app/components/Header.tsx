@@ -65,7 +65,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Navbar Center: Desktop Menu (Hidden on mobile) & Mobile Logo (Hidden on desktop) */}
-        <div className="navbar-center lg:flex-grow">
+        <div className="navbar-center justify-center lg:flex-grow">
           {/* Mobile Logo: Centered on mobile */}
           <Link href="/" className="lg:hidden flex items-center justify-center">
             <Image
