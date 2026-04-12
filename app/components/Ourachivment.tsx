@@ -1,5 +1,6 @@
 import React from 'react'
 import MotionCounter from '../components/Counter';
+import Link from 'next/link';
 export const Ourachivment = () => {
   return (
     <section className="text-center py-16 bg-gray-100 " suppressHydrationWarning data-aos="fade-up">
@@ -27,7 +28,7 @@ export const Ourachivment = () => {
             </div>
 
            
-              <a href="https://mamundev.com/#contact-us"><button className='btn btn-wide bg-yellow-300 hover:bg-amber-500'>Free SEO Consultation</button></a>  
+             <Link href="/#contact-us" className='btn secondery-btn px-10 h-16 font-extrabold'>Free SEO Consultation</Link>  
             
         </section>
   )

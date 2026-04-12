@@ -17,7 +17,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction, showTyping, typingText }) => {
   return (
     <section
-      className="relative hero pt-32 lg:h-[105vh] h-[110vh] pb-32 mt-[-90px] lg:mt-[-100px] overflow-hidden"
+      className="relative hero pt-24 lg:pt-32 lg:h-[105vh] h-[80vh] min-h-[600px] pb-24 mt-[-90px] lg:mt-[-100px] overflow-hidden"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div className="relative hero-content flex-col lg:flex-row lg:mt-[130px] z-10 text-gray-200">

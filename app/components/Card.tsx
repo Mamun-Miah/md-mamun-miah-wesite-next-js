@@ -17,7 +17,7 @@ const Card: React.FC<Card> = ({
 }) => {
   return (
     <div
-      className={`h-[330px] p-6 ${bg} border border-gray-200 rounded-2xl shadow-xl dark:bg-gray-800 dark:border-gray-700 space-y-5 transition-transform duration-300 hover:scale-105`}
+      className={`h-[330px] p-6 ${bg} border border-gray-200 rounded-[2.5rem] shadow-xl dark:bg-gray-800 dark:border-gray-700 space-y-5 transition-transform duration-300 hover:scale-105`}
     >
         {geticon}
       

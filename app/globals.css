@@ -25,11 +25,11 @@ body {
 
 /* #button */
 .primary-btn {
-    @apply bg-[#3b6790] text-white lg:text-xl border-0 shadow-lg hover:shadow-xl transition-all hover:scale-105;
+    @apply bg-[#3b6790] text-white lg:text-xl border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
 }
 
 .secondery-btn {
-    @apply bg-[#efb036] text-[#1b1b1b] lg:text-xl border-0 shadow-lg hover:shadow-xl transition-all hover:scale-105;
+    @apply bg-[#efb036] text-[#1b1b1b] lg:text-xl border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
 }
 
 /* main color */

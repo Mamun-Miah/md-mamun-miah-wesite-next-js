@@ -167,7 +167,7 @@ const Contact: React.FC = () => {
                       onChange={handleChange}
                     ></textarea>
                   </div>
-                  <button type="submit" className="btn w-full secondery-btn h-16 font-extrabold text-xl rounded-2xl shadow-xl shadow-[#efb03630] hover:scale-[1.02] active:scale-[0.98] transition-all" disabled={status === 'sending'}>
+                  <button type="submit" className="btn w-full secondery-btn h-16 font-extrabold text-xl shadow-xl shadow-[#efb03630]" disabled={status === 'sending'}>
                     {statusMessages[status] || 'Send Message Now'}
                   </button>
                 </form>
