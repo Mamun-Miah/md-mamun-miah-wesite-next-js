@@ -159,9 +159,11 @@ const SeoServicePage = () => {
                    <p className="font-bold">Transparent Reporting</p>
                  </div>
                </div>
-               <Link href="/#contact-us" className="btn secondery-btn w-full h-16 font-extrabold text-xl shadow-xl shadow-[#efb03630]">
-                 Analyze My Site
-               </Link>
+                <div className="flex justify-center">
+                  <Link href="/#contact-us" className="btn secondery-btn w-fit px-10 h-16 font-extrabold text-xl shadow-xl shadow-[#efb03630]">
+                    Free SEO Consultation
+                  </Link>
+                </div>
             </div>
           </div>
         </div>

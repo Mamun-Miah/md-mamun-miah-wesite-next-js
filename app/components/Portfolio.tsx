@@ -100,10 +100,10 @@ export default function PortfolioPage() {
                 <h3 className="heading3 mb-2 text-[#1b1b1b]">
                   {p.title}
                 </h3>
-                <p className="text-sm font-semibold text-[#efb036] mb-3 tracking-wide">
+                <p className="text-sm font-semibold text-[#efb036] mb-3 tracking-wide break-words">
                   {p.tech}
                 </p>
-                <p className="para text-[#333] leading-relaxed">
+                <p className="para text-[#333] leading-relaxed break-words">
                   {p.desc}
                 </p>
               </div>

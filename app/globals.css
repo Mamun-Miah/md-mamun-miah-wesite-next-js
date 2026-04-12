@@ -52,7 +52,11 @@ body {
 }
 
 .subheading {
-    @apply text-5xl text-[#000248] font-bold tracking-tight lg:leading-[1.1];
+    @apply text-3xl md:text-5xl text-[#000248] font-bold tracking-tight lg:leading-[1.1];
+}
+
+.secondery-btns {
+    @apply bg-[#efb036] text-[#1b1b1b] hidden lg:flex lg:text-xl border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
 }
 
 /* #heading */

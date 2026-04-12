@@ -3,7 +3,9 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navlink from './ActiveNavlink'; 
+import Navlink from './ActiveNavlink';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 const Header: React.FC = () => {
   useEffect(() => {
@@ -23,9 +25,9 @@ const Header: React.FC = () => {
   return (
     <header className="relative z-20 mx-4 lg:mx-8">
       <div className="navbar bg-white/20 backdrop-blur-md rounded-2xl mt-5 px-4 lg:px-8 shadow-sm border border-white/30">
-        
+
         {/* Navbar Start: Mobile Menu Toggle & Desktop Logo */}
-        <div className="navbar-start">
+        <div className="navbar-start flex-1 lg:flex-none lg:w-1/4">
           {/* Mobile Dropdown */}
           <div className="dropdown">
             <div tabIndex={0} role="button" aria-label="menu mobile" className="btn btn-ghost lg:hidden p-0 w-10">
@@ -63,7 +65,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Navbar Center: Desktop Menu (Hidden on mobile) & Mobile Logo (Hidden on desktop) */}
-        <div className="navbar-center">
+        <div className="navbar-center lg:flex-grow">
           {/* Mobile Logo: Centered on mobile */}
           <Link href="/" className="lg:hidden flex items-center justify-center">
             <Image
@@ -101,15 +103,23 @@ const Header: React.FC = () => {
         </div>
 
         {/* Navbar End: Contact Button */}
-        <div className="navbar-end">
+        <div className="navbar-end flex-1 lg:flex-none lg:w-1/4">
+          {/* Desktop Button */}
           <Link
             href="/#contact-us"
-            className="btn secondery-btn hidden md:flex min-h-0 h-12 px-8 font-extrabold shadow-lg"
+            className="btn secondery-btns hidden lg:flex min-h-0 h-10 px-6 font-extrabold shadow-lg"
           >
             Contact me
           </Link>
-          {/* Mobile Spacer (to keep logo centered) */}
-          <div className="w-10 lg:hidden" />
+
+          {/* Mobile Icon Button */}
+          <Link
+            href="/#contact-us"
+            className="btn btn-ghost btn-circle lg:hidden text-[#efb036] hover:bg-white/10"
+            aria-label="contact me"
+          >
+            <FontAwesomeIcon icon={faPaperPlane} className="h-5 w-5" />
+          </Link>
         </div>
       </div>
     </header>

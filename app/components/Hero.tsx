@@ -8,7 +8,7 @@ import TextType from './animation/TextType';
 interface HeroProps {
   title: string;
   description: string;
-  backgroundImage?: string; 
+  backgroundImage?: string;
   calltoAction?: React.ReactNode;
   showTyping?: boolean; // New prop
   typingText?: string | string[];
@@ -17,14 +17,14 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction, showTyping, typingText }) => {
   return (
     <section
-      className="relative hero pt-24 lg:pt-32 lg:h-[105vh] h-[80vh] min-h-[600px] pb-24 mt-[-90px] lg:mt-[-100px] overflow-hidden"
+      className="relative hero pt-24 lg:pt-32 lg:h-[105vh] h-[100vh] min-h-[600px] pb-24 mt-[-90px] lg:mt-[-100px] overflow-hidden"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div className="relative hero-content flex-col lg:flex-row lg:mt-[130px] z-10 text-gray-200">
         <div className="grid lg:grid-cols-12 w-full">
           <div className="col-span-2"></div>
           <div className="col-span-8 flex flex-col justify-center items-center text-center">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -32,18 +32,20 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
             >
               {title}
               <br />
-              {showTyping && (
-                <TextType 
-                  text={typingText || "Expert SEO & Web Development"}
-                  typingSpeed={75}
-                  pauseDuration={1500}
-                  showCursor={true}
-                  cursorCharacter="."
-                />
-              )}
+              <div className="min-h-[80px] md:min-h-[1.2em] flex items-center justify-center">
+                {showTyping && (
+                  <TextType
+                    text={typingText || "Expert SEO & Web Development"}
+                    typingSpeed={75}
+                    pauseDuration={1500}
+                    showCursor={true}
+                    cursorCharacter="."
+                  />
+                )}
+              </div>
             </motion.h1>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.1, ease: "easeOut" }}

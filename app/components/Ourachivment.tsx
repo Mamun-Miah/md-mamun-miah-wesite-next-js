@@ -8,7 +8,7 @@ export const Ourachivment = () => {
                 <h2 className="subheading mb-4">Our Achievements</h2>
                 <p className="para mb-16">We have successfully helped numerous clients achieve their SEO goals.</p>
             </div>
-            <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-24 justify-center items-center lg:mx-16 md:mx-24 mx-5 my-16'>
+            <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-12 md:gap-24 justify-center items-center lg:mx-16 md:mx-24 mx-5 my-16'>
                 <div className='text-center h-24 '>
                     <MotionCounter to={83} duration={3} />
                     <h2 className="para my-3">Organic Traffic <br />Increase +</h2>

@@ -30,7 +30,7 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
   });
 
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 w-full max-w-sm mx-auto shadow-sm">
       <figure>
         {image ? (
           <Image
