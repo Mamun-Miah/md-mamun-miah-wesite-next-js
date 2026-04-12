@@ -51,7 +51,7 @@ const Contact: React.FC = () => {
         setFormData({ fullName: '', email: '', phone: '', message: '' });
       } else {
         const data = await res.json();
-        console.error(data.message || 'Error sending message');
+        console.error(data.error || data.message || 'Error sending message');
         setStatus('error');
       }
     } catch (err) {
@@ -61,125 +61,130 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="lg:mx-24 mx-5 mt-24 bg-[#fbfbfd]" id="contact-us" suppressHydrationWarning data-aos="fade-up">
-        <div className="w-full lg:max-w-lg space-y-3 mb-4">
-          <h1 className="mainheading">CONTACT</h1>
-          <p className="subheading">Let&apos;s Work Together!</p>
-          <p className="text-justify para">
-            Have a project in mind? Need expert SEO or website development services? I&apos;m here to help!
-            Whether it&apos;s optimizing your online presence, creating a professional website, or boosting your brand,
-            I&apos;m just a message away.
-          </p>
-        </div>
-      </div>
+    <section className="py-24 bg-white" id="contact-us" suppressHydrationWarning data-aos="fade-up">
+      <div className="container mx-auto px-5 lg:px-24">
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          {/* Header & Info */}
+          <div className="lg:col-span-5 space-y-10">
+            <div className="space-y-4">
+          <h1 className="mainheading">CONTACT ME</h1>
+          <h2 className="subheading">Let&apos;s Build Something Great</h2>
+              <p className="para text-justify">
+                Have a project in mind or just want to say hi? I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+              </p>
+            </div>
 
-      <section className="my-8 lg:mx-24 mx-5 grid lg:grid-cols-2 gap-5" suppressHydrationWarning data-aos="fade-up">
-        <div>
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-3" noValidate>
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Full Name"
-              className="input input-bordered w-full"
-              required
-              value={formData.fullName}
-              onChange={handleChange}
-              autoComplete="name"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="input input-bordered w-full"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              autoComplete="email"
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone"
-              className="input input-bordered w-full"
-              required
-              value={formData.phone}
-              onChange={handleChange}
-              pattern="^\+?\d{7,15}$"
-              title="Enter a valid phone number"
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              className="textarea textarea-bordered w-full"
-              required
-              value={formData.message}
-              onChange={handleChange}
-            ></textarea>
-            <button type="submit" className="btn w-full secondery-btn" disabled={status === 'sending'}>
-              {statusMessages[status] || 'Send Message'}
-            </button>
-          </form>
+            <div className="space-y-6">
+              <div className="flex items-center p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
+                <div className="w-12 h-12 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
+                  <FontAwesomeIcon icon={faLocationDot} />
+                </div>
+                <div className="ml-5">
+                  <p className="text-xs font-bold text-[#efb036] uppercase tracking-[0.2em] mb-1">Location</p>
+                  <p className="text-lg font-bold text-[#000248]">Gazipur, Dhaka, Bangladesh</p>
+                </div>
+              </div>
 
-          {status === 'success' && (
-            <div className="alert alert-success my-4">{statusMessages.success}</div>
-          )}
-          {status === 'error' && (
-            <div className="alert alert-error my-4">{statusMessages.error}</div>
-          )}
-        </div>
+              <div className="flex items-center p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
+                <div className="w-12 h-12 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
+                  <FontAwesomeIcon icon={faPhone} />
+                </div>
+                <div className="ml-5">
+                  <p className="text-xs font-bold text-[#efb036] uppercase tracking-[0.2em] mb-1">Contact No</p>
+                  <p className="text-lg font-bold text-[#000248]">+8801620173656</p>
+                </div>
+              </div>
 
-        <div className="space-y-6 lg:ms-12 max-md:mt-5">
-          <h1 className="subheading">Contact information</h1>
+              <div className="flex items-center p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
+                <div className="w-12 h-12 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </div>
+                <div className="ml-5">
+                  <p className="text-xs font-bold text-[#efb036] uppercase tracking-[0.2em] mb-1">Email Details</p>
+                  <p className="text-lg font-bold text-[#000248]">mamun.miah.dev@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div className="flex flex-col text-lg space-y-3">
-            <p className="text-black">
-              <span className="font-medium text-gray text-3xl">
-                <FontAwesomeIcon icon={faLocationDot} className="text-3xl me-2 maincolor" />
-                Address:
-              </span>
-              <br />
-              <span className="ms-10">Gazipur, Dhaka, Bangladesh</span>
-            </p>
-            <p className="text-black">
-              <span className="font-medium text-gray text-3xl">
-                <FontAwesomeIcon icon={faPhone} className="text-3xl me-2 maincolor" />
-                Phone:
-              </span>
-              <br />
-              <span className="ms-11">+8801620173656</span>
-            </p>
-            <p className="text-black">
-              <span className="font-medium text-gray text-3xl">
-                <FontAwesomeIcon icon={faEnvelope} className="text-3xl me-2 maincolor" />
-                Email:
-              </span>
-              <br />
-              <span className="ms-11">mamun.miah.dev@gmail.com</span>
-            </p>
+          {/* Form */}
+          <div className="lg:col-span-7">
+            <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#3b679005] rounded-full -mr-16 -mt-16" />
+              <div className="relative">
+                <h3 className="text-2xl font-bold text-[#000248] mb-8">Quick Message</h3>
+                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                  <div className="grid md:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-slate-500 ml-1">Full Name</label>
+                      <input
+                        type="text"
+                        name="fullName"
+                        placeholder="John Doe"
+                        className="input input-bordered w-full h-14 bg-slate-50 border-slate-200 focus:bg-white transition-all"
+                        required
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        autoComplete="name"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-slate-500 ml-1">Email Address</label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="email@example.com"
+                        className="input input-bordered w-full h-14 bg-slate-50 border-slate-200 focus:bg-white transition-all"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        autoComplete="email"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-500 ml-1">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="+880..."
+                      className="input input-bordered w-full h-14 bg-slate-50 border-slate-200 focus:bg-white transition-all"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      pattern="^\+?\d{7,15}$"
+                      title="Enter a valid phone number"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-500 ml-1">Your Message</label>
+                    <textarea
+                      name="message"
+                      placeholder="Hi, I'd like to talk about..."
+                      className="textarea textarea-bordered w-full h-40 bg-slate-50 border-slate-200 focus:bg-white transition-all resize-none"
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                    ></textarea>
+                  </div>
+                  <button type="submit" className="btn w-full secondery-btn h-16 font-extrabold text-xl rounded-2xl shadow-xl shadow-[#efb03630] hover:scale-[1.02] active:scale-[0.98] transition-all" disabled={status === 'sending'}>
+                    {statusMessages[status] || 'Send Message Now'}
+                  </button>
+                </form>
+
+                {status === 'success' && (
+                  <div className="alert alert-success mt-6 rounded-xl font-bold">{statusMessages.success}</div>
+                )}
+                {status === 'error' && (
+                  <div className="alert alert-error mt-6 rounded-xl font-bold">{statusMessages.error}</div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-
-      <div className="pt-[70px] lg:pt-[100px]">
-        <div className="border-1 border-accent1 w-full">
-          <iframe
-            width="100%"
-            height="400"
-            frameBorder="0"
-            scrolling="no"
-            marginHeight={0}
-            marginWidth={0}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233668.06463178524!2d90.25452953216559!3d23.780752661854898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2sid!4v1739086588617!5m2!1sen!2sid"
-            allowFullScreen
-            aria-hidden="false"
-            tabIndex={0}
-          ></iframe>
-        </div>
       </div>
-    </>
+    </section>
   );
 };
 
 export default Contact;
-// This code defines a Contact component that allows users to send messages via a form.

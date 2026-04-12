@@ -7,38 +7,38 @@ const projects = [
   {
     title: "Hospital Management System",
     tech: "Next.js, TypeScript, Prisma, MySQL",
-    desc: "Role-based hospital system with patient, doctor, appointment, and admin dashboards.",
-    link: "https://github.com/Mamun-Miah/Hospital-Management-System-Next-js",
+    desc: "Boosting operational efficiency by 40% with a secure, role-based healthcare platform featuring doctor dashboards and integrated e-commerce.",
+    link: "https://drsdermabd.com",
   },
   {
-    title: "WordPress JSON → GitHub Sync Plugin",
-    tech: "PHP, REST API, GitHub API",
-    desc: "Automatically sync WordPress posts as JSON files to GitHub for headless CMS.",
-    link: "https://github.com/Mamun-Miah/WordPress-API-Automation-to-Github",
+    title: "ERP Market Management System",
+    tech: "JavaScript, Node.js, PostgreSQL",
+    desc: "Centralizing stock tracking and sales monitoring for local businesses, reducing manual processing time by 40% through automation.",
+    link: "https://erp-2iu5.onrender.com",
   },
   {
-    title: "Next.js Authentication System",
-    tech: "Next.js, Prisma, MySQL, NextAuth",
-    desc: "Secure authentication starter with JWT, protected routes, and DB session handling.",
-    link: "https://github.com/Mamun-Miah/Nextjs15-Next-Auth--Prisma-mysql-setup-example",
+    title: "Corporate Website",
+    tech: "React, Node.js, API Integration",
+    desc: "Accelerating brand presence with 30% faster load times and 40% improved rendering efficiency through optimized architecture.",
+    link: "https://obliqa.com",
   },
   {
-    title: "Facebook Data Extractor Extension",
+    title: "E-commerce Store",
+    tech: "WordPress, WooCommerce, PHP, bKash API",
+    desc: "Achieving 90+ PageSpeed scores and 30% growth in organic visibility while reducing checkout friction through custom API integrations.",
+    link: "https://ksamotorsbd.com",
+  },
+  {
+    title: "LMS Platform",
+    tech: "PHP, Bootstrap, MySQL",
+    desc: "Improving course delivery efficiency by 35% with a custom student dashboard and streamlined enrollment system.",
+    link: "https://skillspark.mapleitfirm.com",
+  },
+  {
+    title: "Lead Generation Automation Tool",
     tech: "JavaScript, Chrome APIs",
-    desc: "Extract phone, email, WhatsApp & website links from Facebook pages automatically.",
+    desc: "Automating lead extraction from social platforms to accelerate sales pipelines and marketing outreach efficiency.",
     link: "https://github.com/Mamun-Miah/FB-Page-Link-Collector-Extension",
-  },
-  {
-    title: "ERP Market System",
-    tech: "PHP, SQL",
-    desc: "Product & sales management, dashboard and business workflow automation.",
-    link: "https://github.com/Mamun-Miah/ERP-Market-Management-System",
-  },
-  {
-    title: "E-commerce & Shopify Website",
-    tech: "Shopify, Liquid, WordPress WooCommerce, PHP",
-    desc: "E-commerce setup, payment gateway, custom theme, product management & order system.",
-    link: "https://mamundev.com",
   },
 ];
 
@@ -59,7 +59,7 @@ const card = {
 
 export default function PortfolioPage() {
   return (
-    <section className="min-h-screen mt-24 py-24 bg-gradient-to-b from-[#afc2d320] to-transparent">
+    <section className="py-24 bg-gradient-to-b from-[#afc2d320] to-transparent" id="portfolio">
       {/* Title */}
       <div className="container mx-auto px-6 lg:px-24 mb-16">
         <motion.div
@@ -90,12 +90,12 @@ export default function PortfolioPage() {
             variants={card}
             whileHover={{ y: -8, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="group relative rounded-2xl bg-white p-[1px]"
+            className="group relative rounded-[2.5rem] bg-white p-[1px]"
           >
             {/* Gradient border on hover */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#3b6790] to-[#efb036] opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-r from-[#3b6790] to-[#efb036] opacity-0 group-hover:opacity-100 transition-opacity" />
 
-            <div className="relative bg-white rounded-2xl p-6 h-full flex flex-col justify-between shadow-lg group-hover:shadow-2xl transition-all">
+            <div className="relative bg-white rounded-[2.5rem] p-8 h-full flex flex-col justify-between shadow-lg group-hover:shadow-2xl transition-all">
               <div>
                 <h3 className="heading3 mb-2 text-[#1b1b1b]">
                   {p.title}

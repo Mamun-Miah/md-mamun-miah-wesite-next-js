@@ -11,12 +11,13 @@ interface HeroProps {
   backgroundImage?: string; 
   calltoAction?: React.ReactNode;
   showTyping?: boolean; // New prop
+  typingText?: string | string[];
 }
 
-const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction, showTyping }) => {
+const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction, showTyping, typingText }) => {
   return (
     <section
-      className="relative hero pt-24 lg:h-[105vh] h-[110vh] pb-24 mt-[-90px] lg:mt-[-100px] overflow-hidden"
+      className="relative hero pt-32 lg:h-[105vh] h-[110vh] pb-32 mt-[-90px] lg:mt-[-100px] overflow-hidden"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div className="relative hero-content flex-col lg:flex-row lg:mt-[130px] z-10 text-gray-200">
@@ -33,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
               <br />
               {showTyping && (
                 <TextType 
-                  text="Expert SEO & Web Development"
+                  text={typingText || "Expert SEO & Web Development"}
                   typingSpeed={75}
                   pauseDuration={1500}
                   showCursor={true}

@@ -2,21 +2,39 @@
 @plugin "daisyui";
 
 
-body{
+body {
     background-color: #fbfbfd;
+    scroll-behavior: smooth;
+    color: #1b1b1b;
 }
+
+/* Glassmorphism */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark-glass {
+    background: rgba(0, 2, 72, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* #button */
 .primary-btn {
-    @apply bg-[#3b6790] text-[#000248] lg:text-xl border-0;
+    @apply bg-[#3b6790] text-white lg:text-xl border-0 shadow-lg hover:shadow-xl transition-all hover:scale-105;
 }
 
 .secondery-btn {
-    @apply bg-[#FFD700] text-[#1b1b1b] lg:text-xl border-0;
+    @apply bg-[#efb036] text-[#1b1b1b] lg:text-xl border-0 shadow-lg hover:shadow-xl transition-all hover:scale-105;
 }
 
 /* main color */
 .maincolor {
-    @apply text-[#FFD700];
+    @apply text-[#3b6790];
 }
 
 /* primary color */
@@ -30,37 +48,37 @@ body{
 
 /* heading */
 .mainheading {
-    @apply text-2xl font-bold mb-3 text-[#FFD700];
+    @apply text-xl font-bold mb-3 text-[#3b6790] tracking-[0.2em] uppercase;
 }
 
 .subheading {
-    @apply text-5xl text-[#000248] font-bold;
+    @apply text-5xl text-[#000248] font-bold tracking-tight lg:leading-[1.1];
 }
 
 /* #heading */
 
 .heading1 {
-    @apply text-7xl text-[#000248];
+    @apply text-7xl text-[#000248] font-bold;
 }
 
 .heading2 {
-    @apply text-5xl text-[#000248];
+    @apply text-5xl text-[#000248] font-bold;
 }
 
 .heading3 {
-    @apply text-4xl text-[#000248];
+    @apply text-4xl text-[#000248] font-bold;
 }
 
 .heading4 {
-    @apply text-3xl text-[#efb036];
+    @apply text-3xl text-[#efb036] font-semibold;
 }
 
 .heading5 {
-    @apply text-2xl text-[#efb036];
+    @apply text-2xl text-[#efb036] font-semibold;
 }
 
 .heading5footer {
-    @apply text-2xl
+    @apply text-2xl font-bold;
 }
 
 .heading6 {
@@ -68,12 +86,12 @@ body{
 }
 
 .para {
-    @apply text-lg text-[#16172ce2];
+    @apply text-lg text-slate-600 leading-relaxed;
 }
 
 /* #footer */
 footer a {
-    @apply text-[1rem] text-[#c8c8c8] hover:text-blue-800;
+    @apply text-[1rem] text-slate-400 hover:text-[#3b6790] transition-colors;
 }
 
 /* about-bg */
@@ -83,7 +101,6 @@ footer a {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
-
 }
 
 .website-bg {
@@ -92,7 +109,6 @@ footer a {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
-
 }
 
 .hero1 {
@@ -107,7 +123,8 @@ footer a {
     grid-column-start: 1;
     grid-row-start: 1;
 }
+
 img {
-    max-width: 200%;
-    
+    max-width: 100%;
+    height: auto;
 }

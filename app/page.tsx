@@ -1,31 +1,30 @@
-// app/page.tsx (Home Page)
-import React from 'react'
 import Hero from './components/Hero';
 import ServicesSection from './components/Services';
-import Technologies from './components/Technologies';
 import Contact from './components/Contact';
 import Portfolio from './components/Portfolio';
+import Technologies from './components/Technologies';
 
 const page = () => {
   return (
     <div>
       <Hero
-        title="Boost Your Business with"
-        description="I'm Mamun Miah, with over 7 years of experience helping businesses grow online through effective SEO and stunning websites. Let’s take your online presence to the next level!"
+        title="Transforming Ideas into Reality"
+        description="I build high-performance, full-stack web applications and deliver data-driven SEO strategies that help businesses scale. From concept to deployment, I focus on measurable results and stunning user experiences."
         backgroundImage="/images/about.avif"
         showTyping={true}  //  Enable animation only on Home
+        typingText={["Custom Web Development", "Performance Optimization", "Strategic SEO", "Full Stack Solutions"]}
         calltoAction={
           <a
-            href="https://mamundev.com/#contact-us"
-            className="btn secondery-btn"
+            href="#contact-us"
+            className="btn secondery-btn font-bold px-8"
           >
-            Get Your Service Now
+            Start Your Project
           </a>
         }
       />
       <ServicesSection />
-      <Portfolio/>
       <Technologies />
+      <Portfolio/>
       <Contact />
     </div>
   )

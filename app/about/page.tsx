@@ -1,24 +1,26 @@
-import React from 'react'
+import React from 'react';
 import Hero from '../components/Hero';
+import AboutContent from '../components/AboutContent';
+
 export const metadata = {
-  title: 'About Us - Mamun Miah',
-  description: `From working with small startups to large enterprises, I've learned how to craft SEO & Website Development strategies that deliver real results.`,
+  title: 'About Me - Mamun Miah | Full Stack Web Developer',
+  description: `Results-driven Full Stack Web Developer with 7+ years of experience building high-performance web applications and strategic SEO solutions.`,
 };
 
 const About = () => {
   return (
-    
-    <Hero
-        title="About Me"
+    <main>
+      <Hero
+        title="About My Mission"
         description="
-            I am a Full Stack Web Developer with over 7 years of experience building scalable, high-performance websites and web applications.
-
-            I specialize in both front-end and back-end development, creating secure, responsive, and user-friendly digital solutions. Beyond development, I integrate advanced SEO strategies directly into the development process ensuring websites are optimized for speed, visibility, and long-term growth from day one.
-
-            I am passionate about modern web technologies, clean code, and continuous learning. I enjoy solving complex problems, improving performance, and aligning technical solutions with real business objectives."
+            I am a results-driven Full Stack Web Developer with 7+ years of hands-on experience architecting and shipping production-grade applications.
+            
+            My goal is simple: to help businesses like yours grow through cutting-edge technology and strategic digital positioning. By combining deep full-stack expertise with an AI-first development mindset, I deliver solutions that are not just visually stunning, but functionally superior and optimized for long-term ROI."
         backgroundImage="images/about-us-bg.png"
       />
-  )
-}
+      <AboutContent />
+    </main>
+  );
+};
 
-export default About
+export default About;
