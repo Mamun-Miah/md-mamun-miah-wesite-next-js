@@ -28,7 +28,9 @@ export const Ourachivment = () => {
             </div>
 
            
-             <Link href="/#contact-us" className='btn secondery-btn px-10 h-16 font-extrabold'>Free SEO Consultation</Link>  
+             <div className="flex justify-center">
+               <Link href="/#contact-us" className='btn secondery-btn btn-wide h-16 font-extrabold'>Free SEO Consultation</Link>  
+             </div>
             
         </section>
   )

@@ -11,8 +11,6 @@ import {
   faMagnifyingGlassChart, 
   faArrowTrendUp, 
   faUsersViewfinder, 
-  faGears,
-  faChartPie,
   faBullseye
 } from '@fortawesome/free-solid-svg-icons';
 import { Ourachivment } from '../components/Ourachivment';
