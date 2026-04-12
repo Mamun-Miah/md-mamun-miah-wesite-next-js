@@ -35,11 +35,11 @@ const Header: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-white rounded-[1.5rem] z-[50] mt-4 w-64 p-4 shadow-2xl border border-slate-100 text-slate-800">
+            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-[#545156] rounded-[1.5rem] z-[50] mt-4 w-64 p-4 shadow-2xl text-slate-800">
               <li className="mb-2"><Navlink href="/">Home</Navlink></li>
               <li className="mb-2">
                 <details>
-                  <summary className="font-bold py-3 text-[#3b6790]">Services</summary>
+                  <summary className="font-bold py-3 text-[#efb036]">Services</summary>
                   <ul className="pl-4 mt-2 space-y-2 border-l-2 border-slate-100">
                     <li><Navlink href="/website-development">Website Development</Navlink></li>
                     <li><Navlink href="/seo-service">SEO Service</Navlink></li>
