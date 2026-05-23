@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const runtime = 'edge';
 
 const SYSTEM_MESSAGE = {
