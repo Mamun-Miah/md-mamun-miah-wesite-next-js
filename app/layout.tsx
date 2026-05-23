@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from "./components/Footer";
 import Aosanimation from "./components/Aosanimation";
 import SmoothScroll from './components/SmoothScroll';
+import ChatBot from "./components/ChatBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   title: "Mamun Miah",
   description: "I'm Mamun Miah, with over 7 years of experience helping businesses grow online through effective SEO and stunning websites.",
   icons: {
-    icon: '/favicon.svg',  
+    icon: '/favicon.svg',
   },
 };
 
@@ -32,19 +33,20 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <link
-          rel="preload"
-          as="image"
-          href="/images/about.avif"
-          fetchPriority="high"
-        />
+        rel="preload"
+        as="image"
+        href="/images/about.avif"
+        fetchPriority="high"
+      />
       <body
-        className={ `${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      
+
         <Header />
-        <Aosanimation/>
+        <Aosanimation />
         <SmoothScroll />
         {children}
+        <ChatBot />
         <Footer />
       </body>
     </html>
