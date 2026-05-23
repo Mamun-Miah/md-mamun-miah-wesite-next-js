@@ -146,7 +146,7 @@ export default function Page() {
                 .chat-widget {
                     position: fixed;
                     bottom: 88px; right: 24px; z-index: 999;
-                    width: 360px; height: 540px;
+                    width: 460px; height: 540px;
                     background: #fff;
                     border: 1px solid #e5e7eb; border-radius: 20px;
                     display: flex; flex-direction: column;
