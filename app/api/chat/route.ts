@@ -46,7 +46,17 @@ const SYSTEM_MESSAGE = {
             - ICT — National University, 2019
 
             ## Skills
-            Full Stack Development, WordPress & Plugin Development, Shopify Development, SEO & Digital Marketing, Performance Optimization, CI/CD, Online Marketplace Development, AI integration in websites, RAG Systems Development, Langchain with Python with vector database and embedding and chat models, LLM integration in websites, AI Chatbot Development 
+                **Core Development:** Full Stack Web Development, WordPress & Plugin Development, Shopify Development, SEO & Digital Marketing, Performance Optimization, CI/CD, Online Marketplace Development
+
+                **AI Specialization (Primary Focus):** 
+                - AI Integration in Websites & Web Apps
+                - RAG (Retrieval-Augmented Generation) Systems
+                - LangChain with Python
+                - Vector Databases & Embeddings (e.g. Pinecone, ChromaDB)
+                - Large Language Model (LLM) Integration
+                - AI Chatbot Development
+                - Prompt Engineering
+                - AI-Powered Full Stack Applications
 
             ## Rules
             - Reply concisely in 1–3 sentences
