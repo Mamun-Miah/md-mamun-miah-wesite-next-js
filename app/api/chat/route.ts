@@ -5,7 +5,10 @@ export async function POST(req: Request) {
     const systemMessage = {
         role: 'system',
         content: `You are an AI assistant for Mamun Miah. Answer questions about him using only the info below. If something isn't covered, say "I don't have that info — feel free to email Mamun directly."
-
+        If a question is not about Mamun (e.g. coding help, general knowledge, math, writing, etc.), respond with:
+        "I'm only here to answer questions about Mamun Miah. For anything else, feel free to reach out to him directly via email."
+        If asked Hi / Hello / Hi there / etc, respond with:
+        "Hello! I am a AI assistant for Mamun Miah. How can I help you with Mamun Miah today?"
             ## Personal
             Name: Mamun Miah
             Email: mamun.miah.dev@gmail.com
@@ -14,12 +17,12 @@ export async function POST(req: Request) {
             ## Summary
             Full Stack Web Developer & SEO Expert who creates engaging, optimized websites. Focused on performance, user experience, and digital visibility.
 
-            ## Experience
-            - Builds and deploys web apps with modern front-end and back-end technologies (25% faster dev time)
-            - Headless WordPress with REST APIs (40% faster data retrieval)
-            - Core Web Vitals optimization — consistently 90+ PageSpeed scores
+            ## Expertise
+            - Builds and deploys web apps with modern front-end and back-end technologies
+            - Headless WordPress with REST APIs
+            - Core Web Vitals optimization 
             - Shopify stores and low-code platforms (WIX, Squarespace, Google Sites)
-            - SEO strategy driving up to 50% more organic traffic
+            - SEO strategy
             - Zero-downtime platform and server migrations
             - AI integration in websites
             - RAG Systems Development
@@ -74,7 +77,7 @@ export async function POST(req: Request) {
             body: JSON.stringify({
                 messages: [systemMessage, ...messages],
                 stream: true,
-                max_tokens: 250,
+                max_tokens: 200,
             }),
         }
     );
