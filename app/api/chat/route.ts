@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const runtime = 'edge';
 
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
+
 const SYSTEM_MESSAGE = {
     role: 'system',
     content: `You are an AI assistant for Mamun Miah. Answer questions about him using only the info below. If something isn't covered, say "I don't have that info — feel free to email Mamun directly."
@@ -75,7 +82,6 @@ const SYSTEM_MESSAGE = {
 
 const MODEL = '@cf/meta/llama-3-8b-instruct';
 
-// Add as many accounts as you want here
 const CF_ACCOUNTS = [
     { id: process.env.CF_ACCOUNT_ID, token: process.env.CF_API_TOKEN },
     { id: process.env.CF_ACCOUNT_ID1, token: process.env.CF_API_TOKEN1 },
@@ -99,8 +105,6 @@ async function callCF(accountId: string, token: string, messages: object[]): Pro
         }
     );
 
-    // 429 = neurons exhausted / rate limited
-    // 403 = quota exceeded or bad token
     if (res.status === 429 || res.status === 403 || !res.ok) {
         throw new Error(`CF_ERROR:${res.status}`);
     }
@@ -110,6 +114,11 @@ async function callCF(accountId: string, token: string, messages: object[]): Pro
 
 export async function POST(req: Request) {
     const { messages } = await req.json();
+
+    // Extract latest user question for logging
+    const lastUserMsg = [...messages].reverse().find((m: any) => m.role === 'user');
+    const userQuestion = lastUserMsg?.content ?? '';
+
     const payload = [SYSTEM_MESSAGE, ...messages];
 
     let response: Response | null = null;
@@ -146,8 +155,10 @@ export async function POST(req: Request) {
         });
     }
 
-    // Stream the successful response
+    // Stream response and accumulate full answer for logging
     const encoder = new TextEncoder();
+    let fullAnswer = '';
+
     const stream = new ReadableStream({
         async start(controller) {
             const reader = response!.body!.getReader();
@@ -165,16 +176,25 @@ export async function POST(req: Request) {
                 for (const line of lines) {
                     if (!line.startsWith('data: ')) continue;
                     const data = line.slice(6).trim();
+
                     if (data === '[DONE]') {
+                        // Save question + answer to Supabase
+                        await supabase.from('chat_logs').insert({
+                            question: userQuestion,
+                            answer: fullAnswer,
+                        });
+
                         controller.enqueue(encoder.encode(`e:{"finishReason":"stop","usage":{"promptTokens":0,"completionTokens":0}}\n`));
                         controller.enqueue(encoder.encode(`d:{"finishReason":"stop","usage":{"promptTokens":0,"completionTokens":0}}\n`));
                         controller.close();
                         return;
                     }
+
                     try {
                         const parsed = JSON.parse(data);
                         const token = parsed.response ?? '';
                         if (token) {
+                            fullAnswer += token; // accumulate for logging
                             controller.enqueue(encoder.encode(`0:${JSON.stringify(token)}\n`));
                         }
                     } catch {
