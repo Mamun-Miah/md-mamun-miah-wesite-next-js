@@ -58,6 +58,13 @@ Location: Dhaka, Bangladesh
 Summary: Full Stack Web Developer & SEO Expert who creates engaging, optimized websites. Focused on performance, user experience, and digital visibility.`
   },
   {
+    category: "about_me",
+    content: `## About Me
+- Results-driven Full Stack Web Developer with 7+ years of hands-on experience architecting and shipping production-grade web applications.
+- Focuses on the modern JavaScript/TypeScript ecosystem (React, Next.js, Node.js) and cloud infrastructure (AWS, Docker, Linux).
+- Experience spanning various sectors, including building E-commerce stores with low friction, secure Hospital Management Systems (HMS), scalable SaaS portals, and corporate websites.`
+  },
+  {
     category: "expertise",
     content: `## Expertise
 - Builds and deploys web apps with modern front-end and back-end technologies
@@ -113,15 +120,6 @@ Full Stack Web Development, WordPress & Plugin Development, Shopify Development,
 - AI Chatbot Development
 - Prompt Engineering
 - AI-Powered Full Stack Applications`
-  },
-  {
-    category: "rules",
-    content: `## Chatbot Rules
-- Reply concisely in 1–3 sentences
-- No greetings, filler phrases, or restating the question
-- For projects, include the live URL when relevant
-- For contact, lead with email: mamun.miah.dev@gmail.com
-- Never invent info not listed above`
   },
   {
     category: "education",

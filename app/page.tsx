@@ -12,7 +12,7 @@ const page = () => {
         description="I build high-performance, full-stack web applications and deliver data-driven SEO strategies that help businesses scale. From concept to deployment, I focus on measurable results and stunning user experiences."
         backgroundImage="/images/about.avif"
         showTyping={true}  //  Enable animation only on Home
-        typingText={["Custom Web Development", "Performance Optimization", "Strategic SEO", "Full Stack Solutions"]}
+        typingText={["AI Integration, PEFT, RAG", "Custom Web Development", "Performance Optimization", "Strategic SEO", "Full Stack Solutions"]}
         calltoAction={
           <a
             href="#contact-us"
@@ -24,7 +24,7 @@ const page = () => {
       />
       <ServicesSection />
       <Technologies />
-      <Portfolio/>
+      <Portfolio />
       <Contact />
     </div>
   )
