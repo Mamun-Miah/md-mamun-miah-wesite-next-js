@@ -10,77 +10,21 @@ const supabase = createClient(
 
 const SYSTEM_MESSAGE = {
     role: 'system',
-    content: `You are an AI assistant for Mamun Miah. Answer questions about him using only the info below. If something isn't covered, say "I don't have that info — feel free to email Mamun directly."
+    content: `You are an AI assistant for Mamun Miah. Answer questions about him using only the context below. If something isn't covered, say "I don't have that info — feel free to email Mamun directly."
         If a question is not about Mamun (e.g. coding help, general knowledge, math, writing, etc.), respond with:
         "I'm only here to answer questions about Mamun Miah. For anything else, feel free to reach out to him directly via email."
         If asked Hi / Hello / Hi there / etc, respond with:
         "Hello! I am a AI assistant for Mamun Miah. How can I help you with Mamun Miah today?"
-            ## Personal
-            Name: Mamun Miah
-            Email: mamun.miah.dev@gmail.com
-            LinkedIn: linkedin.com/in/mamun-miah-dev
-
-            ## Summary
-            Full Stack Web Developer & SEO Expert who creates engaging, optimized websites. Focused on performance, user experience, and digital visibility.
-
-            ## Expertise
-            - Builds and deploys web apps with modern front-end and back-end technologies
-            - Headless WordPress with REST APIs
-            - Core Web Vitals optimization 
-            - Shopify stores and low-code platforms (WIX, Squarespace, Google Sites)
-            - SEO strategy
-            - Zero-downtime platform and server migrations
-            - AI integration in websites
-            - RAG Systems Development
-            - Langchain with Python with vector database and embedding and chat models 
-            - LLM integration in websites
-            - AI Chatbot Development 
-
-            ## Tech Stack
-            Frontend: React, Next.js, TypeScript, HTML, CSS3, Tailwind CSS, Bootstrap
-            Backend: Node.js, PHP, Laravel, Prisma, REST APIs
-            Databases: MySQL, PostgreSQL, MongoDB
-            CMS: WordPress (custom themes & plugins), Headless WordPress, Shopify
-            Tools: Git, GitHub, Docker, Vercel, JWT Auth, WooCommerce
-            Other: SEO, Digital Marketing, Performance Optimization, CI/CD
-
-            ## Projects
-            Please visit https://github.com/Mamun-Miah for more information.
-
-            ## Certifications & Courses
-            - Professional Digital Marketing & SEO — Creative IT Institute, 2022
-            - Full Stack Web Development (Level 1 & 2) — Programming Hero, 2024 (JS, Node, React, Next.js, MongoDB, MySQL, PostgreSQL, Docker)
-            - Laravel — Laracast, 2022
-            - ICT — National University, 2019
-
-            ## Skills
-                **Core Development:** Full Stack Web Development, WordPress & Plugin Development, Shopify Development, SEO & Digital Marketing, Performance Optimization, CI/CD, Online Marketplace Development
-
-                **AI Specialization (Primary Focus):** 
-                - AI Integration in Websites & Web Apps
-                - RAG (Retrieval-Augmented Generation) Systems
-                - LangChain with Python
-                - Vector Databases & Embeddings (e.g. Pinecone, ChromaDB)
-                - Large Language Model (LLM) Integration
-                - AI Chatbot Development
-                - Prompt Engineering
-                - AI-Powered Full Stack Applications
-
-            ## Rules
-            - Reply concisely in 1–3 sentences
-            - No greetings, filler phrases, or restating the question
-            - For projects, include the live URL when relevant
-            - For contact, lead with email: mamun.miah.dev@gmail.com
-            - Never invent info not listed above
-
-            ## Location
-            - I lived in Dhaka, Bangladesh
-
-            ## Education
-            - I completed MBA in Accounting from National University`,
+        If asked what's your name? respond with: "I’m the AI assistant for Mamun Miah’s website."
+        Rules:
+        - Reply concisely in 1–3 sentences
+        - No greetings, filler phrases, or restating the question
+        - For projects, include the live URL when relevant
+        - For contact, lead with email: mamun.miah.dev@gmail.com
+        - Never invent info not listed in the context`,
 } as const;
 
-const MODEL = '@cf/meta/llama-3-8b-instruct';
+const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
 
 const CF_ACCOUNTS = [
     { id: process.env.CF_ACCOUNT_ID, token: process.env.CF_API_TOKEN },
@@ -100,7 +44,7 @@ async function callCF(accountId: string, token: string, messages: object[]): Pro
             body: JSON.stringify({
                 messages,
                 stream: true,
-                max_tokens: 200,
+                max_tokens: 300,
             }),
         }
     );
@@ -111,15 +55,84 @@ async function callCF(accountId: string, token: string, messages: object[]): Pro
 
     return res;
 }
+async function getEmbeddingCF(accountId: string, token: string, text: string): Promise<number[]> {
+    const res = await fetch(
+        `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/@cf/baai/bge-m3`,
+        {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                text: [text],
+            }),
+        }
+    );
+
+    if (res.status === 429 || res.status === 403 || !res.ok) {
+        throw new Error(`CF_EMBEDDING_ERROR:${res.status}`);
+    }
+
+    const data = await res.json();
+    if (!data.success || !data.result?.data?.[0]) {
+        throw new Error(`CF_EMBEDDING_FAILED`);
+    }
+
+    return data.result.data[0];
+}
 
 export async function POST(req: Request) {
     const { messages } = await req.json();
 
-    // Extract latest user question for logging
+    // Extract latest user question for logging and retrieval
     const lastUserMsg = [...messages].reverse().find((m: any) => m.role === 'user');
     const userQuestion = lastUserMsg?.content ?? '';
 
-    const payload = [SYSTEM_MESSAGE, ...messages];
+    // 1. Generate query embedding from user question
+    let queryEmbedding: number[] | null = null;
+    for (const account of CF_ACCOUNTS) {
+        if (!account.id || !account.token) continue;
+        try {
+            queryEmbedding = await getEmbeddingCF(account.id, account.token, userQuestion);
+            break; // success
+        } catch (err: any) {
+            console.warn(`CF embedding account ${account.id} failed (${err.message}), trying next...`);
+        }
+    }
+
+    // 2. Fetch matched documents from Supabase vector search
+    let contextText = '';
+    if (queryEmbedding) {
+        try {
+            const { data: matchedDocs, error } = await supabase.rpc('match_documents', {
+                query_embedding: queryEmbedding,
+                match_threshold: 0.3, // search similarity threshold
+                match_count: 3,       // number of documents to retrieve
+            });
+
+            if (!error && matchedDocs && matchedDocs.length > 0) {
+                contextText = matchedDocs.map((doc: any) => doc.content).join('\n\n');
+            } else if (error) {
+                console.error('Supabase match_documents RPC error:', error.message);
+            }
+        } catch (err) {
+            console.error('Error fetching matched documents:', err);
+        }
+    }
+
+    // 3. Dynamically construct system message with retrieved context
+    let systemContent = SYSTEM_MESSAGE.content;
+    if (contextText) {
+        systemContent += `\n\nRetrieved Context:\n${contextText}`;
+    }
+
+    const dynamicSystemMessage = {
+        role: 'system',
+        content: systemContent,
+    };
+
+    const payload = [dynamicSystemMessage, ...messages];
 
     let response: Response | null = null;
 
