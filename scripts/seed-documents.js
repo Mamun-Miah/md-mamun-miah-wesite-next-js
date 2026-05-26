@@ -122,6 +122,25 @@ Full Stack Web Development, WordPress & Plugin Development, Shopify Development,
 - AI-Powered Full Stack Applications`
   },
   {
+    category: "faq",
+    content: `## Frequently Asked Questions (FAQ)
+
+Q: How can I hire you?
+A: You can hire Mamun Miah by emailing him at mamun.miah.dev@gmail.com, calling/messaging on WhatsApp at +8801620173656, or by filling out the quick contact form on his website's contact section.
+
+Q: What are your rates or pricing?
+A: Pricing is project-based and depends entirely on the project's scope, tech stack, and complexity. Contact Mamun with your project details to get a custom quote.
+
+Q: What services do you provide?
+A: Mamun provides Custom Full-Stack Web Development, Conversion-Ready SEO Optimization, Headless WordPress integrations, Shopify and low-code solutions, AI-integration in websites, and Strategic Tech Consulting.
+
+Q: What is your location and working model?
+A: Mamun is located in Gazipur, Dhaka, Bangladesh. He works remotely and collaborates with clients worldwide.
+
+Q: Are you open to full-time roles or freelance projects?
+A: Yes, Mamun is open to contract work, freelance projects, and full-time Remote Software Developer / SEO Engineer opportunities.`
+  },
+  {
     category: "education",
     content: `## Education
 - I completed MBA in Accounting from National University`
