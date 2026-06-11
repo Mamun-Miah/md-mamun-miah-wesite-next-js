@@ -4,7 +4,7 @@ import AboutContent from '../components/AboutContent';
 
 export const metadata = {
   title: 'About Me - Mamun Miah | Full Stack Web Developer',
-  description: `Results-driven Full Stack Web Developer with 7+ years of experience building high-performance web applications and strategic SEO solutions.`,
+  description: `Results-driven Full Stack Web Developer with 7+ years of experience building high-performance web applications, scalable backend systems, and modern SaaS solutions.`,
 };
 
 const About = () => {

@@ -22,7 +22,7 @@ const Footer = () => {
               <Image src="/images/logo.svg" alt="Mamun Miah Logo" width={160} height={40} className="rounded-lg brightness-0 invert" />
             </Link>
             <p className="text-slate-400 text-lg leading-relaxed max-w-sm">
-              Helping businesses grow through high-performance web development and strategic SEO. Delivering digital excellence with an AI-first mindset.
+              Helping businesses scale through custom full stack web development and modern cloud solutions. Delivering digital excellence with an AI-first mindset.
             </p>
             <div className="flex space-x-4">
               {[
@@ -65,7 +65,7 @@ const Footer = () => {
           <div className="lg:col-span-3 space-y-6">
             <h3 className="text-xl font-bold tracking-wider uppercase text-[#efb036]">Specialties</h3>
             <ul className="space-y-4">
-              {['Custom Web Apps', 'Strategic SEO', 'Full Stack Solutions', 'Cloud Deployment'].map((service) => (
+              {['Custom Web Apps', 'Backend & APIs', 'AI & LLM Engineering', 'Technical SEO', 'Cloud Deployment'].map((service) => (
                 <li key={service} className="text-slate-400 cursor-default hover:text-white transition-colors">
                   {service}
                 </li>

@@ -9,10 +9,10 @@ const page = () => {
     <div>
       <Hero
         title="Transforming Ideas into Reality"
-        description="I build high-performance, full-stack web applications and deliver data-driven SEO strategies that help businesses scale. From concept to deployment, I focus on measurable results and stunning user experiences."
+        description="I build high-performance, scalable web applications and SaaS solutions that help businesses grow. From custom frontend interfaces to secure backend databases, I focus on robust engineering and seamless user experiences."
         backgroundImage="/images/about.avif"
         showTyping={true}  //  Enable animation only on Home
-        typingText={["AI Integration, PEFT, RAG", "Custom Web Development", "Performance Optimization", "Strategic SEO", "Full Stack Solutions"]}
+        typingText={["AI Integration, PEFT, RAG", "Custom Web Development", "Performance Optimization", "Robust Backend APIs", "Full Stack Solutions"]}
         calltoAction={
           <a
             href="#contact-us"

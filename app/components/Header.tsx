@@ -41,8 +41,10 @@ const Header: React.FC = () => {
                 <details>
                   <summary className="font-bold py-3 text-[#efb036]">Services</summary>
                   <ul className="pl-4 mt-2 space-y-2 border-l-2 border-slate-100">
-                    <li><Navlink href="/website-development">Website Development</Navlink></li>
-                    <li><Navlink href="/seo-service">SEO Service</Navlink></li>
+                    <li className="mb-1"><Navlink href="/website-development">Website Development</Navlink></li>
+                    <li className="mb-1"><Navlink href="/backend-development">Backend Dev</Navlink></li>
+                    <li className="mb-1"><Navlink href="/ai-development">AI & LLM Engineering</Navlink></li>
+                    <li><Navlink href="/seo-service">Technical SEO</Navlink></li>
                   </ul>
                 </details>
               </li>
@@ -91,7 +93,9 @@ const Header: React.FC = () => {
                   </summary>
                   <ul className="p-3 z-[50] mt-4 bg-white rounded-2xl shadow-2xl border border-slate-100 text-slate-800 w-56">
                     <li className="mb-1"><Link href="/website-development" className="hover:bg-slate-50 py-3 rounded-xl font-medium">Website Development</Link></li>
-                    <li><Link href="/seo-service" className="hover:bg-slate-50 py-3 rounded-xl font-medium">SEO Service</Link></li>
+                    <li className="mb-1"><Link href="/backend-development" className="hover:bg-slate-50 py-3 rounded-xl font-medium">Backend Dev</Link></li>
+                    <li className="mb-1"><Link href="/ai-development" className="hover:bg-slate-50 py-3 rounded-xl font-medium">AI & LLM Engineering</Link></li>
+                    <li><Link href="/seo-service" className="hover:bg-slate-50 py-3 rounded-xl font-medium">Technical SEO</Link></li>
                   </ul>
                 </details>
               </li>

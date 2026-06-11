@@ -50,100 +50,114 @@ const chunks = [
   {
     category: "personal",
     content: `## Personal & Summary
-Name: Mamun Miah
-Email: mamun.miah.dev@gmail.com
-LinkedIn: linkedin.com/in/mamun-miah-dev
-Location: Dhaka, Bangladesh
+      Name: Mamun Miah
+      Email: mamun.miah.dev@gmail.com
+      LinkedIn: linkedin.com/in/mamun-miah-dev
+      Location: Dhaka, Bangladesh
 
-Summary: Full Stack Web Developer & SEO Expert who creates engaging, optimized websites. Focused on performance, user experience, and digital visibility.`
+      Summary: Full Stack Web Developer who builds high-performance web applications, with additional expertise in Technical SEO and page speed optimization.`
   },
   {
     category: "about_me",
     content: `## About Me
-- Results-driven Full Stack Web Developer with 7+ years of hands-on experience architecting and shipping production-grade web applications.
-- Focuses on the modern JavaScript/TypeScript ecosystem (React, Next.js, Node.js) and cloud infrastructure (AWS, Docker, Linux).
-- Experience spanning various sectors, including building E-commerce stores with low friction, secure Hospital Management Systems (HMS), scalable SaaS portals, and corporate websites.`
+        - Results-driven Full Stack Web Developer with 7+ years of hands-on experience architecting and shipping production-grade web applications.
+        - Focuses on the modern JavaScript/TypeScript ecosystem (React, Next.js, Node.js) and cloud infrastructure (AWS, Docker, Linux).
+        - Experience spanning various sectors, including building E-commerce stores with low friction, secure Hospital Management Systems (HMS), scalable SaaS portals, and corporate websites.`
   },
   {
     category: "expertise",
     content: `## Expertise
-- Builds and deploys web apps with modern front-end and back-end technologies
-- Headless WordPress with REST APIs
-- Core Web Vitals optimization 
-- Shopify stores and low-code platforms (WIX, Squarespace, Google Sites)
-- SEO strategy
-- Zero-downtime platform and server migrations
-- AI integration in websites
-- RAG Systems Development
-- Langchain with Python with vector database and embedding and chat models 
-- LLM integration in websites
-- AI Chatbot Development`
+      - Builds and deploys web apps with modern front-end and back-end technologies
+      - Headless WordPress with REST APIs
+      - Core Web Vitals optimization 
+      - Shopify stores and low-code platforms (WIX, Squarespace, Google Sites)
+      - Backend & API Development
+      - Technical SEO & Site Optimization (Additional service)
+      - Zero-downtime platform and server migrations
+      - AI integration in websites
+      - RAG Systems Development
+      - Langchain with Python with vector database and embedding and chat models 
+      - LLM integration in websites
+      - AI Chatbot Development`
   },
   {
     category: "tech_stack",
     content: `## Tech Stack
-- Frontend: React, Next.js, TypeScript, HTML, CSS3, Tailwind CSS, Bootstrap
-- Backend: Node.js, PHP, Laravel, Prisma, REST APIs
-- Databases: MySQL, PostgreSQL, MongoDB
-- CMS: WordPress (custom themes & plugins), Headless WordPress, Shopify
-- Tools: Git, GitHub, Docker, Vercel, JWT Auth, WooCommerce
-- Other: SEO, Digital Marketing, Performance Optimization, CI/CD`
+        - Frontend: React, Next.js, TypeScript, HTML, CSS3, Tailwind CSS, Bootstrap
+        - Backend: Node.js, PHP, Laravel, Prisma, REST APIs
+        - Databases: MySQL, PostgreSQL, MongoDB
+        - CMS: WordPress (custom themes & plugins), Headless WordPress, Shopify
+        - Tools: Git, GitHub, Docker, Vercel, JWT Auth, WooCommerce
+        - Other: API Design, System Architecture, Performance Optimization, CI/CD`
   },
   {
     category: "projects",
     content: `## Projects
-Please visit https://github.com/Mamun-Miah for more information.`
+        Please visit https://github.com/Mamun-Miah for more information.`
   },
   {
     category: "certifications",
     content: `## Certifications & Courses
-- Professional Digital Marketing & SEO — Creative IT Institute, 2022
-- Full Stack Web Development (Level 1 & 2) — Programming Hero, 2024 (JS, Node, React, Next.js, MongoDB, MySQL, PostgreSQL, Docker)
-- Laravel — Laracast, 2022
-- ICT — National University, 2019`
+      - Professional Digital Marketing & SEO — Creative IT Institute, 2022
+      - Full Stack Web Development (Level 1 & 2) — Programming Hero, 2024 (JS, Node, React, Next.js, MongoDB, MySQL, PostgreSQL, Docker)
+      - Laravel — Laracast, 2022
+      - ICT — National University, 2019`
   },
   {
     category: "skills",
     content: `## Core Development Skills
-Full Stack Web Development, WordPress & Plugin Development, Shopify Development, SEO & Digital Marketing, Performance Optimization, CI/CD, Online Marketplace Development`
+          - Full Stack Web Development
+          - WordPress & Plugin Development
+          - Shopify Development
+          - API Development & Database Design
+          - Performance Optimization & Technical SEO
+          - CI/CD
+          - Online Marketplace Development`
   },
   {
     category: "ai_specialization",
     content: `## AI Specialization Skills (Primary Focus)
-- AI Integration in Websites & Web Apps
-- RAG (Retrieval-Augmented Generation) Systems
-- LangChain with Python
-- PEFT: LoRA, QLoRA
-- Fine-tuning Open-Source LLMs
-- Vector Databases & Embeddings (e.g. Pinecone, ChromaDB)
-- Large Language Model (LLM) Integration
-- AI Chatbot Development
-- Prompt Engineering
-- AI-Powered Full Stack Applications`
+      - AI Integration in Websites & Web Apps
+      - RAG (Retrieval-Augmented Generation) Systems
+      - LangChain — LLM orchestration, chains, tools, and memory
+      - LangGraph — stateful multi-actor agent graphs with conditional routing
+      - Ollama — local open-source LLM deployment (Llama3, Mistral, Gemma)
+      - Fine-Tuning — PEFT, LoRA, QLoRA for domain-specific model training
+      - LlamaIndex — document indexing, query engines, data loaders for LLMs
+      - DeepAgent — autonomous AI agent development with tool calling and reasoning
+      - HuggingFace — transformers, tokenizers, datasets, and model hub integration
+      - Vector Databases & Embeddings (Pinecone, ChromaDB, Supabase pgvector)
+      - Large Language Model (LLM) Integration (GPT-4, Claude, Gemini, open-source)
+      - AI Chatbot Development
+      - Prompt Engineering
+      - AI-Powered Full Stack Applications`
   },
   {
     category: "faq",
     content: `## Frequently Asked Questions (FAQ)
 
-Q: How can I hire you?
-A: You can hire Mamun Miah by emailing him at mamun.miah.dev@gmail.com, calling/messaging on WhatsApp at +8801620173656, or by filling out the quick contact form on his website's contact section.
+        Q: How can I hire you?
+        A: You can hire Mamun Miah by emailing him at mamun.miah.dev@gmail.com, calling/messaging on WhatsApp at +8801620173656, or by filling out the quick contact form on his website's contact section.
 
-Q: What are your rates or pricing?
-A: Pricing is project-based and depends entirely on the project's scope, tech stack, and complexity. Contact Mamun with your project details to get a custom quote.
+        Q: What are your rates or pricing?
+        A: Pricing is project-based and depends entirely on the project's scope, tech stack, and complexity. Contact Mamun with your project details to get a custom quote.
 
-Q: What services do you provide?
-A: Mamun provides Custom Full-Stack Web Development, Conversion-Ready SEO Optimization, Headless WordPress integrations, Shopify and low-code solutions, AI-integration in websites, and Strategic Tech Consulting.
+        Q: What services do you provide?
+        A: Mamun provides Custom Full-Stack Web Development, Robust Backend & API Development, Technical SEO & Page Speed Optimization, Headless WordPress integrations, Shopify and low-code solutions, AI-integration in websites, and Strategic Tech Consulting.
 
-Q: What is your location and working model?
-A: Mamun is located in Gazipur, Dhaka, Bangladesh. He works remotely and collaborates with clients worldwide.
+        Q: Do you or U know about tech?
+        A: Mamun specializes in the modern JavaScript/TypeScript ecosystem (React, Next.js, Node.js), PHP (Laravel, custom WordPress themes/plugins, Headless WordPress REST APIs), databases (MySQL, PostgreSQL, MongoDB), and cloud/deployment tools (AWS, Docker, Linux, Vercel). He is also highly experienced with AI integrations (RAG, LangChain, vector databases), performance optimization, and technical SEO.
 
-Q: Are you open to full-time roles or freelance projects?
-A: Yes, Mamun is open to contract work, freelance projects, and full-time Remote Software Developer / SEO Engineer opportunities.`
+        Q: What is your location and working model?
+        A: Mamun is located in Gazipur, Dhaka, Bangladesh. He works remotely and collaborates with clients worldwide.
+
+        Q: Are you open to full-time roles or freelance projects?
+        A: Yes, Mamun is open to contract work, freelance projects, and full-time Remote Software Developer / Full Stack Engineer opportunities.`
   },
   {
     category: "education",
     content: `## Education
-- I completed MBA in Accounting from National University`
+      - I completed MBA in Accounting from National University`
   }
 ];
 

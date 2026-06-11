@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mamun Miah",
-  description: "I'm Mamun Miah, with over 7 years of experience helping businesses grow online through effective SEO and stunning websites.",
+  title: "Mamun Miah | Full Stack Web Developer",
+  description: "I'm Mamun Miah, a results-driven Full Stack Web Developer with over 7 years of experience building high-performance, scalable web applications and SaaS solutions.",
   icons: {
     icon: '/favicon.svg',
   },

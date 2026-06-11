@@ -43,7 +43,7 @@ const AboutContent = () => {
                   </div>
                   <div className="ml-5">
                     <h4 className="text-xl font-bold text-[#000248]">High Performance</h4>
-                    <p className="text-slate-500">Optimizing core vitals for maximum speed and SEO visibility.</p>
+                    <p className="text-slate-500">Optimizing core vitals for maximum speed and user experience.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -153,10 +153,10 @@ const AboutContent = () => {
               <div className="absolute inset-0 bg-[#3b679020] rounded-[2.5rem] rotate-3" />
               <div className="relative bg-[#3b679010] h-full min-h-[400px] rounded-[2.5rem] border border-slate-100 p-12 flex flex-col justify-center items-center text-center overflow-hidden">
                  <div className="absolute top-0 left-0 w-full h-1 bg-[#efb036]" />
-                 <h4 className="text-3xl font-bold text-[#000248] mb-6">Let&apos;s Transform Your Vision</h4>
-                 <p className="para mb-10">
-                   Whether you need a full-scale web application or a strategic SEO overhaul, I am here to help you dominate the digital landscape.
-                 </p>
+                  <h4 className="text-3xl font-bold text-[#000248] mb-6">Let&apos;s Transform Your Vision</h4>
+                  <p className="para mb-10">
+                    Whether you need a full-scale web application or a scalable backend integration, I am here to help you build reliable and modern digital solutions.
+                  </p>
                  <Link href="/#contact-us" className="btn secondery-btn px-10 h-16 font-bold text-xl flex items-center justify-center">
                    Work With Me
                  </Link>

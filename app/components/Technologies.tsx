@@ -77,14 +77,14 @@ const techCategories = [
     ]
   },
   {
-    title: "Digital Strategy & SEO",
+    title: "Technical SEO & Speed",
     icon: faMagnifyingGlass,
     color: "from-rose-500/10 to-transparent",
     techs: [
       { name: "Core Web Vitals", icon: faMagnifyingGlass },
-      { name: "PageSpeed", icon: faMagnifyingGlass },
-      { name: "Technical SEO", icon: faMagnifyingGlass },
-      { name: "Search Console", icon: faMagnifyingGlass }
+      { name: "PageSpeed Optimization", icon: faMagnifyingGlass },
+      { name: "Technical SEO Audits", icon: faMagnifyingGlass },
+      { name: "Structured Schema Markup", icon: faCode }
     ]
   },
   {

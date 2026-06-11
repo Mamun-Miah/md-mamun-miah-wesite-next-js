@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptopCode, faHeadset } from '@fortawesome/free-solid-svg-icons';
+import { faLaptopCode, faHeadset, faServer, faBrain } from '@fortawesome/free-solid-svg-icons';
 import { faSearchengin } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 // Define the props interface for the Card component
@@ -23,16 +23,21 @@ const SingleServiceCard : React.FC<CardProps>= ({
   
 }) => {
   const getIcon = () => {
-    switch (image) {
-      case 'fa-solid fa-laptop-code text-[100px] text-[#48CDA0]':
-        return <FontAwesomeIcon icon={faLaptopCode} className="my-2 text-[100px] text-[#48CDA0]" />;
-      case 'fa-brands fa-searchengin text-[100px] text-[#FF8000]':
-        return <FontAwesomeIcon icon={faSearchengin} className="my-2 text-[100px] text-[#FF8000]" />;
-      case 'fa-solid fa-headset text-[100px] text-[#E6BC13]':
-        return <FontAwesomeIcon icon={faHeadset} className="my-2 text-[100px] text-[#E6BC13]" />;
-      default:
-        return null;
-    }
+    let iconObj = null;
+    if (image.includes('fa-laptop-code')) iconObj = faLaptopCode;
+    else if (image.includes('fa-server')) iconObj = faServer;
+    else if (image.includes('fa-searchengin')) iconObj = faSearchengin;
+    else if (image.includes('fa-headset')) iconObj = faHeadset;
+    else if (image.includes('fa-brain')) iconObj = faBrain;
+
+    if (!iconObj) return null;
+
+    const classes = image
+      .split(' ')
+      .filter(cls => !cls.startsWith('fa-') && cls !== 'fa' && cls !== 'fa-solid' && cls !== 'fa-brands')
+      .join(' ');
+
+    return <FontAwesomeIcon icon={iconObj} className={`my-2 ${classes}`} />;
   };
   
     return (

@@ -35,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
               <div className="flex items-center justify-center">
                 {showTyping && (
                   <TextType
-                    text={typingText || "Expert SEO & Web Development"}
+                    text={typingText || "Full Stack Web Developer"}
                     typingSpeed={75}
                     pauseDuration={1500}
                     showCursor={true}

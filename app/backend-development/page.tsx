@@ -5,55 +5,56 @@ import Hero from '../components/Hero';
 import Card from '../components/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-  faFileAlt, 
-  faRocket, 
-  faMagnifyingGlassChart,
-  faMobileScreenButton,
-  faCogs
+  faDatabase, 
+  faServer, 
+  faNetworkWired, 
+  faShieldHalved, 
+  faCloud, 
+  faTerminal
 } from '@fortawesome/free-solid-svg-icons';
 import { Ourachivment } from '../components/Ourachivment';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-const TechnicalSeoPage = () => {
+const BackendDevelopmentPage = () => {
   const benefits = [
     {
-      title: "Core Web Vitals Pass",
-      desc: "Optimizing LCP, FID, and CLS scores to ensure your website passes Google's strict usability assessments.",
-      icon: faRocket,
-      color: "bg-orange-500/10 text-orange-600"
-    },
-    {
-      title: "Enhanced Search Visibility",
-      desc: "Structuring schema markup, sitemaps, and robots.txt so search engine crawlers can index your content accurately.",
-      icon: faMagnifyingGlassChart,
+      title: "Scalable Architecture",
+      desc: "Designed to handle high concurrent traffic and scale resources efficiently as your business grows.",
+      icon: faNetworkWired,
       color: "bg-blue-500/10 text-blue-600"
     },
     {
-      title: "Mobile-First Optimization",
-      desc: "Making sure layouts adapt flawlessly and load instantly on all mobile viewport sizes and network speeds.",
-      icon: faMobileScreenButton,
+      title: "Bulletproof Security",
+      desc: "Implementing industry-standard authentication (JWT, OAuth), data encryption, and secure API protocols.",
+      icon: faShieldHalved,
       color: "bg-emerald-500/10 text-emerald-600"
+    },
+    {
+      title: "Cloud & DevOps Integration",
+      desc: "Automated deployment workflows, containerization with Docker, and hosting on robust cloud infrastructure.",
+      icon: faCloud,
+      color: "bg-orange-500/10 text-orange-600"
     }
   ];
 
-  const processSteps = [
-    { title: "Performance & Lighthouse Audit", desc: "Analyzing bundle sizes, server response times, and identify loading bottlenecks." },
-    { title: "Structured Data Implementation", desc: "Adding JSON-LD schemas and semantic HTML5 structures to help engines understand your pages." },
-    { title: "Metadata & Content Tuning", desc: "Optimizing head elements, titles, descriptions, and structural heading tags for target queries." },
-    { title: "Crawl Budget Optimization", desc: "Cleaning redirect chains, configuring canoncal links, and managing sitemaps/robots files." },
-    { title: "Continuous Monitoring", desc: "Setting up Google Search Console alerts to monitor ranking drops or crawl issues." }
+  const strategySteps = [
+    { title: "Architecture & Schema Design", desc: "Structuring relational and non-relational database schemas for high performance and integrity." },
+    { title: "Secure API Implementation", desc: "Developing documented RESTful & GraphQL endpoints with robust input validation." },
+    { title: "Third-Party Integrations", desc: "Connecting payment gateways, authentication providers, and cloud services seamlessly." },
+    { title: "Caching & Speed Optimization", desc: "Optimizing database queries and integrating Redis caching to minimize latency." },
+    { title: "Cloud Deployment & CI/CD", desc: "Setting up GitHub Actions, Docker, and deploying server instances for maximum uptime." }
   ];
 
   return (
     <div className="bg-white">
       <Hero
-        title="Technical SEO & Optimization"
-        description="Providing the developer-level speed tuning, schema structuring, and Core Web Vitals optimization needed to get your high-performance web applications ranking and converting."
+        title="Scalable Backend & APIs"
+        description="Robust, secure, and lightning-fast server-side solutions designed to power your web applications, optimize data flow, and grow seamlessly with your user base."
         backgroundImage="/images/seo-service-bg.avif"
         calltoAction={
           <Link href="/#contact-us" className="btn secondery-btn px-10 h-16 font-bold text-xl">
-            Audit My Site Speed
+            Discuss My Backend
           </Link>
         }
       />
@@ -62,26 +63,26 @@ const TechnicalSeoPage = () => {
       <section className="py-24" id="services">
         <div className="container mx-auto px-5 lg:px-24">
           <div className="text-center mb-16">
-            <h1 className="mainheading">MY OPTIMIZATION CORE</h1>
-            <h2 className="subheading">Technical SEO for Modern Web Engines</h2>
+            <h1 className="mainheading">MY BACKEND CORE</h1>
+            <h2 className="subheading">Reliability & Computational Precision</h2>
           </div>
           <div className="grid lg:grid-cols-3 gap-8">
             <Card
-              title="Speed & Performance Tuning"
-              details="Code splitting, image compression, resource prefetching, and caching setups to hit 90+ Lighthouse scores."
-              geticon={<FontAwesomeIcon className='text-[100px] text-[#48CDA0]' icon={faRocket} />}
+              title="API Development"
+              details="Building robust RESTful & GraphQL APIs with clean documentation, secure authentication, and rate limiting."
+              geticon={<FontAwesomeIcon className='text-[100px] text-[#48CDA0]' icon={faServer} />}
               bg="bg-[#143D60]"
             />
             <Card
-              title="Crawlability & Schema"
-              details="Structuring custom JSON-LD schemas, breadcrumbs, sitemaps, and clean robots guidelines for search bots."
-              geticon={<FontAwesomeIcon className='text-[100px] text-[#FFD700]' icon={faFileAlt} />}
+              title="Database Design"
+              details="Structuring SQL & NoSQL systems (PostgreSQL, MongoDB) with optimized indexation and relationships."
+              geticon={<FontAwesomeIcon className='text-[100px] text-[#FFD700]' icon={faDatabase} />}
               bg="bg-[#143D60]"
             />
             <Card
-              title="Responsive Optimization"
-              details="Adapting design systems, assets, and typography configurations to deliver great mobile-first experiences."
-              geticon={<FontAwesomeIcon className='text-[100px] text-[#FF8000]' icon={faMobileScreenButton} />}
+              title="System Integration"
+              details="Seamlessly integrating third-party APIs, webhooks, payment gateways, and custom AI/LLM orchestrations."
+              geticon={<FontAwesomeIcon className='text-[100px] text-[#FF8000]' icon={faNetworkWired} />}
               bg="bg-[#143D60]"
             />
           </div>
@@ -119,13 +120,13 @@ const TechnicalSeoPage = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
                <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#efb03610] rounded-full blur-3xl" />
-               <h2 className="mainheading">OPTIMIZATION WORKFLOW</h2>
-               <h3 className="subheading mb-8">From Audit to Rank Growth</h3>
+               <h2 className="mainheading">DEVELOPMENT CYCLE</h2>
+               <h3 className="subheading mb-8">From Architecture to Production</h3>
                <p className="para mb-10">
-                 Good SEO isn&apos;t magic; it is clean code, fast servers, and semantic layout tags. I implement structured improvements to ensure search engines favor your platform.
+                 Robust backend systems aren&apos;t built in a day. I follow a structured methodology to analyze data structures, build secure pathways, optimize performance, and launch with maximum reliability.
                </p>
                <div className="space-y-4">
-                 {processSteps.map((step, i) => (
+                 {strategySteps.map((step, i) => (
                    <div key={i} className="flex items-start gap-5 p-6 bg-white border border-slate-100 rounded-[2.5rem] hover:border-[#3b6790] hover:shadow-md transition-all">
                      <div className="text-[#3b6790] font-black text-2xl opacity-20 italic">
                        {String(i + 1).padStart(2, '0')}
@@ -141,25 +142,25 @@ const TechnicalSeoPage = () => {
             <div className="bg-[#143D60] p-12 rounded-[2.5rem] text-white shadow-2xl relative">
                <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mb-16" />
                <div className="text-center mb-10">
-                 <FontAwesomeIcon icon={faCogs} className="text-6xl text-[#efb036] mb-6" />
-                 <h3 className="text-3xl font-extrabold">Ready to Rank #1?</h3>
+                 <FontAwesomeIcon icon={faTerminal} className="text-6xl text-[#efb036] mb-6" />
+                 <h3 className="text-3xl font-extrabold">Need a High-Performance Engine?</h3>
                </div>
                <p className="text-slate-200 text-lg text-center mb-10 leading-relaxed">
-                 Power up your visibility on Google. Combine speed optimizations with technical SEO strategies to increase organic traffic.
+                 Power your custom applications and platforms with secure, scalable APIs and modern database systems optimized for high throughput.
                </p>
                <div className="space-y-4 mb-10">
                  <div className="flex items-center gap-3 justify-center">
                    <div className="w-2 h-2 bg-[#48CDA0] rounded-full" />
-                   <p className="font-bold">Core Web Vitals Audit Included</p>
+                   <p className="font-bold">Complimentary Consultation Included</p>
                  </div>
                  <div className="flex items-center gap-3 justify-center">
                    <div className="w-2 h-2 bg-[#48CDA0] rounded-full" />
-                   <p className="font-bold">Transparent Analytics Setups</p>
+                   <p className="font-bold">Clean & Documented Code</p>
                  </div>
                </div>
                 <div className="flex justify-center">
                   <Link href="/#contact-us" className="btn secondery-btn w-fit px-10 h-16 font-extrabold text-xl shadow-xl shadow-[#efb03630]">
-                    Discuss Technical SEO
+                    Discuss Your Backend
                   </Link>
                 </div>
             </div>
@@ -172,4 +173,4 @@ const TechnicalSeoPage = () => {
   );
 };
 
-export default TechnicalSeoPage;
+export default BackendDevelopmentPage;
