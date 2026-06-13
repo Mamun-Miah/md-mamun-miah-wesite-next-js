@@ -62,7 +62,7 @@ const TechnicalSeoPage = () => {
       <section className="py-24" id="services">
         <div className="container mx-auto px-5 lg:px-24">
           <div className="text-center mb-16">
-            <h1 className="mainheading">MY OPTIMIZATION CORE</h1>
+            <h2 className="mainheading">MY OPTIMIZATION CORE</h2>
             <h2 className="subheading">Technical SEO for Modern Web Engines</h2>
           </div>
           <div className="grid lg:grid-cols-3 gap-8">

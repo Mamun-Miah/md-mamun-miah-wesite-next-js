@@ -3,8 +3,34 @@ import Hero from '../components/Hero';
 import AboutContent from '../components/AboutContent';
 
 export const metadata = {
-  title: 'About Me - Mamun Miah | Full Stack Web Developer',
-  description: `Results-driven Full Stack Web Developer with 7+ years of experience building high-performance web applications, scalable backend systems, and modern SaaS solutions.`,
+  title: 'About Mamun Miah | Full Stack & AI Developer with 7+ Years Experience',
+  description:
+    'Learn about Mamun Miah — a results-driven Full Stack Web Developer & AI Engineer with 7+ years of experience building production-grade Next.js apps, scalable APIs, and RAG-powered AI systems. Available for freelance hire.',
+  keywords: [
+    'about Mamun Miah developer',
+    'full stack developer 7 years experience',
+    'Next.js expert freelance',
+    'AI developer portfolio',
+    'Bangladesh full stack developer',
+    'React Next.js developer biography',
+  ],
+  alternates: {
+    canonical: 'https://mamundev.com/about',
+  },
+  openGraph: {
+    title: 'About Mamun Miah | Full Stack & AI Developer',
+    description:
+      'Results-driven Full Stack & AI Developer with 7+ years of experience. Discover skills, experience, and the technology stack Mamun Miah uses.',
+    url: 'https://mamundev.com/about',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Mamun Miah | Full Stack & AI Developer',
+    description:
+      '7+ years building web apps, APIs, and AI systems. Discover who Mamun Miah is.',
+    images: ['/images/og-image.jpg'],
+  },
 };
 
 const About = () => {

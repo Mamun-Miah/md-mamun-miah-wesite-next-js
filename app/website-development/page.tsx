@@ -70,7 +70,7 @@ const WebsiteDevelopmentPage = () => {
       <section className="py-24 bg-[#f8fafc]">
         <div className="container mx-auto px-5 lg:px-24">
           <div className="text-center mb-16">
-            <h1 className="mainheading">CORE STRENGTHS</h1>
+            <h2 className="mainheading">CORE STRENGTHS</h2>
             <h2 className="subheading">Built for Performance & Scale</h2>
           </div>
           

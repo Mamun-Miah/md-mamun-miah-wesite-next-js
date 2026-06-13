@@ -105,7 +105,7 @@ const AiDevelopmentPage = () => {
       <section className="py-24 bg-white" id="ai-tools">
         <div className="container mx-auto px-5 lg:px-24">
           <div className="text-center mb-16">
-            <h1 className="mainheading">AI TECH STACK</h1>
+            <h2 className="mainheading">AI TECH STACK</h2>
             <h2 className="subheading">Tools & Frameworks I Work With</h2>
             <p className="para mt-4 max-w-2xl mx-auto">
               I work with the full modern AI/LLM stack — from local open-source models to cloud API integrations, agent frameworks, and training pipelines.
