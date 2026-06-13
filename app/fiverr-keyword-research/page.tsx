@@ -182,10 +182,9 @@ export default function FiverrKeywordResearch() {
             <button
               onClick={copyAll}
               className={`flex items-center gap-2 border px-3 py-1 rounded-lg transition
-                ${
-                  copiedAll
-                    ? "border-green-500/50 text-green-400 bg-green-500/10"
-                    : "border-white/10 hover:bg-white/5"
+                ${copiedAll
+                  ? "border-green-500/50 text-green-400 bg-green-500/10"
+                  : "border-white/10 hover:bg-white/5"
                 }`}
             >
               {copiedAll ? "Copied ✓" : "Copy All"}
@@ -235,7 +234,7 @@ export default function FiverrKeywordResearch() {
 
       {/* SEO Content Section */}
       <div className="w-full max-w-5xl mx-auto mt-16 px-6 pt-16 border-t border-white/10 space-y-16">
-        
+
         {/* Intro Section */}
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
@@ -244,7 +243,7 @@ export default function FiverrKeywordResearch() {
               What is Fiverr Keyword Research?
             </h2>
             <p className="text-gray-400 leading-relaxed">
-              Fiverr keyword research is the process of identifying search terms, queries, and tags that potential buyers type into the Fiverr search bar when looking for freelance services. 
+              Fiverr keyword research is the process of identifying search terms, queries, and tags that potential buyers type into the Fiverr search bar when looking for freelance services.
             </p>
             <p className="text-gray-400 leading-relaxed">
               Unlike traditional search engines like Google, Fiverr&apos;s search engine is highly transaction-focused. Buyers are looking to make a purchase immediately. Finding high-intent, low-competition keywords allows your gig to rank higher and stand out in front of active buyers.
@@ -277,7 +276,7 @@ export default function FiverrKeywordResearch() {
             <h2 className="text-3xl font-bold text-white">How This Tool Helps You Rank</h2>
             <p className="text-gray-400">Our free keyword tool automates the process of extracting real search suggestion data directly from Fiverr.</p>
           </div>
-          
+
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="bg-[#0b1220]/40 border border-white/5 p-6 rounded-xl space-y-3">
               <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 font-bold">1</div>
@@ -347,7 +346,7 @@ export default function FiverrKeywordResearch() {
             <div className="bg-[#0b1220]/80 border border-white/5 rounded-xl p-6">
               <h4 className="font-semibold text-white mb-2">How does this Fiverr Keyword Research tool work?</h4>
               <p className="text-sm text-gray-400">
-                Our tool connects directly to Fiverr&apos;s search autocomplete API. When you input a keyword, it triggers queries starting with letters and prefixes to get the exact phrases buyers are typing.
+                Our tool connects directly to Fiverr&apos;s search autocomplete API. When you input a keyword, it triggers queries starting with letters to get the exact phrases buyers are typing.
               </p>
             </div>
             <div className="bg-[#0b1220]/80 border border-white/5 rounded-xl p-6">
