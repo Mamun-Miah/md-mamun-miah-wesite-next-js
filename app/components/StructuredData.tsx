@@ -9,8 +9,8 @@ export default function StructuredData() {
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
-    dateCreated: '2024-01-01',
-    dateModified: new Date().toISOString().split('T')[0],
+    dateCreated: '2024-01-01T00:00:00Z',
+    dateModified: new Date().toISOString(),
     mainEntity: {
       '@type': 'Person',
       '@id': `${SITE_URL}/#person`,
