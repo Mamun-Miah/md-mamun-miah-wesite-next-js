@@ -49,7 +49,7 @@ const Header: React.FC = () => {
                 </details>
               </li>
               <li className="mb-2"><Navlink href="/about">About Me</Navlink></li>
-              <li className="mb-2"><Navlink href="/blog">Blog</Navlink></li>
+              {/* <li className="mb-2"><Navlink href="/blog">Blog</Navlink></li> */}
               <li><Navlink href="/fiverr-keyword-research">Tools</Navlink></li>
             </ul>
           </div>
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
                 </details>
               </li>
               <li><Navlink href="/about">About Me</Navlink></li>
-              <li><Navlink href="/blog">Blog</Navlink></li>
+              {/* <li><Navlink href="/blog">Blog</Navlink></li> */}
               <li><Navlink href="/fiverr-keyword-research">Tools</Navlink></li>
             </ul>
           </div>
