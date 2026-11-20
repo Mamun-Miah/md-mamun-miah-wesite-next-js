@@ -102,20 +102,20 @@ const techCategories = [
 
 const Technologies = () => {
   return (
-    <section className="py-24 bg-[#f8fafc] relative overflow-hidden" id="tech-stack">
+    <section className="py-12 sm:py-16 lg:py-20 bg-[#f8fafc] relative overflow-hidden" id="tech-stack">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl opacity-50" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-50 rounded-full blur-3xl opacity-50" />
       </div>
 
-      <div className="container mx-auto px-5 lg:px-24 relative z-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
           <h1 className="mainheading">MY EXPERTISE</h1>
           <h2 className="subheading">Modern Tech Ecosystem</h2>
@@ -125,7 +125,7 @@ const Technologies = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
           {techCategories.map((category, index) => (
             <motion.div
               key={index}
@@ -134,15 +134,15 @@ const Technologies = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="group relative bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.08)] transition-all duration-500 overflow-hidden"
+              className="group relative min-w-0 bg-white/80 backdrop-blur-xl p-6 sm:p-8 rounded-[2.5rem] border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.08)] transition-all duration-500 overflow-hidden"
             >
               <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
               
-              <div className="flex items-center mb-10">
-                <div className="w-12 h-12 bg-[#3b6790] rounded-2xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679020] group-hover:rotate-12 transition-transform duration-500">
+              <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div className="w-12 h-12 shrink-0 bg-[#3b6790] rounded-2xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679020] group-hover:rotate-12 transition-transform duration-500">
                   <FontAwesomeIcon icon={category.icon} />
                 </div>
-                <h3 className="ml-5 text-xl font-extrabold text-[#000248] tracking-tight">{category.title}</h3>
+                <h3 className="min-w-0 text-lg sm:text-xl font-extrabold text-[#000248] tracking-tight [overflow-wrap:anywhere]">{category.title}</h3>
               </div>
 
               <div className="flex flex-wrap gap-2.5">
@@ -150,10 +150,10 @@ const Technologies = () => {
                   <motion.div
                     key={i}
                     whileHover={{ scale: 1.05 }}
-                    className="flex items-center px-4 py-2.5 bg-white border border-slate-100 rounded-full text-sm font-bold text-slate-600 shadow-sm hover:border-[#3b6790] hover:text-[#3b6790] hover:shadow-md transition-all cursor-default"
+                    className="flex min-w-0 max-w-full items-center px-4 py-2.5 bg-white border border-slate-100 rounded-full text-sm font-bold text-slate-600 shadow-sm hover:border-[#3b6790] hover:text-[#3b6790] hover:shadow-md transition-all cursor-default"
                   >
-                    <FontAwesomeIcon icon={tech.icon} className="mr-2.5 text-[10px] opacity-70" />
-                    {tech.name}
+                    <FontAwesomeIcon icon={tech.icon} className="mr-2.5 shrink-0 text-[10px] opacity-70" />
+                    <span className="min-w-0 [overflow-wrap:anywhere]">{tech.name}</span>
                   </motion.div>
                 ))}
               </div>

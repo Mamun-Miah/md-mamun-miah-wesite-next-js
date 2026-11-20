@@ -10,21 +10,22 @@ const AboutContent = () => {
   return (
     <div className="bg-white">
       {/* Professional Summary Section */}
-      <section className="py-24 border-b border-slate-100">
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-16 sm:py-20 lg:py-24 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="min-w-0"
             >
               <h2 className="mainheading mb-4 text-[#3b6790]">Professional Journey</h2>
               <h3 className="subheading mb-8">7+ Years of Delivering Digital Excellence</h3>
-              <p className="para text-justify mb-6">
+              <p className="para text-left sm:text-justify mb-6">
                 I am a results-driven Full Stack Web Developer specializing in architecting and shipping production-grade web applications. With a focus on the modern JavaScript/TypeScript ecosystem (React, Next.js, Node.js) and cloud infrastructure (AWS, Docker, Linux), I have over 7 years of experience helping businesses transform complex ideas into scalable reality.
               </p>
-              <p className="para text-justify">
+              <p className="para text-left sm:text-justify">
                 My career has been defined by a commitment to measurable business outcomes. Whether it is improving site performance, reducing server downtime, or increasing conversion rates, I align every technical decision with your core business objectives.
               </p>
             </motion.div>
@@ -33,33 +34,33 @@ const AboutContent = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 relative overflow-hidden"
+              className="min-w-0 bg-slate-50 p-6 sm:p-8 lg:p-10 rounded-[2.5rem] border border-slate-100 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#3b679008] rounded-full -mr-16 -mt-16" />
               <div className="space-y-8">
                 <div className="flex items-start">
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#3b6790] shadow-sm shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-[#3b6790] shadow-sm shrink-0">
                     <FontAwesomeIcon icon={faRocket} />
                   </div>
-                  <div className="ml-5">
+                  <div className="min-w-0 ml-4 sm:ml-5">
                     <h4 className="text-xl font-bold text-[#000248]">High Performance</h4>
                     <p className="text-slate-500">Optimizing core vitals for maximum speed and user experience.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#efb036] shadow-sm shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-[#efb036] shadow-sm shrink-0">
                     <FontAwesomeIcon icon={faCodeBranch} />
                   </div>
-                  <div className="ml-5">
+                  <div className="min-w-0 ml-4 sm:ml-5">
                     <h4 className="text-xl font-bold text-[#000248]">Scalable Architecture</h4>
                     <p className="text-slate-500">Building robust backends and clean frontends that grow with you.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#3b6790] shadow-sm shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-[#3b6790] shadow-sm shrink-0">
                     <FontAwesomeIcon icon={faChartLine} />
                   </div>
-                  <div className="ml-5">
+                  <div className="min-w-0 ml-4 sm:ml-5">
                     <h4 className="text-xl font-bold text-[#000248]">Business Focused</h4>
                     <p className="text-slate-500">Aligning technical solutions with real-world ROI and growth.</p>
                   </div>
@@ -71,24 +72,24 @@ const AboutContent = () => {
       </section>
 
       {/* AI-First Mindset Section */}
-      <section className="py-24 bg-[#000248] text-white overflow-hidden relative">
+      <section className="py-16 sm:py-20 lg:py-24 bg-[#000248] text-white overflow-hidden relative">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#3b679015] rounded-full blur-3xl -mr-48 -mt-48" />
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center mb-10 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <h2 className="text-[#efb036] font-bold tracking-[0.3em] uppercase mb-4">Innovation First</h2>
-              <h3 className="text-5xl font-bold mb-8 leading-tight">The AI-First Development Mindset</h3>
-              <p className="text-slate-300 text-xl leading-relaxed">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 leading-tight break-words">The AI-First Development Mindset</h3>
+              <p className="text-slate-300 text-base sm:text-lg lg:text-xl leading-relaxed">
                 In a rapidly evolving digital landscape, I adopt an AI-first approach to accelerate delivery without compromising quality. By leveraging advanced tools like Claude, ChatGPT, and GitHub Copilot, I ensure faster iterations, cleaner code, and cutting-edge security for every project.
               </p>
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {[
               { 
                 title: "Rapid Execution", 
@@ -112,7 +113,7 @@ const AboutContent = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all text-center"
+                className="min-w-0 p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all text-center"
               >
                 <div className="w-16 h-16 bg-[#3b6790] rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-xl shadow-[#3b679020]">
                   <FontAwesomeIcon icon={item.icon} />
@@ -126,38 +127,38 @@ const AboutContent = () => {
       </section>
 
       {/* Expertise & Industries Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="text-center mb-16">
+      <section className="py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 lg:mb-16">
             <h2 className="mainheading">Industry Focus</h2>
             <h3 className="subheading">Proven Results Across Diverse Sectors</h3>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+            <div className="min-w-0 space-y-6">
               {[
                 { label: "E-Commerce", value: "Built high-conversion stores reducing friction and increasing ROI." },
                 { label: "Healthcare", value: "Secure, role-based role-based systems for medical administration (HMS)." },
                 { label: "SaaS Solutions", value: "Scalable cloud-integrated software with seamless user onboarding." },
                 { label: "Corporate Strategy", value: "Boosting brand visibility with speed-optimized corporate portals." }
               ].map((item, i) => (
-                <div key={i} className="p-6 bg-slate-50 border border-slate-100 rounded-2xl flex items-center group hover:bg-white hover:border-[#3b6790] hover:shadow-lg transition-all">
-                  <div className="w-2 h-2 bg-[#efb036] rounded-full mr-6 group-hover:scale-150 transition-transform" />
-                  <div>
+                <div key={i} className="p-5 sm:p-6 bg-slate-50 border border-slate-100 rounded-2xl flex items-center group hover:bg-white hover:border-[#3b6790] hover:shadow-lg transition-all">
+                  <div className="w-2 h-2 shrink-0 bg-[#efb036] rounded-full mr-4 sm:mr-6 group-hover:scale-150 transition-transform" />
+                  <div className="min-w-0">
                     <h5 className="text-xl font-bold text-[#000248] mb-1">{item.label}</h5>
                     <p className="text-slate-500">{item.value}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="relative">
+            <div className="relative min-w-0">
               <div className="absolute inset-0 bg-[#3b679020] rounded-[2.5rem] rotate-3" />
-              <div className="relative bg-[#3b679010] h-full min-h-[400px] rounded-[2.5rem] border border-slate-100 p-12 flex flex-col justify-center items-center text-center overflow-hidden">
+              <div className="relative bg-[#3b679010] h-full min-h-[300px] sm:min-h-[400px] rounded-[2.5rem] border border-slate-100 p-6 sm:p-8 xl:p-12 flex flex-col justify-center items-center text-center overflow-hidden">
                  <div className="absolute top-0 left-0 w-full h-1 bg-[#efb036]" />
-                  <h4 className="text-3xl font-bold text-[#000248] mb-6">Let&apos;s Transform Your Vision</h4>
+                  <h4 className="text-2xl sm:text-3xl font-bold text-[#000248] mb-6">Let&apos;s Transform Your Vision</h4>
                   <p className="para mb-10">
                     Whether you need a full-scale web application or a scalable backend integration, I am here to help you build reliable and modern digital solutions.
                   </p>
-                 <Link href="/#contact-us" className="btn secondery-btn px-10 h-16 font-bold text-xl flex items-center justify-center">
+                 <Link href="/#contact-us" className="btn secondery-btn w-full sm:w-fit max-w-full whitespace-normal px-6 sm:px-10 h-auto min-h-14 sm:min-h-16 py-4 font-bold text-base sm:text-xl text-center flex items-center justify-center">
                    Work With Me
                  </Link>
               </div>

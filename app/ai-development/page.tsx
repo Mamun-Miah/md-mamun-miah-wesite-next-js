@@ -95,23 +95,23 @@ const AiDevelopmentPage = () => {
         description="From RAG pipelines and autonomous agents to fine-tuned domain-specific models — I engineer intelligent AI systems that integrate seamlessly into your web applications and business workflows."
         backgroundImage="/images/about.avif"
         calltoAction={
-          <Link href="/#contact-us" className="btn secondery-btn px-10 h-16 font-bold text-xl">
+          <Link href="/#contact-us" className="btn secondery-btn max-w-full whitespace-normal px-6 sm:px-10 h-auto min-h-14 sm:min-h-16 py-4 font-bold text-base sm:text-xl text-center">
             Discuss Your AI Project
           </Link>
         }
       />
 
       {/* Tools Grid */}
-      <section className="py-24 bg-white" id="ai-tools">
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="text-center mb-16">
+      <section className="py-16 sm:py-20 lg:py-24 bg-white" id="ai-tools">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 lg:mb-16">
             <h2 className="mainheading">AI TECH STACK</h2>
             <h2 className="subheading">Tools & Frameworks I Work With</h2>
             <p className="para mt-4 max-w-2xl mx-auto">
               I work with the full modern AI/LLM stack — from local open-source models to cloud API integrations, agent frameworks, and training pipelines.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {aiTools.map((tool, i) => (
               <motion.div
                 key={i}
@@ -119,7 +119,7 @@ const AiDevelopmentPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}
-                className="bg-white border border-slate-100 rounded-[2rem] p-8 hover:shadow-xl hover:border-[#3b6790]/30 transition-all group"
+                className="min-w-0 bg-white border border-slate-100 rounded-[2rem] p-6 sm:p-8 hover:shadow-xl hover:border-[#3b6790]/30 transition-all group"
               >
                 <div className={`w-14 h-14 ${tool.color} rounded-xl flex items-center justify-center text-2xl mb-5`}>
                   <FontAwesomeIcon icon={tool.icon} />
@@ -134,10 +134,10 @@ const AiDevelopmentPage = () => {
       </section>
 
       {/* What I Can Build */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+      <section className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="min-w-0">
               <h2 className="mainheading">WHAT I BUILD</h2>
               <h3 className="subheading mb-8">Real-World AI Applications</h3>
               <div className="space-y-5">
@@ -150,8 +150,8 @@ const AiDevelopmentPage = () => {
                 ].map((item, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08 }}
                     className="flex gap-4 p-5 bg-white rounded-[1.5rem] border border-slate-100 hover:shadow-md transition-all"
@@ -159,7 +159,7 @@ const AiDevelopmentPage = () => {
                     <div className="w-8 h-8 bg-[#efb036]/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
                       <FontAwesomeIcon icon={faLightbulb} className="text-[#efb036] text-sm" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-bold text-[#000248] text-lg mb-1">{item.title}</h4>
                       <p className="text-slate-500 text-sm">{item.desc}</p>
                     </div>
@@ -169,13 +169,13 @@ const AiDevelopmentPage = () => {
             </div>
 
             {/* CTA Card */}
-            <div className="bg-[#143D60] p-12 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
+            <div className="min-w-0 bg-[#143D60] p-6 sm:p-8 xl:p-12 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
               <div className="absolute -top-12 -right-12 w-40 h-40 bg-white/5 rounded-full" />
               <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-[#efb036]/10 rounded-full" />
               <div className="relative text-center">
-                <FontAwesomeIcon icon={faBrain} className="text-7xl text-[#efb036] mb-8" />
-                <h3 className="text-3xl font-extrabold mb-6">Ready to Add AI to Your Product?</h3>
-                <p className="text-slate-300 text-lg leading-relaxed mb-10">
+                <FontAwesomeIcon icon={faBrain} className="text-6xl sm:text-7xl text-[#efb036] mb-6 sm:mb-8" />
+                <h3 className="text-2xl sm:text-3xl font-extrabold mb-6">Ready to Add AI to Your Product?</h3>
+                <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10">
                   Let&apos;s build intelligent systems that automate workflows, enhance user experience, and give your business a competitive edge.
                 </p>
                 <div className="space-y-4 mb-10 text-left">
@@ -186,7 +186,7 @@ const AiDevelopmentPage = () => {
                     </div>
                   ))}
                 </div>
-                <Link href="/#contact-us" className="btn secondery-btn w-full h-16 font-extrabold text-xl shadow-xl shadow-[#efb03630]">
+                <Link href="/#contact-us" className="btn secondery-btn w-full max-w-full whitespace-normal px-5 h-auto min-h-14 sm:min-h-16 py-4 font-extrabold text-base sm:text-xl text-center shadow-xl shadow-[#efb03630]">
                   Let&apos;s Talk AI
                 </Link>
               </div>
@@ -196,14 +196,14 @@ const AiDevelopmentPage = () => {
       </section>
 
       {/* Development Process */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#3b679020] to-transparent" />
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="text-center mb-16">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 lg:mb-16">
             <h2 className="mainheading">HOW I WORK</h2>
             <h3 className="subheading">AI Development Process</h3>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {processSteps.map((step, i) => (
               <motion.div
                 key={i}
@@ -211,7 +211,7 @@ const AiDevelopmentPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 bg-white border border-slate-100 rounded-[2rem] hover:border-[#3b6790]/40 hover:shadow-lg transition-all"
+                className="min-w-0 p-6 sm:p-8 bg-white border border-slate-100 rounded-[2rem] hover:border-[#3b6790]/40 hover:shadow-lg transition-all"
               >
                 <div className="flex items-center gap-4 mb-5">
                   <span className="text-4xl font-black text-[#3b6790]/15 italic">{String(i + 1).padStart(2, '0')}</span>

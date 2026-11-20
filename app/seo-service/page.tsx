@@ -52,20 +52,20 @@ const TechnicalSeoPage = () => {
         description="Providing the developer-level speed tuning, schema structuring, and Core Web Vitals optimization needed to get your high-performance web applications ranking and converting."
         backgroundImage="/images/seo-service-bg.avif"
         calltoAction={
-          <Link href="/#contact-us" className="btn secondery-btn px-10 h-16 font-bold text-xl">
+          <Link href="/#contact-us" className="btn secondery-btn max-w-full whitespace-normal px-6 sm:px-10 h-auto min-h-14 sm:min-h-16 py-4 font-bold text-base sm:text-xl text-center">
             Audit My Site Speed
           </Link>
         }
       />
 
       {/* Core Services Section */}
-      <section className="py-24" id="services">
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="text-center mb-16">
+      <section className="py-16 sm:py-20 lg:py-24" id="services">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 lg:mb-16">
             <h2 className="mainheading">MY OPTIMIZATION CORE</h2>
             <h2 className="subheading">Technical SEO for Modern Web Engines</h2>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             <Card
               title="Speed & Performance Tuning"
               details="Code splitting, image compression, resource prefetching, and caching setups to hit 90+ Lighthouse scores."
@@ -89,9 +89,9 @@ const TechnicalSeoPage = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="grid lg:grid-cols-3 gap-8">
+      <section className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {benefits.map((benefit, i) => (
               <motion.div
                 key={i}
@@ -99,12 +99,12 @@ const TechnicalSeoPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+                className="min-w-0 bg-white p-6 sm:p-8 xl:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className={`w-16 h-16 ${benefit.color} rounded-2xl flex items-center justify-center text-3xl mb-8`}>
                   <FontAwesomeIcon icon={benefit.icon} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#000248] mb-4">{benefit.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#000248] mb-4">{benefit.title}</h3>
                 <p className="para text-base">{benefit.desc}</p>
               </motion.div>
             ))}
@@ -113,11 +113,11 @@ const TechnicalSeoPage = () => {
       </section>
 
       {/* Roadmap Section */}
-      <section className="py-24 overflow-hidden relative">
+      <section className="py-16 sm:py-20 lg:py-24 overflow-hidden relative">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#3b679020] to-transparent" />
-        <div className="container mx-auto px-5 lg:px-24">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="relative min-w-0">
                <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#efb03610] rounded-full blur-3xl" />
                <h2 className="mainheading">OPTIMIZATION WORKFLOW</h2>
                <h3 className="subheading mb-8">From Audit to Rank Growth</h3>
@@ -126,11 +126,11 @@ const TechnicalSeoPage = () => {
                </p>
                <div className="space-y-4">
                  {processSteps.map((step, i) => (
-                   <div key={i} className="flex items-start gap-5 p-6 bg-white border border-slate-100 rounded-[2.5rem] hover:border-[#3b6790] hover:shadow-md transition-all">
-                     <div className="text-[#3b6790] font-black text-2xl opacity-20 italic">
+                   <div key={i} className="flex items-start gap-3 sm:gap-5 p-5 sm:p-6 bg-white border border-slate-100 rounded-[2.5rem] hover:border-[#3b6790] hover:shadow-md transition-all">
+                     <div className="shrink-0 text-[#3b6790] font-black text-2xl opacity-20 italic">
                        {String(i + 1).padStart(2, '0')}
                      </div>
-                     <div>
+                     <div className="min-w-0">
                        <h4 className="text-xl font-bold text-[#000248] mb-1">{step.title}</h4>
                        <p className="text-slate-500 text-sm">{step.desc}</p>
                      </div>
@@ -138,27 +138,27 @@ const TechnicalSeoPage = () => {
                  ))}
                </div>
             </div>
-            <div className="bg-[#143D60] p-12 rounded-[2.5rem] text-white shadow-2xl relative">
+            <div className="min-w-0 bg-[#143D60] p-6 sm:p-8 xl:p-12 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
                <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mb-16" />
                <div className="text-center mb-10">
                  <FontAwesomeIcon icon={faCogs} className="text-6xl text-[#efb036] mb-6" />
-                 <h3 className="text-3xl font-extrabold">Ready to Rank #1?</h3>
+                 <h3 className="text-2xl sm:text-3xl font-extrabold">Ready to Rank #1?</h3>
                </div>
-               <p className="text-slate-200 text-lg text-center mb-10 leading-relaxed">
+               <p className="text-slate-200 text-base sm:text-lg text-center mb-8 sm:mb-10 leading-relaxed">
                  Power up your visibility on Google. Combine speed optimizations with technical SEO strategies to increase organic traffic.
                </p>
                <div className="space-y-4 mb-10">
                  <div className="flex items-center gap-3 justify-center">
-                   <div className="w-2 h-2 bg-[#48CDA0] rounded-full" />
+                   <div className="w-2 h-2 shrink-0 bg-[#48CDA0] rounded-full" />
                    <p className="font-bold">Core Web Vitals Audit Included</p>
                  </div>
                  <div className="flex items-center gap-3 justify-center">
-                   <div className="w-2 h-2 bg-[#48CDA0] rounded-full" />
+                   <div className="w-2 h-2 shrink-0 bg-[#48CDA0] rounded-full" />
                    <p className="font-bold">Transparent Analytics Setups</p>
                  </div>
                </div>
                 <div className="flex justify-center">
-                  <Link href="/#contact-us" className="btn secondery-btn w-fit px-10 h-16 font-extrabold text-xl shadow-xl shadow-[#efb03630]">
+                  <Link href="/#contact-us" className="btn secondery-btn w-full sm:w-fit max-w-full whitespace-normal px-6 sm:px-10 h-auto min-h-14 sm:min-h-16 py-4 font-extrabold text-base sm:text-xl text-center shadow-xl shadow-[#efb03630]">
                     Discuss Technical SEO
                   </Link>
                 </div>

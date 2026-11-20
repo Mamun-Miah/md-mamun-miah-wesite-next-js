@@ -61,80 +61,82 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-white overflow-x-hidden" id="contact-us" suppressHydrationWarning data-aos="fade-up">
-      <div className="container mx-auto px-5 lg:px-24">
-        <div className="lg:grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white" id="contact-us" suppressHydrationWarning data-aos="fade-up">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 sm:gap-10 xl:gap-12 items-center">
           {/* Header & Info */}
-          <div className="lg:col-span-5 space-y-10">
+          <div className="min-w-0 xl:col-span-5 space-y-6 sm:space-y-8">
             <div className="space-y-4">
               <h1 className="mainheading">CONTACT ME</h1>
               <h2 className="subheading">Let&apos;s Build Something Great</h2>
-              <p className="para text-justify">
+              <p className="para sm:text-justify">
                 Have a project in mind or just want to say hi? I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
               </p>
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-center p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
-                <div className="w-12 h-12 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
+              <div className="flex items-center p-4 sm:p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
+                <div className="w-12 h-12 shrink-0 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
                   <FontAwesomeIcon icon={faLocationDot} />
                 </div>
-                <div className="ml-5">
+                <div className="min-w-0 flex-1 ml-3 sm:ml-4">
                   <p className="text-xs font-bold text-[#efb036] uppercase tracking-[0.2em] mb-1">Location</p>
-                  <p className="text-lg font-bold text-[#000248]">Gazipur, Dhaka, Bangladesh</p>
+                  <p className="text-base sm:text-lg font-bold text-[#000248]">Gazipur, Dhaka, Bangladesh</p>
                 </div>
               </div>
 
-              <div className="flex items-center p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
-                <div className="w-12 h-12 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
+              <div className="flex items-center p-4 sm:p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
+                <div className="w-12 h-12 shrink-0 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
                   <FontAwesomeIcon icon={faPhone} />
                 </div>
-                <div className="ml-5">
+                <div className="min-w-0 flex-1 ml-3 sm:ml-4">
                   <p className="text-xs font-bold text-[#efb036] uppercase tracking-[0.2em] mb-1">Contact No</p>
-                  <p className="text-lg font-bold text-[#000248]">+8801620173656</p>
+                  <p className="text-base sm:text-lg font-bold text-[#000248]">+8801620173656</p>
                 </div>
               </div>
 
-              <div className="flex items-center p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
-                <div className="w-12 h-12 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
+              <div className="flex items-center p-4 sm:p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
+                <div className="w-12 h-12 shrink-0 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
                   <FontAwesomeIcon icon={faEnvelope} />
                 </div>
-                <div className="ml-5">
+                <div className="min-w-0 flex-1 ml-3 sm:ml-4">
                   <p className="text-xs font-bold text-[#efb036] uppercase tracking-[0.2em] mb-1">Email Details</p>
-                  <p className="text-md font-bold text-[#000248]">mamun.miah.dev@gmail.com</p>
+                  <p className="text-base font-bold text-[#000248] [overflow-wrap:anywhere]">mamun.miah.dev@gmail.com</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-white p-4 md:p-6 lg:p-10 rounded-[1.5rem] md:rounded-[2.5rem] border border-slate-100 shadow-2xl relative overflow-hidden">
+          <div className="min-w-0 xl:col-span-7">
+            <div className="bg-white p-4 sm:p-6 xl:p-10 rounded-[1.5rem] md:rounded-[2.5rem] border border-slate-100 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#3b679005] rounded-full -mr-16 -mt-16" />
               <div className="relative">
                 <h3 className="text-2xl font-bold text-[#000248] mb-6 lg:mb-8">Quick Message</h3>
                 <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-500 ml-1">Full Name</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="min-w-0 space-y-2">
+                      <label htmlFor="contact-full-name" className="text-sm font-bold text-slate-500 ml-1">Full Name</label>
                       <input
                         type="text"
                         name="fullName"
+                        id="contact-full-name"
                         placeholder="John Doe"
-                        className="input input-bordered w-full h-14 bg-slate-50 border-slate-200 focus:bg-white transition-all"
+                        className="input input-bordered min-w-0 w-full h-14 text-base bg-slate-50 border-slate-200 focus:bg-white transition-all"
                         required
                         value={formData.fullName}
                         onChange={handleChange}
                         autoComplete="name"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-500 ml-1">Email Address</label>
+                    <div className="min-w-0 space-y-2">
+                      <label htmlFor="contact-email" className="text-sm font-bold text-slate-500 ml-1">Email Address</label>
                       <input
                         type="email"
                         name="email"
+                        id="contact-email"
                         placeholder="email@example.com"
-                        className="input input-bordered w-full h-14 bg-slate-50 border-slate-200 focus:bg-white transition-all"
+                        className="input input-bordered min-w-0 w-full h-14 text-base bg-slate-50 border-slate-200 focus:bg-white transition-all"
                         required
                         value={formData.email}
                         onChange={handleChange}
@@ -143,12 +145,13 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-500 ml-1">Phone Number</label>
+                    <label htmlFor="contact-phone" className="text-sm font-bold text-slate-500 ml-1">Phone Number</label>
                     <input
                       type="tel"
                       name="phone"
+                      id="contact-phone"
                       placeholder="+880..."
-                      className="input input-bordered w-full h-14 bg-slate-50 border-slate-200 focus:bg-white transition-all"
+                      className="input input-bordered min-w-0 w-full h-14 text-base bg-slate-50 border-slate-200 focus:bg-white transition-all"
                       required
                       value={formData.phone}
                       onChange={handleChange}
@@ -157,17 +160,18 @@ const Contact: React.FC = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-500 ml-1">Your Message</label>
+                    <label htmlFor="contact-message" className="text-sm font-bold text-slate-500 ml-1">Your Message</label>
                     <textarea
                       name="message"
+                      id="contact-message"
                       placeholder="Hi, I'd like to talk about..."
-                      className="textarea textarea-bordered w-full h-40 bg-slate-50 border-slate-200 focus:bg-white transition-all resize-none"
+                      className="textarea textarea-bordered min-w-0 w-full h-40 text-base bg-slate-50 border-slate-200 focus:bg-white transition-all resize-none"
                       required
                       value={formData.message}
                       onChange={handleChange}
                     ></textarea>
                   </div>
-                  <button type="submit" className="btn w-full secondery-btn h-16 font-extrabold text-xl shadow-xl shadow-[#efb03630]" disabled={status === 'sending'}>
+                  <button type="submit" className="btn w-full secondery-btn h-auto min-h-14 px-5 py-3 font-extrabold text-base sm:text-lg shadow-xl shadow-[#efb03630]" disabled={status === 'sending'}>
                     {statusMessages[status] || 'Send Message Now'}
                   </button>
                 </form>

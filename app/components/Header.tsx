@@ -10,32 +10,42 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 const Header: React.FC = () => {
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      const details = document.querySelector("details[open]") as HTMLDetailsElement | null;
-      if (details) {
-        const target = e.target as HTMLElement;
-        if (!details.contains(target) || target.tagName === "A") {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+      document.querySelectorAll<HTMLDetailsElement>('header details[open]').forEach((details) => {
+        if (!details.contains(target) || target.closest('a')) {
           details.open = false;
         }
-      }
+      });
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      const openDetails = document.querySelectorAll<HTMLDetailsElement>('header details[open]');
+      openDetails.forEach((details) => { details.open = false; });
+      openDetails[0]?.querySelector('summary')?.focus();
     };
     document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener("click", handler);
+      document.removeEventListener('keydown', onKeyDown);
+    };
   }, []);
 
   return (
-    <header className="relative z-20 mx-4 lg:mx-8">
+    <header className="relative z-20 mx-auto w-full max-w-[1440px] px-4 lg:px-8">
       <div className="navbar bg-white/20 backdrop-blur-md rounded-2xl mt-5 px-4 lg:px-8 shadow-sm border border-white/30">
 
         {/* Navbar Start: Mobile Menu Toggle & Desktop Logo */}
-        <div className="navbar-start flex-1 lg:flex-none lg:w-1/4">
+        <div className="navbar-start flex-1 lg:flex-none lg:w-auto">
           {/* Mobile Dropdown */}
-          <div className="dropdown">
-            <div tabIndex={0} role="button" aria-label="menu mobile" className="btn btn-ghost lg:hidden p-0 w-10">
+          <details className="dropdown lg:hidden">
+            <summary aria-label="Toggle navigation menu" aria-controls="mobile-navigation" className="btn btn-ghost p-0 h-11 w-11 list-none [&::-webkit-details-marker]:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
-            </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-[#545156] rounded-[1.5rem] z-[50] mt-4 w-64 p-4 shadow-2xl text-slate-800">
+            </summary>
+            <ul id="mobile-navigation" aria-label="Main navigation" data-lenis-prevent className="menu menu-sm dropdown-content bg-[#545156] rounded-[1.5rem] z-[50] mt-4 w-64 max-w-[calc(100vw-4rem)] max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain p-4 shadow-2xl text-slate-800 [&_a]:min-h-11 [&_summary]:min-h-11">
               <li className="mb-2"><Navlink href="/">Home</Navlink></li>
               <li className="mb-2">
                 <details>
@@ -49,10 +59,11 @@ const Header: React.FC = () => {
                 </details>
               </li>
               <li className="mb-2"><Navlink href="/about">About Me</Navlink></li>
+              <li className="mb-2"><Navlink href="/books">Books</Navlink></li>
               {/* <li className="mb-2"><Navlink href="/blog">Blog</Navlink></li> */}
               <li><Navlink href="/fiverr-keyword-research">Tools</Navlink></li>
             </ul>
-          </div>
+          </details>
 
           {/* Desktop Logo (Hidden on mobile) */}
           <Link href="/" className="hidden lg:flex items-center">
@@ -81,7 +92,7 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex">
-            <ul className="menu menu-horizontal gap-4 px-1 text-white font-bold text-[1.1rem]">
+            <ul className="menu menu-horizontal gap-1 xl:gap-4 px-1 text-white font-bold text-base xl:text-[1.1rem]">
               <li><Navlink href="/">Home</Navlink></li>
               <li>
                 <details className="group">
@@ -91,7 +102,7 @@ const Header: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </summary>
-                  <ul className="p-3 z-[50] mt-4 bg-white rounded-2xl shadow-2xl border border-slate-100 text-slate-800 w-56">
+                  <ul data-lenis-prevent className="p-3 z-[50] mt-4 bg-white rounded-2xl shadow-2xl border border-slate-100 text-slate-800 w-56 max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain">
                     <li className="mb-1"><Link href="/website-development" className="hover:bg-slate-50 py-3 rounded-xl font-medium">Website Development</Link></li>
                     <li className="mb-1"><Link href="/backend-development" className="hover:bg-slate-50 py-3 rounded-xl font-medium">Backend Dev</Link></li>
                     <li className="mb-1"><Link href="/ai-development" className="hover:bg-slate-50 py-3 rounded-xl font-medium">AI & LLM Engineering</Link></li>
@@ -100,6 +111,7 @@ const Header: React.FC = () => {
                 </details>
               </li>
               <li><Navlink href="/about">About Me</Navlink></li>
+              <li><Navlink href="/books">Books</Navlink></li>
               {/* <li><Navlink href="/blog">Blog</Navlink></li> */}
               <li><Navlink href="/fiverr-keyword-research">Tools</Navlink></li>
             </ul>
@@ -107,7 +119,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Navbar End: Contact Button */}
-        <div className="navbar-end flex-1 lg:flex-none lg:w-1/4">
+        <div className="navbar-end flex-1 lg:flex-none lg:w-auto">
           {/* Desktop Button */}
           <Link
             href="/#contact-us"

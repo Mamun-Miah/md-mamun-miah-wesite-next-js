@@ -68,12 +68,12 @@ export default async function BlogPage({ searchParams }: Props) {
 
   return (
     <>
-      <div className="pt-24 flex justify-center items-center lg:h-[60vh] h-[60vh] pb-24 mt-[-90px] lg:mt-[-100px] bg-[#4B4B4B]">
-        <h1 className="text-center text-7xl text-gray-200 font-bold pt-12">Blog Post</h1>
+      <div className="flex min-h-[50svh] lg:min-h-[60svh] justify-center items-center px-5 pt-36 pb-12 sm:pt-40 sm:pb-16 lg:pt-44 mt-[-90px] lg:mt-[-100px] bg-[#4B4B4B]">
+        <h1 className="max-w-4xl text-center text-4xl sm:text-5xl lg:text-7xl leading-tight break-words text-gray-200 font-bold">Blog Post</h1>
       </div>
     <form method="GET" className="flex justify-center mt-5 p-4">
-  <label className="input flex items-center gap-2 border px-4 py-2 rounded w-full max-w-md">
-    <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <label className="input min-w-0 flex items-center gap-2 border px-4 py-2 rounded w-full max-w-md">
+    <svg className="h-[1em] shrink-0 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <g
         strokeLinejoin="round"
         strokeLinecap="round"
@@ -88,14 +88,14 @@ export default async function BlogPage({ searchParams }: Props) {
     <input
       type="search"
       name="search"
-      className="grow bg-transparent outline-none"
+      className="min-w-0 w-full grow text-base bg-transparent outline-none"
       placeholder="Search"
       defaultValue={searchQuery}
     />
   </label>
 </form>
 
-      <div className="flex flex-wrap gap-6 justify-center p-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 px-5 py-6 sm:px-6 lg:px-8">
         {paginatedPosts.map((post) => (
           <Blogpostcard
             key={post.id}
@@ -108,7 +108,7 @@ export default async function BlogPage({ searchParams }: Props) {
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-2 pb-8 mt-8">
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-2 px-5 pb-8 mt-8">
         {Array.from({ length: totalPages }).map((_, index) => {
           const page = index + 1;
           return (

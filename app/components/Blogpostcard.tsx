@@ -30,7 +30,7 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
   });
 
   return (
-    <div className="card bg-base-100 w-full max-w-sm mx-auto shadow-sm">
+    <div className="card min-w-0 bg-base-100 w-full max-w-sm mx-auto shadow-sm">
       <figure>
         {image ? (
           <Image
@@ -46,10 +46,10 @@ const BlogpostCard = ({ title, excerpt, image, slug, date }: BlogpostCardProps) 
         )}
       </figure>
 
-      <div className="card-body">
-        <h2 className="card-title">
-          <Link href={`/blog/${slug}`}>{title} <LoadingIndicator />  </Link>
-          <div className="badge badge-secondary">NEW</div>
+      <div className="card-body min-w-0">
+        <h2 className="card-title items-start">
+          <Link href={`/blog/${slug}`} className="min-w-0 [overflow-wrap:anywhere]">{title} <LoadingIndicator />  </Link>
+          <div className="badge badge-secondary shrink-0">NEW</div>
         </h2>
 
         <div className="card-actions justify-start">

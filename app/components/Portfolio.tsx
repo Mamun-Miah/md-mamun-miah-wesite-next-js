@@ -59,9 +59,9 @@ const card = {
 
 export default function PortfolioPage() {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#afc2d320] to-transparent" id="portfolio">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-[#afc2d320] to-transparent" id="portfolio">
       {/* Title */}
-      <div className="container mx-auto px-6 lg:px-24 mb-16">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 mb-8 sm:mb-12 lg:mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export default function PortfolioPage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="container mx-auto px-6 lg:px-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8"
       >
         {projects.map((p, i) => (
           <motion.div
@@ -90,12 +90,12 @@ export default function PortfolioPage() {
             variants={card}
             whileHover={{ y: -8, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="group relative rounded-[2.5rem] bg-white p-[1px]"
+            className="group relative min-w-0 rounded-[2.5rem] bg-white p-[1px]"
           >
             {/* Gradient border on hover */}
             <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-r from-[#3b6790] to-[#efb036] opacity-0 group-hover:opacity-100 transition-opacity" />
 
-            <div className="relative bg-white rounded-[2.5rem] p-8 h-full flex flex-col justify-between shadow-lg group-hover:shadow-2xl transition-all">
+            <div className="relative min-w-0 bg-white rounded-[2.5rem] p-6 sm:p-8 h-full flex flex-col justify-between shadow-lg group-hover:shadow-2xl transition-all">
               <div>
                 <h3 className="heading3 mb-2 text-[#1b1b1b]">
                   {p.title}
@@ -129,12 +129,12 @@ export default function PortfolioPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
-        className="text-center mt-20"
+        className="text-center px-5 mt-10 sm:mt-14 lg:mt-16"
       >
         <Link
           href="https://github.com/Mamun-Miah"
           target="_blank"
-          className="inline-block bg-gradient-to-r from-[#3b6790] to-[#2a5175] text-white text-lg md:text-xl px-10 py-4 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
+          className="inline-block max-w-full bg-gradient-to-r from-[#3b6790] to-[#2a5175] text-white text-base sm:text-lg md:text-xl px-6 sm:px-10 py-4 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
         >
           Visit Full GitHub
         </Link>

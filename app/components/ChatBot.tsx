@@ -24,36 +24,58 @@ export default function Page() {
     const [status, setStatus] = useState<'ready' | 'loading'>('ready');
     const [isOpen, setIsOpen] = useState(false);
     const [chipsVisible, setChipsVisible] = useState(true);
-    const messagesEndRef = useRef<HTMLDivElement>(null);
     const messagesRef = useRef<HTMLDivElement>(null);
+    const widgetRef = useRef<HTMLDivElement>(null);
+    const fabRef = useRef<HTMLButtonElement>(null);
+    const followMessagesRef = useRef(true);
 
     useEffect(() => {
-        if (isOpen) {
-            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        const container = messagesRef.current;
+        if (isOpen && container && followMessagesRef.current) {
+            container.scrollTo({ top: container.scrollHeight, behavior: 'auto' });
         }
     }, [messages, isOpen]);
 
-    // Trap wheel events inside messages so they don't bubble to page
     useEffect(() => {
-        const el = messagesRef.current;
-        if (!el) return;
-        const onWheel = (e: WheelEvent) => {
-            const { scrollTop, scrollHeight, clientHeight } = el;
-            const atTop = scrollTop === 0 && e.deltaY < 0;
-            const atBottom = scrollTop + clientHeight >= scrollHeight && e.deltaY > 0;
-            if (!atTop && !atBottom) {
-                e.stopPropagation();
+        const widget = widgetRef.current;
+        if (!isOpen || !widget) return;
+        const fab = fabRef.current;
+
+        const initialFocus = window.matchMedia('(pointer: coarse), (max-width: 480px), (max-height: 480px)').matches
+            ? widget.querySelector<HTMLButtonElement>('.chat-header-close')
+            : widget.querySelector<HTMLInputElement>('.chat-input');
+        initialFocus?.focus({ preventScroll: true });
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                setIsOpen(false);
+                return;
             }
-            // Always prevent page scroll when pointer is over chat
-            e.preventDefault();
-            el.scrollTop += e.deltaY;
+            if (event.key !== 'Tab' || !window.matchMedia('(max-width: 480px), (max-height: 480px)').matches) return;
+
+            const controls = [...widget.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled)')]
+                .filter(element => !element.closest('[inert]'));
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last?.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first?.focus();
+            }
         };
-        el.addEventListener('wheel', onWheel, { passive: false });
-        return () => el.removeEventListener('wheel', onWheel);
-    }, []);
+        document.addEventListener('keydown', onKeyDown);
+        return () => {
+            document.removeEventListener('keydown', onKeyDown);
+            fab?.focus({ preventScroll: true });
+        };
+    }, [isOpen]);
 
     async function sendMessage(text: string) {
         if (!text.trim() || status !== 'ready') return;
+        followMessagesRef.current = true;
         if (messages.length === 0) setChipsVisible(false);
 
         const userMsg: Message = {
@@ -121,6 +143,7 @@ export default function Page() {
     }
 
     function handleOpen() {
+        followMessagesRef.current = true;
         setIsOpen(o => !o);
         if (!isOpen && messages.length === 0) setChipsVisible(true);
     }
@@ -146,7 +169,8 @@ export default function Page() {
                 .chat-widget {
                     position: fixed;
                     bottom: 88px; right: 24px; z-index: 999;
-                    width: 460px; height: 540px;
+                    width: min(460px, calc(100vw - 48px));
+                    height: min(540px, calc(100dvh - 112px));
                     background: #fff;
                     border: 1px solid #e5e7eb; border-radius: 20px;
                     display: flex; flex-direction: column;
@@ -157,11 +181,13 @@ export default function Page() {
                     transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
                     font-family: 'DM Mono', monospace;
                 }
-                .chat-widget.closed { transform: scale(0.85) translateY(8px); opacity: 0; pointer-events: none; }
+                .chat-widget.closed { transform: scale(0.85) translateY(8px); opacity: 0; visibility: hidden; pointer-events: none; }
                 .chat-widget.open   { transform: scale(1) translateY(0); opacity: 1; }
 
-                @media (max-width: 480px) {
+                @media (max-width: 480px), (max-height: 480px) {
                     .chat-fab { bottom: 16px; right: 16px; }
+                    .chat-fab.is-open { visibility: hidden; pointer-events: none; }
+                    body:has(.chat-widget.open) { overflow: hidden; }
                     .chat-widget {
                         right: 0; left: 0; bottom: 0;
                         width: 100%; height: 100dvh;
@@ -183,15 +209,9 @@ export default function Page() {
                 .chat-header-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e66; flex-shrink: 0; }
                 .chat-header-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: #111; letter-spacing: 0.04em; text-transform: uppercase; flex: 1; }
                 .header-actions { display: flex; align-items: center; gap: 4px; }
-                .chat-header-close { background: none; border: none; color: #aaa; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: color 0.15s, background 0.15s; }
+                .chat-header-close { background: none; border: none; color: #aaa; cursor: pointer; padding: 4px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: color 0.15s, background 0.15s; }
                 .chat-header-close:hover { color: #555; background: #f5f5f5; }
 
-                /*
-                 * THE SCROLL FIX:
-                 * flex:1 + min-height:0 makes this fill remaining space and shrink.
-                 * overflow-y:scroll keeps the scrollbar track always present.
-                 * The wheel event is intercepted in JS to prevent page scroll.
-                 */
                 .chat-messages {
                     flex: 1;
                     min-height: 0;
@@ -231,7 +251,7 @@ export default function Page() {
                     padding: 0 14px;
                     transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
                 }
-                .chips-section.visible { max-height: 180px; opacity: 1; padding: 10px 14px 12px; }
+                .chips-section.visible { max-height: min(180px, 35dvh); overflow-y: auto; opacity: 1; padding: 10px 14px 12px; }
 
                 /* Chips header row with label + chevron toggle */
                 .chips-header {
@@ -292,18 +312,23 @@ export default function Page() {
                 .chip:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
                 /* Footer */
-                .chat-footer { flex-shrink: 0; padding: 12px; border-top: 1px solid #f0f0f0; background: #fff; }
+                .chat-footer { flex-shrink: 0; padding: 12px 12px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid #f0f0f0; background: #fff; }
                 .chat-input-row { display: flex; gap: 8px; align-items: center; background: #f5f5f5; border: 1px solid #e8e8e8; border-radius: 12px; padding: 8px 10px 8px 14px; transition: border-color 0.15s, background 0.15s; }
                 .chat-input-row:focus-within { border-color: #d1d5db; background: #fff; }
-                .chat-input { flex: 1; background: none; border: none; outline: none; font-family: 'DM Mono', monospace; font-size: 12.5px; color: #374151; }
+                .chat-input { flex: 1; min-width: 0; background: none; border: none; outline: none; font-family: 'DM Mono', monospace; font-size: 16px; color: #374151; }
                 .chat-input::placeholder { color: #9ca3af; }
                 .chat-input:disabled { opacity: 0.4; cursor: not-allowed; }
-                .chat-send { background: #111; border: none; border-radius: 8px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; flex-shrink: 0; transition: background 0.15s, transform 0.1s; }
+                .chat-send { background: #111; border: none; border-radius: 8px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; flex-shrink: 0; transition: background 0.15s, transform 0.1s; }
                 .chat-send:hover:not(:disabled) { background: #333; transform: scale(1.05); }
                 .chat-send:disabled { opacity: 0.25; cursor: not-allowed; transform: none; }
+                .chat-fab:focus-visible, .chat-header-close:focus-visible, .chip:focus-visible,
+                .chips-chevron-btn:focus-visible, .chat-send:focus-visible {
+                    outline: 2px solid #3b6790;
+                    outline-offset: 3px;
+                }
             `}</style>
 
-            <button className="chat-fab" onClick={handleOpen} aria-label={isOpen ? 'Close chat' : 'Open chat'}>
+            <button ref={fabRef} className={`chat-fab${isOpen ? ' is-open' : ''}`} onClick={handleOpen} aria-expanded={isOpen} aria-controls="portfolio-chat" aria-label={isOpen ? 'Close chat' : 'Open chat'}>
                 {isOpen ? (
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
@@ -313,13 +338,13 @@ export default function Page() {
                 )}
             </button>
 
-            <div className={`chat-widget ${isOpen ? 'open' : 'closed'}`} aria-hidden={!isOpen}>
+            <div ref={widgetRef} id="portfolio-chat" data-lenis-prevent className={`chat-widget ${isOpen ? 'open' : 'closed'}`} role="dialog" aria-label="AI assistant" aria-hidden={!isOpen} inert={!isOpen}>
 
                 <div className="chat-header">
                     <div className="chat-header-dot" />
                     <span className="chat-header-title">Ask me anything</span>
                     <div className="header-actions">
-                        <button className="chat-header-close" onClick={() => setIsOpen(false)} aria-label="Close">
+                        <button className="chat-header-close" onClick={() => setIsOpen(false)} aria-label="Close chat">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                             </svg>
@@ -327,8 +352,10 @@ export default function Page() {
                     </div>
                 </div>
 
-                {/* Scrollable messages — wheel events trapped by useEffect */}
-                <div className="chat-messages" ref={messagesRef}>
+                <div className="chat-messages" ref={messagesRef} onScroll={() => {
+                    const container = messagesRef.current;
+                    if (container) followMessagesRef.current = container.scrollHeight - container.scrollTop - container.clientHeight < 80;
+                }}>
                     {messages.length === 0 && (
                         <div className="chat-empty">
                             <span className="chat-empty-label">👋 Hey there!</span>
@@ -342,11 +369,10 @@ export default function Page() {
                             </div>
                         </div>
                     ))}
-                    <div ref={messagesEndRef} />
                 </div>
 
                 {/* Chips panel — visible state drives animation */}
-                <div className={`chips-section${chipsVisible ? ' visible' : ''}`}>
+                <div className={`chips-section${chipsVisible ? ' visible' : ''}`} inert={!chipsVisible}>
                     <div className="chips-header">
                         <span className="chips-label">Quick questions</span>
                         {/* Chevron pointing right > = collapse (panel is open) */}
@@ -398,6 +424,7 @@ export default function Page() {
                                 onChange={e => setInput(e.target.value)}
                                 disabled={status !== 'ready'}
                                 placeholder="Ask me anything..."
+                                aria-label="Message"
                                 autoComplete="off"
                             />
                             <button className="chat-send" type="submit" disabled={status !== 'ready' || !input.trim()} aria-label="Send">

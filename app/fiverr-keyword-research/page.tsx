@@ -130,14 +130,14 @@ export default function FiverrKeywordResearch() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br mt-[-120px] pt-[130px] from-[#0b0f14] via-[#0f172a] to-black text-gray-100 flex flex-col items-center justify-start pb-24">
-      <div className="w-full max-w-6xl p-6 space-y-6">
+      <div className="w-full min-w-0 max-w-6xl p-5 sm:p-6 space-y-6">
 
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-5xl font-bold pb-3 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold pb-3 tracking-tight leading-tight break-words">
             Fiverr Keyword Research Tool.
           </h1>
-          <p className="text-gray-400 text-xl">
+          <p className="text-gray-400 text-lg sm:text-xl">
             100% Real & free keyword research tool.
           </p>
           <p className="text-green-400 text-sm">
@@ -146,13 +146,14 @@ export default function FiverrKeywordResearch() {
         </div>
 
         {/* Input */}
-        <div className="flex gap-3 max-w-2xl mx-auto">
+        <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
           <input
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="e.g. WordPress"
+            aria-label="Fiverr keyword"
             disabled={loading}
-            className="flex-1 bg-[#0b1220] border border-white/30 rounded-sm px-4 py-3 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 disabled:opacity-50"
+            className="min-w-0 w-full flex-1 bg-[#0b1220] border border-white/30 rounded-sm px-4 py-3 text-base placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 disabled:opacity-50"
             onKeyDown={e => e.key === "Enter" && startSearch()}
           />
 
@@ -160,14 +161,14 @@ export default function FiverrKeywordResearch() {
             <button
               onClick={startSearch}
               disabled={cooldown > 0}
-              className="bg-yellow-600 hover:bg-yellow-900 transition px-6 py-3 rounded-sm font-medium disabled:opacity-50"
+              className="w-full sm:w-auto shrink-0 bg-yellow-600 hover:bg-yellow-900 transition px-6 py-3 rounded-sm font-medium disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500"
             >
               {cooldown > 0 ? `Wait ${cooldown}s` : "Search"}
             </button>
           ) : (
             <button
               onClick={stopSearch}
-              className="bg-red-600 hover:bg-red-500 transition px-6 py-3 rounded-xl font-medium"
+              className="w-full sm:w-auto shrink-0 bg-red-600 hover:bg-red-500 transition px-6 py-3 rounded-xl font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500"
             >
               Stop
             </button>
@@ -176,12 +177,12 @@ export default function FiverrKeywordResearch() {
 
         {/* Stats */}
         {results.length > 0 && (
-          <div className="flex justify-between items-center max-w-5xl mx-auto text-sm text-gray-400">
+          <div className="flex flex-wrap gap-3 justify-between items-center max-w-5xl mx-auto text-sm text-gray-400">
             <span>{results.length} keywords found</span>
 
             <button
               onClick={copyAll}
-              className={`flex items-center gap-2 border px-3 py-1 rounded-lg transition
+              className={`flex min-h-11 items-center gap-2 border px-3 py-2 rounded-lg transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500
                 ${copiedAll
                   ? "border-green-500/50 text-green-400 bg-green-500/10"
                   : "border-white/10 hover:bg-white/5"
@@ -193,26 +194,27 @@ export default function FiverrKeywordResearch() {
         )}
 
         {/* Results */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 overflow-y-auto max-h-[55vh] pr-1">
+        <div data-lenis-prevent className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 overflow-y-auto overscroll-contain max-h-[55vh] pr-1">
           {results.map((item, idx) => (
             <div
               key={idx}
-              className="group bg-[#0b1220] border border-white/10 rounded-xl p-3 flex items-center justify-between hover:border-indigo-500/50 transition"
+              className="min-w-0 bg-[#0b1220] border border-white/10 rounded-xl p-3 flex items-center justify-between gap-2 hover:border-indigo-500/50 transition"
             >
               <a
                 href={`https://www.fiverr.com/search/gigs?query=${encodeURIComponent(
                   item
                 )}`}
                 target="_blank"
-                className="truncate text-sm hover:underline"
+                className="min-w-0 flex-1 [overflow-wrap:anywhere] text-sm hover:underline"
               >
                 {item}
               </a>
 
               <button
                 onClick={() => copyKeyword(item)}
-                className="ml-3 text-gray-400 hover:text-white opacity-0 group-hover:opacity-100 transition"
+                className="w-11 h-11 shrink-0 flex items-center justify-center rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500"
                 title="Copy keyword"
+                aria-label={`Copy keyword: ${item}`}
               >
                 {copiedKeyword === item ? (
                   <Check size={16} className="text-green-400" />
@@ -233,13 +235,13 @@ export default function FiverrKeywordResearch() {
       </div>
 
       {/* SEO Content Section */}
-      <div className="w-full max-w-5xl mx-auto mt-16 px-6 pt-16 border-t border-white/10 space-y-16">
+      <div className="w-full min-w-0 max-w-5xl mx-auto mt-12 sm:mt-16 px-5 sm:px-6 pt-12 sm:pt-16 border-t border-white/10 space-y-12 sm:space-y-16">
 
         {/* Intro Section */}
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
             <span className="text-yellow-500 font-semibold text-sm tracking-wider uppercase">Fiverr SEO Guide</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
               What is Fiverr Keyword Research?
             </h2>
             <p className="text-gray-400 leading-relaxed">
@@ -249,9 +251,9 @@ export default function FiverrKeywordResearch() {
               Unlike traditional search engines like Google, Fiverr&apos;s search engine is highly transaction-focused. Buyers are looking to make a purchase immediately. Finding high-intent, low-competition keywords allows your gig to rank higher and stand out in front of active buyers.
             </p>
           </div>
-          <div className="bg-[#0b1220]/60 border border-white/10 p-8 rounded-2xl backdrop-blur-sm space-y-4">
+          <div className="min-w-0 bg-[#0b1220]/60 border border-white/10 p-5 sm:p-8 rounded-2xl backdrop-blur-sm space-y-4">
             <h3 className="text-xl font-semibold text-white flex items-center gap-2">
-              <Sparkles className="text-yellow-500 w-5 h-5" /> Why Fiverr SEO Matters
+              <Sparkles className="text-yellow-500 w-5 h-5 shrink-0" /> Why Fiverr SEO Matters
             </h3>
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-start gap-2">
@@ -273,11 +275,11 @@ export default function FiverrKeywordResearch() {
         {/* How It Works */}
         <div className="space-y-6">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <h2 className="text-3xl font-bold text-white">How This Tool Helps You Rank</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">How This Tool Helps You Rank</h2>
             <p className="text-gray-400">Our free keyword tool automates the process of extracting real search suggestion data directly from Fiverr.</p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             <div className="bg-[#0b1220]/40 border border-white/5 p-6 rounded-xl space-y-3">
               <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 font-bold">1</div>
               <h4 className="font-semibold text-white">Real-Time Suggestions</h4>
@@ -297,21 +299,21 @@ export default function FiverrKeywordResearch() {
         </div>
 
         {/* Gig Optimization Guide */}
-        <div className="bg-gradient-to-r from-[#0b1220] to-[#0d1e3d]/40 border border-white/10 rounded-2xl p-8 md:p-12 space-y-6">
+        <div className="bg-gradient-to-r from-[#0b1220] to-[#0d1e3d]/40 border border-white/10 rounded-2xl p-5 sm:p-8 md:p-12 space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-white">How to Optimize Your Fiverr Gig in 4 Steps</h2>
-          <div className="grid md:grid-cols-2 gap-8 text-gray-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-300">
             <div className="space-y-4">
               <div className="space-y-1">
-                <h4 className="font-semibold text-white flex items-center gap-2 text-base">
-                  <span className="text-yellow-500">Step 1.</span> Write a Keyword-Rich Title
+                <h4 className="font-semibold text-white flex flex-wrap items-center gap-x-2 gap-y-1 text-base">
+                  <span className="text-yellow-500 shrink-0">Step 1.</span> Write a Keyword-Rich Title
                 </h4>
                 <p className="text-sm text-gray-400">
                   Include your primary keyword in the first half of your gig title. Make it natural and appealing to buyers (e.g., <em>&quot;I will build a high-performance Next.js website for your SaaS&quot;</em>).
                 </p>
               </div>
               <div className="space-y-1">
-                <h4 className="font-semibold text-white flex items-center gap-2 text-base">
-                  <span className="text-yellow-500">Step 2.</span> Select 5 Relevant Tags
+                <h4 className="font-semibold text-white flex flex-wrap items-center gap-x-2 gap-y-1 text-base">
+                  <span className="text-yellow-500 shrink-0">Step 2.</span> Select 5 Relevant Tags
                 </h4>
                 <p className="text-sm text-gray-400">
                   Fiverr allows up to 5 search tags. Use the keywords found using our tool. Mix high-volume keywords with low-competition, specific long-tail tags.
@@ -320,16 +322,16 @@ export default function FiverrKeywordResearch() {
             </div>
             <div className="space-y-4">
               <div className="space-y-1">
-                <h4 className="font-semibold text-white flex items-center gap-2 text-base">
-                  <span className="text-yellow-500">Step 3.</span> Optimize the Description
+                <h4 className="font-semibold text-white flex flex-wrap items-center gap-x-2 gap-y-1 text-base">
+                  <span className="text-yellow-500 shrink-0">Step 3.</span> Optimize the Description
                 </h4>
                 <p className="text-sm text-gray-400">
                   Naturally write your primary keyword in the first 2 lines of your gig description. Add secondary keywords and long-tail variations throughout the description (aim for 2-3 times max to avoid keyword stuffing).
                 </p>
               </div>
               <div className="space-y-1">
-                <h4 className="font-semibold text-white flex items-center gap-2 text-base">
-                  <span className="text-yellow-500">Step 4.</span> Use Keywords in FAQ & Packages
+                <h4 className="font-semibold text-white flex flex-wrap items-center gap-x-2 gap-y-1 text-base">
+                  <span className="text-yellow-500 shrink-0">Step 4.</span> Use Keywords in FAQ & Packages
                 </h4>
                 <p className="text-sm text-gray-400">
                   Add custom FAQs using target terms in both the question and answer sections. This strengthens the topical authority of your gig, making it easier for Fiverr&apos;s ranking algorithm to index it.

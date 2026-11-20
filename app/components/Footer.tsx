@@ -10,18 +10,18 @@ import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#000248] text-white pt-20 overflow-hidden relative">
+    <footer className="bg-[#000248] text-white pt-12 sm:pt-16 lg:pt-20 overflow-hidden relative">
       {/* Decorative Gradient */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#3b679020] rounded-full blur-3xl -mr-32 -mt-32" />
 
-      <div className="container mx-auto px-5 lg:px-24">
-        <div className="grid lg:grid-cols-12 gap-12 pb-16">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-8 pb-10 sm:pb-12 lg:pb-16">
           {/* Brand Info */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="min-w-0 xl:col-span-4 space-y-6">
             <Link href="/" className="inline-block">
               <Image src="/images/logo.svg" alt="Mamun Miah Logo" width={160} height={40} className="rounded-lg brightness-0 invert" />
             </Link>
-            <p className="text-slate-400 text-lg leading-relaxed max-w-sm">
+            <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-sm">
               Helping businesses scale through custom full stack web development and modern cloud solutions. Delivering digital excellence with an AI-first mindset.
             </p>
             <div className="flex space-x-4">
@@ -36,7 +36,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   whileHover={{ y: -3, scale: 1.1 }}
-                  className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-slate-300 hover:bg-[#3b6790] hover:text-white transition-all shadow-md"
+                    className="w-11 h-11 shrink-0 bg-slate-800 rounded-lg flex items-center justify-center text-slate-300 hover:bg-[#3b6790] hover:text-white transition-all shadow-md"
                 >
                   <FontAwesomeIcon icon={social.icon} />
                 </motion.a>
@@ -45,13 +45,13 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-2 space-y-6">
-            <h3 className="text-xl font-bold tracking-wider uppercase text-[#efb036]">Navigation</h3>
+          <div className="min-w-0 xl:col-span-2 space-y-6">
+            <h3 className="text-lg xl:text-xl font-bold tracking-wider uppercase text-[#efb036]">Navigation</h3>
             <ul className="space-y-4">
               {['Home', 'About', 'Services', 'Portfolio'].map((link) => (
                 <li key={link}>
                   <Link
-                    href={link === 'Home' ? '/' : `/#${link.toLowerCase()}`}
+                    href={link === 'Home' ? '/' : link === 'About' ? '/about' : `/#${link.toLowerCase()}`}
                     className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block"
                   >
                     {link}
@@ -62,8 +62,8 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div className="lg:col-span-3 space-y-6">
-            <h3 className="text-xl font-bold tracking-wider uppercase text-[#efb036]">Specialties</h3>
+          <div className="min-w-0 xl:col-span-3 space-y-6">
+            <h3 className="text-lg xl:text-xl font-bold tracking-wider uppercase text-[#efb036]">Specialties</h3>
             <ul className="space-y-4">
               {['Custom Web Apps', 'Backend & APIs', 'AI & LLM Engineering', 'Technical SEO', 'Cloud Deployment'].map((service) => (
                 <li key={service} className="text-slate-400 cursor-default hover:text-white transition-colors">
@@ -74,29 +74,29 @@ const Footer = () => {
           </div>
 
           {/* Contact Details */}
-          <div className="lg:col-span-3 space-y-6">
-            <h3 className="text-xl font-bold tracking-wider uppercase text-[#efb036]">Contact Info</h3>
+          <div className="min-w-0 xl:col-span-3 space-y-6">
+            <h3 className="text-lg xl:text-xl font-bold tracking-wider uppercase text-[#efb036]">Contact Info</h3>
             <div className="space-y-5">
-              <div className="flex items-center text-slate-400 group">
-                <FontAwesomeIcon icon={faEnvelope} className="text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />
-                <a href="mailto:mamun.miah.dev@gmail.com" className="hover:text-white transition-colors">mamun.miah.dev@gmail.com</a>
+              <div className="flex min-w-0 items-start text-slate-400 group">
+                <FontAwesomeIcon icon={faEnvelope} className="shrink-0 mt-1 text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />
+                <a href="mailto:mamun.miah.dev@gmail.com" className="min-w-0 [overflow-wrap:anywhere] hover:text-white transition-colors">mamun.miah.dev@gmail.com</a>
               </div>
               <div className="flex items-center text-slate-400 group">
-                <FontAwesomeIcon icon={faPhone} className="text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />
+                <FontAwesomeIcon icon={faPhone} className="shrink-0 text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />
                 <a href="tel:+8801620173656" className="hover:text-white transition-colors">+880 1620 173656</a>
               </div>
               <div className="flex items-center text-slate-400 group cursor-default">
-                <FontAwesomeIcon icon={faPaperPlane} className="text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />
-                <span>Gazipur, Dhaka, Bangladesh</span>
+                <FontAwesomeIcon icon={faPaperPlane} className="shrink-0 text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />
+                <span className="min-w-0">Gazipur, Dhaka, Bangladesh</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Copyright Area */}
-        <div className="border-t border-slate-800 py-10 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm gap-4">
+        <div className="border-t border-slate-800 py-8 sm:py-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left text-slate-500 text-sm gap-4">
           <p>© {new Date().getFullYear()} Mamun Miah. All rights reserved.</p>
-          <div className="flex space-x-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>

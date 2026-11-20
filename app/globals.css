@@ -2,9 +2,12 @@
 @plugin "daisyui";
 
 
+html {
+    scroll-behavior: auto;
+}
+
 body {
     background-color: #fbfbfd;
-    scroll-behavior: smooth;
     color: #1b1b1b;
 }
 
@@ -25,11 +28,11 @@ body {
 
 /* #button */
 .primary-btn {
-    @apply bg-[#3b6790] text-white lg:text-xl border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
+    @apply bg-[#3b6790] text-white text-base sm:text-lg lg:text-xl max-w-full whitespace-normal border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
 }
 
 .secondery-btn {
-    @apply bg-[#efb036] text-[#1b1b1b] lg:text-xl border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
+    @apply bg-[#efb036] text-[#1b1b1b] text-base sm:text-lg lg:text-xl max-w-full whitespace-normal border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
 }
 
 /* main color */
@@ -48,33 +51,33 @@ body {
 
 /* heading */
 .mainheading {
-    @apply text-xl font-bold mb-3 text-[#3b6790] tracking-[0.2em] uppercase;
+    @apply text-sm sm:text-base lg:text-xl font-bold mb-3 text-[#3b6790] tracking-[0.2em] uppercase;
 }
 
 .subheading {
-    @apply text-3xl md:text-5xl text-[#000248] font-bold tracking-tight lg:leading-[1.1];
+    @apply text-3xl sm:text-4xl xl:text-5xl text-[#000248] font-bold tracking-tight leading-tight lg:leading-[1.1];
 }
 
 .secondery-btns {
-    @apply bg-[#efb036] text-[#1b1b1b] hidden lg:flex lg:text-xl border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
+    @apply bg-[#efb036] text-[#1b1b1b] hidden lg:flex text-base xl:text-xl border-0 shadow-lg rounded-full hover:shadow-xl transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center;
 }
 
 /* #heading */
 
 .heading1 {
-    @apply text-7xl text-[#000248] font-bold;
+    @apply text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-[#000248] font-bold;
 }
 
 .heading2 {
-    @apply text-5xl text-[#000248] font-bold;
+    @apply text-3xl sm:text-4xl xl:text-5xl text-[#000248] font-bold;
 }
 
 .heading3 {
-    @apply text-4xl text-[#000248] font-bold;
+    @apply text-2xl md:text-3xl xl:text-4xl text-[#000248] font-bold;
 }
 
 .heading4 {
-    @apply text-3xl text-[#efb036] font-semibold;
+    @apply text-2xl sm:text-3xl text-[#efb036] font-semibold;
 }
 
 .heading5 {
@@ -90,7 +93,99 @@ body {
 }
 
 .para {
-    @apply text-lg text-slate-600 leading-relaxed;
+    @apply text-base sm:text-lg text-slate-600 leading-relaxed;
+}
+
+.mainheading,
+.subheading,
+.heading1,
+.heading2,
+.heading3,
+.heading4,
+.heading5,
+.para {
+    overflow-wrap: anywhere;
+}
+
+.blog-content {
+    @apply text-base leading-relaxed sm:text-lg;
+    overflow-wrap: anywhere;
+}
+
+.blog-content > * + * {
+    margin-top: 1.25em;
+}
+
+.blog-content :is(h1, h2, h3, h4) {
+    @apply font-bold leading-tight;
+}
+
+.blog-content h1 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.blog-content h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.blog-content h3 {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.blog-content :is(ul, ol) {
+    padding-inline-start: 1.5em;
+}
+
+.blog-content ul {
+    list-style-type: disc;
+}
+
+.blog-content ol {
+    list-style-type: decimal;
+}
+
+.blog-content li + li {
+    margin-top: 0.5em;
+}
+
+.blog-content a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.blog-content pre {
+    @apply rounded-xl bg-slate-100 p-4 text-sm leading-relaxed;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-wrap: normal;
+    white-space: pre;
+}
+
+.blog-content :not(pre) > code {
+    overflow-wrap: anywhere;
+}
+
+.blog-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+.blog-content :is(th, td) {
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    text-align: start;
+}
+
+.blog-content :is(figure, img, video, iframe) {
+    max-width: 100%;
+    height: auto;
+}
+
+.blog-content iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
 }
 
 /* #footer */

@@ -7,16 +7,16 @@ import DecryptedText from "./animation/DecryptedText";
 // Main ServicesSection component
 const ServicesSection: React.FC = () => {
   return (
-    <div className="py-24" id="services" suppressHydrationWarning data-aos="fade-up">
+    <div className="py-12 sm:py-16 lg:py-20" id="services" suppressHydrationWarning data-aos="fade-up">
       {/* Heading and Description Section */}
-      <div className="lg:mx-24 md:mx-24 mx-5">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <h1 className="mainheading">CREATIVE SERVICE</h1>
         
 
         {/* Example 3: Animate on view (runs once) */}
         
-        <div className="grid lg:grid-cols-12 gap-5">
-          <div className="col-span-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8">
+          <div className="min-w-0 lg:col-span-6">
             <h2 className="subheading" >
           <DecryptedText
             text="How Can I Help Elevate Your Business?"
@@ -27,7 +27,7 @@ const ServicesSection: React.FC = () => {
           />
         </h2>
           </div>
-          <div className="col-span-6 ms-2">
+          <div className="min-w-0 lg:col-span-6">
             <p className="para mb-8">
               I specialize in delivering high-impact digital solutions that combine 
               modern frontend engineering with robust, scalable backend architecture. My goal is to help 
@@ -39,7 +39,7 @@ const ServicesSection: React.FC = () => {
       </div>
 
       {/* Cards Section */}
-      <section className="lg:mx-24 md:mx-24 mx-5 grid lg:grid-cols-4 md:grid-cols-2 justify-center items-center gap-5">
+      <section className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-stretch gap-5 lg:gap-6">
         <Card
           title="Custom Web Development"
           details="I build high-performance, scalable websites and web apps that convert visitors into customers, ensuring a seamless experience across all devices."

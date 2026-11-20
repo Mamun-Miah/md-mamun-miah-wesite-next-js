@@ -17,16 +17,16 @@ export default function BlogPost({ title, content, image, date }: Props) {
   });
   return (
     <>
-    <section className=' flex flex-col justify-center items-center pt-28 lg:h-[60vh] h-[60vh] pb-24 mt-[-90px] lg:mt-[-100px] bg-amber-950'>
-    <h1 className="lg:text-5xl text-3xl mx-3 pb-3 text-center my-3 font-bold text-gray-200 mb-4">{title}</h1>
-    <Link href="/blog"><button className='btn btn-md text-gray-900 btn-warning'>Back to Blog Page<LoadingIndicator /></button></Link>
+    <section className='flex min-h-[50svh] lg:min-h-[60svh] flex-col justify-center items-center gap-6 px-5 pt-36 pb-12 sm:pt-40 sm:pb-16 lg:pt-44 mt-[-90px] lg:mt-[-100px] bg-amber-950'>
+    <h1 className="max-w-4xl text-3xl sm:text-4xl lg:text-5xl leading-tight break-words text-center font-bold text-gray-200">{title}</h1>
+    <Link href="/blog" className='btn btn-md text-gray-900 btn-warning max-w-full whitespace-normal h-auto min-h-12 px-5 py-3 text-center'>Back to Blog Page<LoadingIndicator /></Link>
 
     </section>
-        <article className="prose px-3 lg:prose-xl bg-gray-50 max-w-4xl mx-auto py-10">
-        <h2 className="text-3xl text-gray-900 font-bold mb-4">{title}</h2>
+        <article className="w-full max-w-[75ch] mx-auto px-5 sm:px-8 py-8 sm:py-10 bg-gray-50">
+        <h2 className="text-2xl sm:text-3xl leading-tight break-words text-gray-900 font-bold mb-4">{title}</h2>
 
         {image && (
-            <div className="relative w-full h-96 mb-6">
+            <div className="relative w-full aspect-video mb-6">
             <Image
                 src={image}
                 alt={title}
@@ -39,7 +39,7 @@ export default function BlogPost({ title, content, image, date }: Props) {
         <div className="card-actions my-4 justify-start">
           <div className="badge text-gray-800 badge-outline">{formattedDate}</div>
         </div>
-        <div className='text-gray-800' dangerouslySetInnerHTML={{ __html: content }} />
+        <div className='blog-content min-w-0 text-gray-800' dangerouslySetInnerHTML={{ __html: content }} />
         </article>
     </>
     
