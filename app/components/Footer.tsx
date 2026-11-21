@@ -3,7 +3,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faInstagram, faGithub, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faPhone, faEnvelope, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -80,10 +80,6 @@ const Footer = () => {
               <div className="flex min-w-0 items-start text-slate-400 group">
                 <FontAwesomeIcon icon={faEnvelope} className="shrink-0 mt-1 text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />
                 <a href="mailto:mamun.miah.dev@gmail.com" className="min-w-0 [overflow-wrap:anywhere] hover:text-white transition-colors">mamun.miah.dev@gmail.com</a>
-              </div>
-              <div className="flex items-center text-slate-400 group">
-                <FontAwesomeIcon icon={faPhone} className="shrink-0 text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />
-                <a href="tel:+8801620173656" className="hover:text-white transition-colors">+880 1620 173656</a>
               </div>
               <div className="flex items-center text-slate-400 group cursor-default">
                 <FontAwesomeIcon icon={faPaperPlane} className="shrink-0 text-[#3b6790] mr-3 group-hover:scale-110 transition-transform" />

@@ -22,7 +22,6 @@ export default function StructuredData() {
         'Full Stack Web Developer with 7+ years of experience building high-performance Next.js applications, scalable backend APIs, RAG-powered AI systems, and LLM integrations. Available for freelance hire.',
       url: SITE_URL,
       email: 'mamun.miah.dev@gmail.com',
-      telephone: '+8801620173656',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Gazipur',
@@ -75,7 +74,6 @@ export default function StructuredData() {
     description:
       'Professional web development, AI integration, and technical SEO services by Mamun Miah. Specializing in Next.js, scalable APIs, RAG pipelines, and LLM-powered SaaS products.',
     url: SITE_URL,
-    telephone: '+8801620173656',
     email: 'mamun.miah.dev@gmail.com',
     areaServed: 'Worldwide',
     priceRange: '$$',

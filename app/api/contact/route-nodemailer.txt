@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   const body = await req.json();
   const { fullName, phone, email, message } = body;
 
-  if (!fullName || !phone || !email || !message) {
+  if (!fullName || !email || !message) {
     return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
   }
 
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     subject: `New Contact from ${fullName}`,
     html: `
       <p><strong>Full Name:</strong> ${fullName}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Message:</strong><br/>${message}</p>
     `,

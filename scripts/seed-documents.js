@@ -137,7 +137,7 @@ const chunks = [
     content: `## Frequently Asked Questions (FAQ)
 
         Q: How can I hire you?
-        A: You can hire Mamun Miah by emailing him at mamun.miah.dev@gmail.com, calling/messaging on WhatsApp at +8801620173656, or by filling out the quick contact form on his website's contact section.
+        A: You can hire Mamun Miah by emailing him at mamun.miah.dev@gmail.com or by filling out the quick contact form on his website's contact section.
 
         Q: What are your rates or pricing?
         A: Pricing is project-based and depends entirely on the project's scope, tech stack, and complexity. Contact Mamun with your project details to get a custom quote.

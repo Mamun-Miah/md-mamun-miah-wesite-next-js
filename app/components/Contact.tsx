@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 type FormData = {
   fullName: string;
@@ -87,16 +87,6 @@ const Contact: React.FC = () => {
 
               <div className="flex items-center p-4 sm:p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
                 <div className="w-12 h-12 shrink-0 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
-                  <FontAwesomeIcon icon={faPhone} />
-                </div>
-                <div className="min-w-0 flex-1 ml-3 sm:ml-4">
-                  <p className="text-xs font-bold text-[#efb036] uppercase tracking-[0.2em] mb-1">Contact No</p>
-                  <p className="text-base sm:text-lg font-bold text-[#000248]">+8801620173656</p>
-                </div>
-              </div>
-
-              <div className="flex items-center p-4 sm:p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-[#3b6790] transition-all hover:bg-white hover:shadow-lg">
-                <div className="w-12 h-12 shrink-0 bg-[#3b6790] rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-[#3b679030]">
                   <FontAwesomeIcon icon={faEnvelope} />
                 </div>
                 <div className="min-w-0 flex-1 ml-3 sm:ml-4">
@@ -150,13 +140,10 @@ const Contact: React.FC = () => {
                       type="tel"
                       name="phone"
                       id="contact-phone"
-                      placeholder="+880..."
+                      placeholder="+1234567890"
                       className="input input-bordered min-w-0 w-full h-14 text-base bg-slate-50 border-slate-200 focus:bg-white transition-all"
-                      required
                       value={formData.phone}
                       onChange={handleChange}
-                      pattern="^\+?\d{7,15}$"
-                      title="Enter a valid phone number"
                     />
                   </div>
                   <div className="space-y-2">
