@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Hero from './components/Hero';
 
 export const metadata: Metadata = {
-  title: 'Full Stack & AI Developer | Next.js Expert',
+  title: 'Full Stack & AI Developer',
   description:
     'Hire Mamun Miah — a Full Stack Web Developer & AI Engineer with 7+ years of experience. Specializing in Next.js, React, Node.js, RAG pipelines, LangChain agents, and custom SaaS development. Available for freelance projects.',
   keywords: [
