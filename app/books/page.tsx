@@ -1,26 +1,28 @@
 import type { Metadata } from 'next';
 import { ArrowUpRight, BookOpen, Check } from 'lucide-react';
 
+const title = 'JavaScript OOP & Rust Books in Bangla';
+const pageUrl = 'https://mamundev.com/books';
 const description =
-  'Explore my JavaScript OOP Book and Rust Book Bangla, two online books for learning JavaScript and Rust in Bangla at your own pace.';
+  'Read two free programming books in Bangla: a JavaScript OOP guide with code examples and exercises, and a Rust book translation covering ownership and borrowing.';
 
 export const metadata: Metadata = {
-  title: 'Programming Books',
+  title,
   description,
-  keywords: ['JavaScript OOP book', 'Rust book Bangla', 'programming books', 'Mamun Miah'],
+  keywords: null,
   alternates: {
-    canonical: '/books',
+    canonical: pageUrl,
   },
   openGraph: {
-    title: 'Programming Books | Mamun Miah',
+    title: `${title} | Mamun Miah`,
     description,
-    url: '/books',
+    url: pageUrl,
     type: 'website',
     siteName: 'Mamun Miah',
   },
   twitter: {
     card: 'summary',
-    title: 'Programming Books | Mamun Miah',
+    title: `${title} | Mamun Miah`,
     description,
   },
 };
@@ -32,7 +34,7 @@ const books = [
     mark: 'JS',
     accentClasses: 'bg-[#efb036] text-[#000248]',
     description:
-      'A Bangla guide to object-oriented programming in JavaScript. Explore objects, classes, prototypes, and inheritance through explanations, code examples, and practice exercises.',
+      'A Bangla guide to object-oriented programming (OOP) in JavaScript, from objects, classes, prototypes, and inheritance to design patterns and SOLID principles.',
     highlights: [
       'Practical JavaScript examples and exercises',
       'Chapter navigation and completion tracking',
@@ -40,7 +42,7 @@ const books = [
     ],
     href: 'https://jsbook.mamundev.com',
     domain: 'jsbook.mamundev.com',
-    linkLabel: 'Read JavaScript Book',
+    linkLabel: 'Read the JavaScript OOP Book',
   },
   {
     title: 'Rust Book Bangla',
@@ -48,10 +50,10 @@ const books = [
     mark: 'Rust',
     accentClasses: 'bg-[#3b6790] text-white',
     description:
-      'An unofficial Bangla translation of The Rust Programming Language. Learn Rust with explanations in Bangla while the original programming terms, commands, and code examples stay in English.',
+      'An unofficial Bangla translation of The Rust Programming Language (2024 Edition). Learn Rust with Bangla explanations and the original English terminology, commands, and code examples.',
     highlights: [
-      'All 21 chapters, introductory lessons, and appendices',
-      'Ownership, borrowing, types, and more',
+      '111 lessons across 21 chapters, introductory material, and appendices',
+      'Rust ownership, borrowing, and lifetimes',
       'Search, bookmarks, and reading-progress tracking',
     ],
     href: 'https://rust-bangla-book.mamundev.com',
@@ -60,9 +62,38 @@ const books = [
   },
 ];
 
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${pageUrl}#collection`,
+  url: pageUrl,
+  name: title,
+  description,
+  inLanguage: 'en',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: books.map((book, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Book',
+        name: book.title,
+        description: book.description,
+        url: book.href,
+        inLanguage: 'bn',
+        isAccessibleForFree: true,
+      },
+    })),
+  },
+};
+
 export default function BooksPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema).replace(/</g, '\\u003c') }}
+      />
       <section className="relative -mt-[90px] bg-gradient-to-br from-[#000248] via-[#172952] to-[#3b6790] px-5 pb-14 pt-36 text-white sm:px-6 sm:pb-16 sm:pt-40 lg:-mt-[100px] lg:px-8 lg:pb-20 lg:pt-44">
         <div className="mx-auto max-w-6xl">
           <p className="mb-5 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-[#efb036] sm:text-base">
@@ -70,11 +101,11 @@ export default function BooksPage() {
             My Books
           </p>
           <h1 className="max-w-4xl break-words text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Programming Books
+            {title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200 sm:text-xl">
-            Two reading projects I&apos;ve built to make learning JavaScript and Rust more approachable.
-            Explore the books below and learn one chapter at a time.
+            Learn JavaScript object-oriented programming and Rust with two free online books in Bangla.
+            Read the explanations in Bangla and follow along with code examples at your own pace.
           </p>
         </div>
       </section>

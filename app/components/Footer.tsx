@@ -48,13 +48,19 @@ const Footer = () => {
           <div className="min-w-0 xl:col-span-2 space-y-6">
             <h3 className="text-lg xl:text-xl font-bold tracking-wider uppercase text-[#efb036]">Navigation</h3>
             <ul className="space-y-4">
-              {['Home', 'About', 'Services', 'Portfolio'].map((link) => (
-                <li key={link}>
+              {[
+                { href: '/', label: 'Home' },
+                { href: '/about', label: 'About' },
+                { href: '/books', label: 'Books in Bangla' },
+                { href: '/#services', label: 'Services' },
+                { href: '/#portfolio', label: 'Portfolio' },
+              ].map(({ href, label }) => (
+                <li key={href}>
                   <Link
-                    href={link === 'Home' ? '/' : link === 'About' ? '/about' : `/#${link.toLowerCase()}`}
+                    href={href}
                     className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block"
                   >
-                    {link}
+                    {label}
                   </Link>
                 </li>
               ))}
