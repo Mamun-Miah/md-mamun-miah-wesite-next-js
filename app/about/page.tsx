@@ -37,11 +37,8 @@ const About = () => {
   return (
     <main>
       <Hero
-        title="About My Mission"
-        description="
-            I am a results-driven Full Stack Web Developer with 7+ years of hands-on experience architecting and shipping production-grade applications.
-            
-            My goal is simple: to help businesses like yours grow through cutting-edge technology and strategic digital positioning. By combining deep full-stack expertise with an AI-first development mindset, I deliver solutions that are not just visually stunning, but functionally superior and optimized for long-term ROI."
+        title="Full Stack Software Developer"
+        description="I'm Mamun Miah, a full stack software developer with 7+ years of experience. I build web applications end to end, from responsive interfaces to the APIs and databases behind them. I focus on making software fast, reliable, and easy to maintain."
         backgroundImage="images/about-us-bg.png"
       />
       <AboutContent />
