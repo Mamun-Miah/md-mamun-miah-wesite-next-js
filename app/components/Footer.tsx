@@ -7,6 +7,7 @@ import { faEnvelope, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { PROFILE_LINKS } from '@/lib/seo';
 
 const Footer = () => {
   return (
@@ -26,19 +27,21 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: faLinkedin, href: "https://www.linkedin.com/in/mamun-miah-dev/" },
-                { icon: faGithub, href: "https://github.com/Mamun-Miah" },
-                { icon: faFacebook, href: "https://facebook.com/mamun.miah.dev" },
-                { icon: faInstagram, href: "https://www.instagram.com/mamun.miah.dev/" }
-              ].map((social, i) => (
+                { icon: faLinkedin, href: PROFILE_LINKS.linkedin, label: 'LinkedIn' },
+                { icon: faGithub, href: PROFILE_LINKS.github, label: 'GitHub' },
+                { icon: faFacebook, href: PROFILE_LINKS.facebook, label: 'Facebook' },
+                { icon: faInstagram, href: PROFILE_LINKS.instagram, label: 'Instagram' },
+              ].map(({ icon, href, label }) => (
                 <motion.a
-                  key={i}
-                  href={social.href}
+                  key={href}
+                  href={href}
+                  aria-label={label}
                   target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ y: -3, scale: 1.1 }}
-                    className="w-11 h-11 shrink-0 bg-slate-800 rounded-lg flex items-center justify-center text-slate-300 hover:bg-[#3b6790] hover:text-white transition-all shadow-md"
+                  className="w-11 h-11 shrink-0 bg-slate-800 rounded-lg flex items-center justify-center text-slate-300 hover:bg-[#3b6790] hover:text-white transition-all shadow-md"
                 >
-                  <FontAwesomeIcon icon={social.icon} />
+                  <FontAwesomeIcon icon={icon} />
                 </motion.a>
               ))}
             </div>
@@ -96,12 +99,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright Area */}
-        <div className="border-t border-slate-800 py-8 sm:py-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left text-slate-500 text-sm gap-4">
+        <div className="border-t border-slate-800 py-8 sm:py-10 text-center text-slate-500 text-sm">
           <p>© {new Date().getFullYear()} Mamun Miah. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-          </div>
         </div>
       </div>
     </footer>

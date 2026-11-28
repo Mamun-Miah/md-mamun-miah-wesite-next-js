@@ -18,8 +18,8 @@ import Link from 'next/link';
 const TechnicalSeoPage = () => {
   const benefits = [
     {
-      title: "Core Web Vitals Pass",
-      desc: "Optimizing LCP, FID, and CLS scores to ensure your website passes Google's strict usability assessments.",
+      title: "Core Web Vitals Optimization",
+      desc: "Measure LCP, INP, and CLS to identify slow loading, delayed interactions, and layout shifts.",
       icon: faRocket,
       color: "bg-orange-500/10 text-orange-600"
     },
@@ -31,17 +31,17 @@ const TechnicalSeoPage = () => {
     },
     {
       title: "Mobile-First Optimization",
-      desc: "Making sure layouts adapt flawlessly and load instantly on all mobile viewport sizes and network speeds.",
+      desc: "Improve responsive layouts and reduce loading costs on mobile devices and slower connections.",
       icon: faMobileScreenButton,
       color: "bg-emerald-500/10 text-emerald-600"
     }
   ];
 
   const processSteps = [
-    { title: "Performance & Lighthouse Audit", desc: "Analyzing bundle sizes, server response times, and identify loading bottlenecks." },
+    { title: "Performance & Lighthouse Audit", desc: "Analyzing bundle sizes and server response times to identify loading bottlenecks." },
     { title: "Structured Data Implementation", desc: "Adding JSON-LD schemas and semantic HTML5 structures to help engines understand your pages." },
     { title: "Metadata & Content Tuning", desc: "Optimizing head elements, titles, descriptions, and structural heading tags for target queries." },
-    { title: "Crawl Budget Optimization", desc: "Cleaning redirect chains, configuring canoncal links, and managing sitemaps/robots files." },
+    { title: "Crawlability Audit", desc: "Cleaning up redirect chains, configuring canonical links, and checking sitemaps and robots.txt." },
     { title: "Continuous Monitoring", desc: "Setting up Google Search Console alerts to monitor ranking drops or crawl issues." }
   ];
 
@@ -49,7 +49,7 @@ const TechnicalSeoPage = () => {
     <div className="bg-white">
       <Hero
         title="Technical SEO & Optimization"
-        description="Providing the developer-level speed tuning, schema structuring, and Core Web Vitals optimization needed to get your high-performance web applications ranking and converting."
+        description="I improve web performance and help search engines discover and understand your pages through Core Web Vitals audits, structured data, and crawlability fixes."
         backgroundImage="/images/seo-service-bg.avif"
         calltoAction={
           <Link href="/#contact-us" className="btn secondery-btn max-w-full whitespace-normal px-6 sm:px-10 h-auto min-h-14 sm:min-h-16 py-4 font-bold text-base sm:text-xl text-center">
@@ -68,7 +68,7 @@ const TechnicalSeoPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             <Card
               title="Speed & Performance Tuning"
-              details="Code splitting, image compression, resource prefetching, and caching setups to hit 90+ Lighthouse scores."
+              details="Code splitting, image compression, and caching to address bottlenecks found in a Lighthouse audit."
               geticon={<FontAwesomeIcon className='text-[100px] text-[#48CDA0]' icon={faRocket} />}
               bg="bg-[#143D60]"
             />
@@ -120,9 +120,9 @@ const TechnicalSeoPage = () => {
             <div className="relative min-w-0">
                <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#efb03610] rounded-full blur-3xl" />
                <h2 className="mainheading">OPTIMIZATION WORKFLOW</h2>
-               <h3 className="subheading mb-8">From Audit to Rank Growth</h3>
+                <h3 className="subheading mb-8">From Audit to Ongoing Monitoring</h3>
                <p className="para mb-10">
-                 Good SEO isn&apos;t magic; it is clean code, fast servers, and semantic layout tags. I implement structured improvements to ensure search engines favor your platform.
+                  A technical audit identifies what slows your pages down or makes them hard to crawl. I prioritize fixes and track their impact after release.
                </p>
                <div className="space-y-4">
                  {processSteps.map((step, i) => (
@@ -142,10 +142,10 @@ const TechnicalSeoPage = () => {
                <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mb-16" />
                <div className="text-center mb-10">
                  <FontAwesomeIcon icon={faCogs} className="text-6xl text-[#efb036] mb-6" />
-                 <h3 className="text-2xl sm:text-3xl font-extrabold">Ready to Rank #1?</h3>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold">Ready for a Technical SEO Audit?</h3>
                </div>
                <p className="text-slate-200 text-base sm:text-lg text-center mb-8 sm:mb-10 leading-relaxed">
-                 Power up your visibility on Google. Combine speed optimizations with technical SEO strategies to increase organic traffic.
+                  Find out what holds your site back and get a prioritized plan for performance, indexing, and search visibility.
                </p>
                <div className="space-y-4 mb-10">
                  <div className="flex items-center gap-3 justify-center">

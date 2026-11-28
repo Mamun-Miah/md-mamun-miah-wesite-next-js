@@ -2,25 +2,11 @@ import Link from 'next/link';
 import Blogpostcard from '../components/Blogpostcard';
 import { notFound } from 'next/navigation';
 import LoadingIndicator from '../ui/loading-indicator';
-import type { Metadata } from "next";
+import { getPosts, postShareImage } from '@/lib/blog';
+import { pageMetadata, pages } from '@/lib/seo';
 export const runtime = 'edge';
 
-type WPPost = {
-  id: number;
-  slug: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  featured_image?: string;
-};
-
-export const metadata: Metadata = {
-  title: 'Blog - Mamun Miah',
-  robots: {
-index: false,
-follow: true,
-},
-};
+export const metadata = pageMetadata(pages.blog);
 
 const POSTS_PER_PAGE = 12;
 
@@ -36,25 +22,10 @@ export default async function BlogPage({ searchParams }: Props) {
   const currentPage = parseInt(params?.page || '1', 10);
   const searchQuery = params?.search?.toLowerCase() || '';
 
-  
-
-  const res = await fetch(
-    'https://raw.githubusercontent.com/Mamun-Miah/WordPress-API-Automation-to-Github/refs/heads/main/posts.json'
-  );//github api url
-  if (!res.ok) {
-    throw new Error('Failed to fetch posts');
-  }
-
-  const allPosts: WPPost[] = await res.json();
-//search query
-  // Filter posts based on search query
-  let filteredPosts = allPosts;
-
-  if (searchQuery) {
-    filteredPosts = allPosts.filter(post =>
-      post.title.toLowerCase().includes(searchQuery)
-    );
-  }
+  const allPosts = await getPosts();
+  const filteredPosts = searchQuery
+    ? allPosts.filter((post) => post.title.toLowerCase().includes(searchQuery))
+    : allPosts;
 
   const totalPosts = filteredPosts.length;
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
@@ -101,8 +72,8 @@ export default async function BlogPage({ searchParams }: Props) {
             key={post.id}
             slug={post.slug}
             title={post.title}
-            excerpt={post.excerpt}
-            image={post.featured_image}
+            excerpt={post.excerpt ?? ''}
+            image={postShareImage(post.slug).url}
             date={post.date}
           />
         ))}

@@ -135,10 +135,10 @@ export default function FiverrKeywordResearch() {
         {/* Header */}
         <div className="text-center space-y-2">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold pb-3 tracking-tight leading-tight break-words">
-            Fiverr Keyword Research Tool.
+            Fiverr Keyword Research Tool
           </h1>
           <p className="text-gray-400 text-lg sm:text-xl">
-            100% Real & free keyword research tool.
+            Find free keyword ideas from Fiverr autocomplete.
           </p>
           <p className="text-green-400 text-sm">
             Scroll down to read our Fiverr SEO & Optimization Guide
@@ -258,7 +258,7 @@ export default function FiverrKeywordResearch() {
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="text-green-500 w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span><strong>Higher Visibility:</strong> Gigs targeting the right keywords rank on the first page, resulting in more impressions.</span>
+                <span><strong>Search Relevance:</strong> Relevant terms help buyers recognize that your gig matches the service they need.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="text-green-500 w-4 h-4 mt-0.5 flex-shrink-0" />
@@ -266,7 +266,7 @@ export default function FiverrKeywordResearch() {
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="text-green-500 w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span><strong>Zero Ads Cost:</strong> Organic ranking drives consistent sales without spending a dime on Fiverr Promoted Gigs.</span>
+                <span><strong>Organic Discovery:</strong> Buyers can find your gig in search without you paying for a promoted placement.</span>
               </li>
             </ul>
           </div>
@@ -275,20 +275,20 @@ export default function FiverrKeywordResearch() {
         {/* How It Works */}
         <div className="space-y-6">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">How This Tool Helps You Rank</h2>
-            <p className="text-gray-400">Our free keyword tool automates the process of extracting real search suggestion data directly from Fiverr.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">How the Keyword Tool Works</h2>
+            <p className="text-gray-400">The tool collects autocomplete suggestions from Fiverr. It does not measure search volume or keyword competition.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             <div className="bg-[#0b1220]/40 border border-white/5 p-6 rounded-xl space-y-3">
               <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 font-bold">1</div>
               <h4 className="font-semibold text-white">Real-Time Suggestions</h4>
-              <p className="text-sm text-gray-400">Queries Fiverr&apos;s autocomplete database directly to ensure the keywords are active and trending among real buyers.</p>
+              <p className="text-sm text-gray-400">Looks up suggested phrases from Fiverr&apos;s autocomplete.</p>
             </div>
             <div className="bg-[#0b1220]/40 border border-white/5 p-6 rounded-xl space-y-3">
               <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 font-bold">2</div>
               <h4 className="font-semibold text-white">Alpha-Prefix Expansion</h4>
-              <p className="text-sm text-gray-400">Scans alphabetical prefixes (e.g. &quot;a WordPress&quot;, &quot;b WordPress&quot;) to uncover hidden, high-converting long-tail variations.</p>
+              <p className="text-sm text-gray-400">Tries alphabetical prefixes (e.g. &quot;a WordPress&quot;, &quot;b WordPress&quot;) to find more specific variations.</p>
             </div>
             <div className="bg-[#0b1220]/40 border border-white/5 p-6 rounded-xl space-y-3">
               <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 font-bold">3</div>
@@ -316,7 +316,7 @@ export default function FiverrKeywordResearch() {
                   <span className="text-yellow-500 shrink-0">Step 2.</span> Select 5 Relevant Tags
                 </h4>
                 <p className="text-sm text-gray-400">
-                  Fiverr allows up to 5 search tags. Use the keywords found using our tool. Mix high-volume keywords with low-competition, specific long-tail tags.
+                  Fiverr allows up to 5 search tags. Choose suggestions that describe your service, mixing broader terms with more specific phrases.
                 </p>
               </div>
             </div>
@@ -348,13 +348,13 @@ export default function FiverrKeywordResearch() {
             <div className="bg-[#0b1220]/80 border border-white/5 rounded-xl p-6">
               <h4 className="font-semibold text-white mb-2">How does this Fiverr Keyword Research tool work?</h4>
               <p className="text-sm text-gray-400">
-                Our tool connects directly to Fiverr&apos;s search autocomplete API. When you input a keyword, it triggers queries starting with letters to get the exact phrases buyers are typing.
+                Enter a keyword and the tool checks variations against Fiverr&apos;s autocomplete suggestions. You can copy the relevant phrases or open them in Fiverr search.
               </p>
             </div>
             <div className="bg-[#0b1220]/80 border border-white/5 rounded-xl p-6">
-              <h4 className="font-semibold text-white mb-2">What are low-competition Fiverr keywords?</h4>
+              <h4 className="font-semibold text-white mb-2">Does this tool show search volume or competition?</h4>
               <p className="text-sm text-gray-400">
-                Low-competition keywords are specific search terms (often long-tail) that have fewer active gigs competing for them (e.g., less than 1,000 search results) but still have decent buyer demand.
+                No. It returns autocomplete suggestions, not search volume, competition scores, or ranking predictions.
               </p>
             </div>
             <div className="bg-[#0b1220]/80 border border-white/5 rounded-xl p-6">

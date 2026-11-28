@@ -1,31 +1,13 @@
-import type { Metadata } from 'next';
 import { ArrowUpRight, BookOpen, Check } from 'lucide-react';
+import { pageMetadata, pages, siteUrl } from '@/lib/seo';
+import { WEBSITE_ID } from '@/lib/schema';
+import StructuredData from '../components/StructuredData';
 
 const title = 'JavaScript OOP & Rust Books in Bangla';
-const pageUrl = 'https://mamundev.com/books';
-const description =
-  'Read two free programming books in Bangla: a JavaScript OOP guide with code examples and exercises, and a Rust book translation covering ownership and borrowing.';
+const pageUrl = siteUrl(pages.books.path);
+const { description } = pages.books;
 
-export const metadata: Metadata = {
-  title,
-  description,
-  keywords: null,
-  alternates: {
-    canonical: pageUrl,
-  },
-  openGraph: {
-    title: `${title} | Mamun Miah`,
-    description,
-    url: pageUrl,
-    type: 'website',
-    siteName: 'Mamun Miah',
-  },
-  twitter: {
-    card: 'summary',
-    title: `${title} | Mamun Miah`,
-    description,
-  },
-};
+export const metadata = pageMetadata(pages.books);
 
 const books = [
   {
@@ -70,6 +52,7 @@ const collectionSchema = {
   name: title,
   description,
   inLanguage: 'en',
+  isPartOf: { '@id': WEBSITE_ID },
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: books.map((book, index) => ({
@@ -90,10 +73,7 @@ const collectionSchema = {
 export default function BooksPage() {
   return (
     <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema).replace(/</g, '\\u003c') }}
-      />
+      <StructuredData data={collectionSchema} />
       <section className="relative -mt-[90px] bg-gradient-to-br from-[#000248] via-[#172952] to-[#3b6790] px-5 pb-14 pt-36 text-white sm:px-6 sm:pb-16 sm:pt-40 lg:-mt-[100px] lg:px-8 lg:pb-20 lg:pt-44">
         <div className="mx-auto max-w-6xl">
           <p className="mb-5 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-[#efb036] sm:text-base">
