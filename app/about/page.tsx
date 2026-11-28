@@ -1,9 +1,18 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Hero from '../components/Hero';
 import AboutContent from '../components/AboutContent';
 
-export const metadata = {
+const shareImage = {
+  url: '/images/og-image.jpg',
+  width: 1200,
+  height: 630,
+  type: 'image/jpeg',
+  alt: 'Portrait of Mamun Miah, Full Stack and AI Developer',
+};
+
+export const metadata: Metadata = {
   title: 'About Mamun Miah | Full Stack & AI Developer with 7+ Years Experience',
   description:
     'Learn about Mamun Miah — a results-driven Full Stack Web Developer & AI Engineer with 7+ years of experience building production-grade Next.js apps, scalable APIs, and RAG-powered AI systems. Available for freelance hire.',
@@ -19,18 +28,20 @@ export const metadata = {
     canonical: 'https://mamundev.com/about',
   },
   openGraph: {
+    type: 'website',
+    siteName: 'Mamun Miah',
     title: 'About Mamun Miah | Full Stack & AI Developer',
     description:
       'Results-driven Full Stack & AI Developer with 7+ years of experience. Discover skills, experience, and the technology stack Mamun Miah uses.',
     url: 'https://mamundev.com/about',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+    images: [shareImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Mamun Miah | Full Stack & AI Developer',
     description:
       '7+ years building web apps, APIs, and AI systems. Discover who Mamun Miah is.',
-    images: ['/images/og-image.jpg'],
+    images: [shareImage],
   },
 };
 
