@@ -10,11 +10,12 @@ interface HeroProps {
   description: string;
   backgroundImage?: string;
   calltoAction?: React.ReactNode;
+  sideContent?: React.ReactNode;
   showTyping?: boolean; // New prop
   typingText?: string | string[];
 }
 
-const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction, showTyping, typingText }) => {
+const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, calltoAction, sideContent, showTyping, typingText }) => {
   return (
     <section
       className="relative hero min-h-[min(70svh,900px)] bg-[#000248] pt-32 pb-14 sm:pt-40 sm:pb-20 lg:pt-44 lg:pb-24 mt-[-90px] lg:mt-[-100px] overflow-hidden"
@@ -26,8 +27,12 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
         backgroundPosition: 'center',
       }}
     >
-      <div className="relative hero-content w-full max-w-5xl px-5 sm:px-6 lg:px-8 z-10 text-gray-200">
-          <div className="flex min-w-0 w-full flex-col justify-center items-center text-center">
+      <div className={`relative hero-content w-full px-5 sm:px-6 lg:px-8 z-10 text-gray-200 ${
+        sideContent ? 'max-w-6xl flex-col gap-6 lg:flex-row lg:gap-14' : 'max-w-5xl'
+      }`}>
+          <div className={`flex min-w-0 w-full flex-col justify-center items-center text-center${
+            sideContent ? ' lg:items-start lg:text-left' : ''
+          }`}>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,6 +73,7 @@ const Hero: React.FC<HeroProps> = ({ title, description, backgroundImage, callto
               {calltoAction}
             </motion.div>
           </div>
+          {sideContent}
       </div>
     </section>
   );

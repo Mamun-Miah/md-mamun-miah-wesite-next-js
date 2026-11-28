@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Hero from '../components/Hero';
 import AboutContent from '../components/AboutContent';
 
@@ -40,6 +41,17 @@ const About = () => {
         title="Full Stack Software Developer"
         description="I'm Mamun Miah, a full stack software developer with 7+ years of experience. I build web applications end to end, from responsive interfaces to the APIs and databases behind them. I focus on making software fast, reliable, and easy to maintain."
         backgroundImage="images/about-us-bg.png"
+        sideContent={
+          <Image
+            src="/mamun_miah-dev.jpeg"
+            alt="Portrait of Mamun Miah"
+            width={400}
+            height={400}
+            priority
+            unoptimized
+            className="h-auto w-56 shrink-0 rounded-[1.75rem] border border-white/20 bg-white/5 p-1.5 shadow-xl shadow-black/25 sm:w-64 lg:w-[22rem]"
+          />
+        }
       />
       <AboutContent />
     </main>
